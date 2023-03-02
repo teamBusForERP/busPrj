@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;900&display=swap');
+@import url("https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+
+.d-none {
+	display: none;
+}
+
+/* mobile용 페이지 전체 div */
+.wrap { 
+	/* border: 1px black solid; */
+	width: 360px;
+	margin: 0 auto;
+	top: 0;
+	left: 0;
+	box-sizing: border-box;
+}
+
+/* pc용 페이지 전체 div */
+.page-wrap {
+	width: 100vw;
+	height: 100vh;
+}

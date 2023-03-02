@@ -1,0 +1,113 @@
+.date-filter {
+	margin: 0 auto;
+	width: 319px;
+	height: 39px;
+}
+
+.date-filter .date-filter-button {
+	font-size : 18px;
+	font-weight: 500;
+}
+
+/* 프로그래스 */
+.progress {
+	margin: 20px auto 0 auto;
+	border: 1px #B9B7B7 solid;
+}
+
+.progress {
+	width: 305px;
+	height: 16px;
+}
+
+.progress-bar {
+	height: 16px;
+}
+
+/* 프로그래스 */
+
+.header-title {
+	font-size: 18px;
+}
+
+.ham-wrap {
+	justify-content: center;
+}
+
+.main-wrap {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.mid-wrap {
+	margin-top: 34px;
+}
+
+.day-fillter {
+	text-align: center;
+	margin-top: 40px;
+}
+
+.day-fillter .back {
+	margin-right: 10.47px;
+}
+
+.day-fillter .front {
+	margin-left: 10.47px;
+}
+
+.bottom-wrap {
+	margin-left: 0 auto;
+	font-size: 18px;
+}
+
+.work-hour {
+	margin-top: 50px;
+}
+
+.rest-hour {
+	margin-top: 59px;
+}
+
+.work-hour-text,
+.rest-hour-text {
+	display: flex;
+	flex-direction: row;
+	margin-left: 30px;
+}
+
+.border {
+	align-self: center;
+	border-right: 1.5px solid black;
+	width: 0.1px;
+	height: 15px;
+	margin: 0 10px 0 10px;
+}
+
+.time {
+	color: #878686;
+}
+
+.daytime-work {
+
+	/* display: flex; */
+	margin: 63px auto auto auto;
+	width: 300px;
+	/* margin-top: 63px; */
+	font-size: 13px;
+}
+
+.go-work-time,
+.leave-work-time {
+
+	display: flex;
+	justify-content: space-between;
+}
+
+.go-work-time {
+	margin-top: 33px;
+}
+
+.leave-work-time {
+	margin-top: 36px;
+}

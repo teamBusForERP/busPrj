@@ -1,0 +1,131 @@
+.list-head {
+	display: flex;
+	width: 100%;
+}
+
+.list-head > div {
+	height: 54px;
+	padding: 18px 0;
+	text-align: center;
+	background-color: #A9CBFF;
+	border-right: solid #8FBCFF 2px;
+	box-sizing: border-box;
+	color: #0745A3;
+	font-size: 18px;
+}
+
+.list-content {
+	display: flex;
+	width: 1156px;
+	border-bottom: 2px #EAEDF2 solid;
+}
+
+.list-content > div {
+	display: flex;
+	
+	height: 75px;
+	justify-content: center;
+	align-items: center;
+	font-size: 18px;
+	box-sizing: border-box;
+}
+
+.list-head .head-name,
+.list-content .content-name {
+	width: 149px;
+	box-sizing: border-box;
+}
+
+.list-head .head-dept,
+.list-content .content-dept {
+	width: 117px;
+	box-sizing: border-box;
+}
+
+.list-head .head-work-time,
+.list-content .content-work-time {
+	width: 467px;
+	box-sizing: border-box;
+}
+
+.list-head .head-work-time-wm,
+.list-content .content-work-time-wm {
+	width: 762px;
+	box-sizing: border-box;
+}
+
+.list-head .head-start-time,
+.list-content .content-start-time {
+	width: 116px;
+	box-sizing: border-box;
+}
+
+.list-head .head-end-time,
+.list-content .content-end-time {
+	width: 107px;
+	box-sizing: border-box;
+}
+
+.list-head .head-rest-time,
+.list-content .content-rest-time {
+	width: 107px;
+	box-sizing: border-box;
+}
+
+.list-head .head-rest-time-wm,
+.list-content .content-rest-time-wm {
+	width: 129px;
+	box-sizing: border-box;
+}
+
+.list-head .head-note,
+.list-content .content-note {
+	width: 93px;
+	box-sizing: border-box;
+}
+
+
+.list-content .content-name {
+	height: 75px;
+	border-right: 2px #EAEDF2 solid;
+	display: flex;
+	box-sizing: border-box;
+}
+
+.list-content .content-name .profile-img img {
+	width: 45px;
+	height: 45px;
+	margin-right: 9px;
+}
+
+.list-content .content-name .profile-name {
+	height: 22px;
+	margin-top: 5px;
+	font-size: 15px;
+}
+
+.list-content .content-name .profile-position {
+	height: 19px;
+	font-size: 13px;
+	color: #A0A0A0
+}
+.progress {
+	width: 305px;
+	height: 18px;
+}
+
+.progress-bar {
+	height: 18px;
+}
+
+.content-work-time-wm .progress {
+	width: 550px;
+}
+
+.list-content .content-work-time .detail-time {
+	margin-left: 10px;
+}
+
+.list-content .content-work-time-wm .detail-time {
+	margin-left: 30px;
+}

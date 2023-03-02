@@ -1,0 +1,71 @@
+	.exception-req-box {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		height: 222px;
+		margin-top: 35px;
+	}
+
+	.exception-req-box button {
+		width: 322px;
+		height: 64px;
+		border-radius: 15px;
+		font-size: 1rem;
+		text-align: start;
+		background-color: rgba(217, 217, 217, 0.24);
+		margin-top: 15px;
+	}
+
+	.submit-button {
+		width: 200px;
+		height: 45px;
+		display: block;
+		margin: 0 auto;
+		margin-top: 193px;
+		border-radius: 15px;
+		font-size: 1rem;
+		text-align: center;
+		background-color: #5A8FE0;
+		color: white;
+	}
+
+	.exception-req-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+		
+    }
+
+    .exception-req-box .exception {
+        margin-right: 200px;
+        margin-bottom: 9px;
+        font-weight: bold;
+    }
+
+	.exception-req-box .late {
+        margin-right: 230px;
+        margin-bottom: 9px;
+        font-weight: bold;
+    }
+
+    .exception-req-box textarea {
+        width: 322px;
+        height: 165px;
+        border-radius: 15px;
+        font-size: 1rem;
+        resize: none;
+		padding-top: 20px;
+        padding-left: 15px;
+		box-sizing: border-box;
+		border: 0.5px solid #C5C0C0;
+		box-shadow: 0px 1px 10px 1px rgba(0, 0, 0, 0.1);
+    }
+
+    .exception-req-box textarea::placeholder {
+        color: #C5C0C0;
+    }
+
+	.date-bar{
+		padding-right: 92px;
+		width: 230px;
+	}	

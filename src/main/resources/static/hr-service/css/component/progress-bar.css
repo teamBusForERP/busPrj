@@ -1,0 +1,57 @@
+.progress {
+	border: 1px #B9B7B7 solid;
+}
+
+.progress-bar {
+	background-color: #5A8FE0;
+}
+
+.progress,
+.progress-bar {
+	border-radius: 2px;
+}
+
+/* 눈금 */
+.time-offset-items {
+	display: grid;
+	width: 100%;
+	height: 10px;
+}
+
+.time-offset-day {
+	grid-template-columns: 8fr 4fr 2fr 0.01fr;
+}
+.time-offset-week {
+	grid-template-columns: 40fr 12fr 18fr 0.01fr;
+}
+.time-offset-month {
+	grid-template-columns: 1fr 0 0 0.01fr;
+}
+
+.time-offset-items > div {
+	width: 10px;
+	text-align : left;
+	color: #9c9c9c;
+	font-size: 0.5rem;
+}
+
+/*-- 눈금 표시
+<div class="time-offset-items time-offset-day">
+	<div>0</div>
+	<div>8</div>
+	<div>12</div>
+	<div>14</div>
+</div>
+<div class="time-offset-items time-offset-week">
+	<div>0</div>
+	<div>40</div>
+	<div>52</div>
+	<div>70</div>
+</div>
+<div class="time-offset-items time-offset-month">
+	<div>0</div>
+	<div></div>
+	<div></div>
+	<div>160</div>
+</div> -->
+눈금 표시 --*/

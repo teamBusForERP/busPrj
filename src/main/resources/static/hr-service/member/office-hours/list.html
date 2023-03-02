@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Document</title>
+
+	<link rel="stylesheet" href="../../css/reset.css" />
+	<link rel="stylesheet" href="../../css/util.css" />
+	<link rel="stylesheet" href="../../css/component/date-filter.css" />
+	<link rel="stylesheet" href="../../css/component/progress-bar.css" />
+	<link rel="stylesheet" href="../../css/member/component/side-bar.css" />
+	<link rel="stylesheet" href="../../css/member/component/list.css" />
+
+	<script src="./script.js"></script>
+</head>
+
+<body>
+	<div class="ham-wrap">
+		<div class="hamburger">
+		</div>
+	</div>
+	
+	<div class="menu-b d-none"></div>
+	<aside class="side-bar d-none">
+
+		<div class="profile">
+			<span class="name">임한응</span>
+			<span class="position">사원</span>
+		</div>
+		<div class="profile-hr">
+			<hr />
+		</div>
+
+		<nav>
+			<section>
+				<h1>내 근무 정보</h1>
+				<ul>	
+					<li>
+						<a href="">근무시간입력</a>
+					</li>
+					<li>
+						<a href="">근무시간조회</a>
+					</li>
+				</ul>
+			</section>
+
+			<section>
+				<h1>설정</h1>
+				<ul>
+					<li>
+						<a href="">1-1</a>
+					</li>
+				</ul>
+			</section>
+		</nav>
+	</aside>
+
+	<!-- wrap -->
+	<div class="wrap">
+
+		<!-- filter -->
+		<div class="main-wrap">
+			<section class="mid-wrap">
+				<!-- 버튼 -->
+				<div class="date-filter">
+					<div class="side-padding"></div>
+					<div class="date-filter-button selected">일</div>
+					<div class="vertical-bar"></div>
+					<div class="date-filter-button">주</div>
+					<div class="vertical-bar"></div>
+					<div class="date-filter-button">월</div>
+					<div class="side-padding"></div>
+				</div>
+				<!-- 버튼 -->
+
+				<div class="day-fillter">
+					<button class="back">&lt; </button>
+					<span class="bold"> 1.23 (월) - 1.29 (일) </span>
+					<button class="front">&gt;</button>
+				</div>
+			</section>
+
+			<!-- time -->
+			<section class="bottom-wrap">
+				<div class="work-hour">
+					<div class="work-hour-text">
+						<div class="bold">근무</div>
+						<div class="border"></div>
+						<div class="time">36시간</div>
+					</div>
+
+					<!-- 프로그래스 바 -->
+					<div class="progress">
+						<div class="progress-bar">
+							<div class="bar-value"></div>
+						</div>
+						<div class="time-offset-items time-offset-day">
+							<div>0</div>
+							<div>8</div>
+							<div>12</div>
+							<div>14</div>
+						</div>
+					</div>
+					<!-- 프로그래스 바 -->
+
+				</div>
+
+				<div class="rest-hour">
+					<div class="rest-hour-text">
+						<div class="bold">휴게</div>
+						<div class="border"></div>
+						<div class="time">6시간 30분</div>
+					</div>
+
+					<!-- 프로그래스 바 -->
+					<div class="progress">
+						<div class="progress-bar">
+							<div class="bar-value"></div>
+						</div>
+						<div class="time-offset-items time-offset-day">
+							<div>0</div>
+							<div>8</div>
+							<div>12</div>
+							<div>14</div>
+						</div>
+					</div>
+					<!-- 프로그래스 바 -->
+				</div>
+			</section>
+
+			<section class="daytime-work">
+				<div>출퇴근 시간</div>
+
+				<div class="go-leave">
+					<div class="go-work-time">
+						<div>출근</div>
+						<div>08:00</div>
+					</div>
+
+					<div class="leave-work-time">
+						<div>퇴근</div>
+						<div>18:30</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+</body>
+
+</html>

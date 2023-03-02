@@ -1,0 +1,70 @@
+
+.date-bar {
+	width: 322px;
+	display: flex;
+	margin: 30px auto 0 auto;
+	align-items: baseline;
+	justify-content: center;
+	white-space: nowrap;
+}
+
+.date-bar .date {
+	font-weight: 600;
+	font-size: 1.3rem;
+	margin-right: 8px;
+}
+
+.date-bar .time {
+	margin-right: 36px;
+	width: 97px;
+	height: 18px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.date-bar .time span {
+	padding: 3px 8px;
+	border-radius: 10px;
+	box-sizing: border-box;
+	font-size: 13px;
+	display: block;
+	margin-right: 5px;
+}
+
+.date-bar .time span:first-child {
+	background-color: #8FBCFF;
+}
+
+.date-bar .time span:nth-child(2) {
+	background-color: #D8DE95;
+}
+
+.date-bar .time span:last-child {
+	background-color: #FAC5C5;
+	margin-right: 0;
+}
+
+.date-bar .rest-edit {
+	display: flex;
+	align-items: center;
+}
+
+.date-bar .rest-edit span {
+	font-size: 13px;
+	margin-right: 3px;
+}
+
+.date-bar .rest-toggle {
+	cursor: pointer;
+	width: 37px;
+	height: 20px;
+}
+
+.date-bar .rest-toggle-off {
+	background-image: url("data:image/svg+xml,%3Csvg width='37' height='20' viewBox='0 0 37 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='37' height='20' rx='8' fill='%23D4D3D3' /%3E%3Ccircle cx='10' cy='10' r='8' fill='white' /%3E%3C/svg%3E");
+}
+
+.date-bar .rest-toggle-on {
+	background-image: url("data:image/svg+xml,%3Csvg width='37' height='20' viewBox='0 0 37 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='37' height='20' rx='8' fill='%2388BCEC' /%3E%3Ccircle cx='26' cy='10' r='8' fill='white' /%3E%3C/svg%3E");
+}

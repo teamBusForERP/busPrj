@@ -1,0 +1,33 @@
+.date-filter {
+	display: flex;
+	background-color: #F6F6F6;
+	border-radius: 10px;
+	align-items: center;
+}
+
+.date-filter .date-filter-button {
+	height: 80%;
+	color: #878686;
+	font-size : 13px;
+	flex-grow: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.date-filter .selected {
+	background-color: #5a8fe0;
+	color: white;
+	border-radius: 10px;
+}
+
+.date-filter .vertical-bar {
+	background-color: #d9d7d7;
+	width: 1px;
+	height: 60%;
+	margin: auto 3px;
+}
+
+.date-filter .side-padding {
+	width: 3px;
+}

@@ -1,0 +1,57 @@
+
+.profile-card {
+	width: 322px;
+	height: 155px;
+	background: rgba(217, 217, 217, 0.24);
+	margin: 0 auto;
+	border-radius: 10px;
+}
+
+.profile-card .profile-hr {
+	/* border: solid #EAEDF2 1px; */
+	width: 237px;
+	margin: auto;
+}
+
+.profile-card .profile-card-top {
+	width: 322px;
+	display: flex;
+	align-items: center;
+	padding: 21px 0 21px 20px;
+	box-sizing: border-box;
+	height: 90px;
+	border-bottom: 1px solid #D9D9D9;
+}
+
+.profile-card .profile-card-bottom {
+	display: flex;
+	height: 65px;
+	align-items: center;
+	justify-content: space-between;
+	text-align: center;
+	box-sizing: border-box;
+}
+
+.profile-card .profile-card-dept {
+	margin-left: 21px;
+}
+
+.profile-card .profile-card-team {
+	margin-right: 21px;
+}
+
+.profile-card .profile-card-bottom span {
+	font-size: 15px;
+}
+
+.profile-card .profile-card-img {
+	width: 48px;
+	height: 48px;
+	margin-right: 10px;
+}
+
+.profile-card h1 {
+	display: inline-block;
+	font-size: 16px;
+	font-weight: 500;
+}
