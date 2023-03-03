@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +20,7 @@
 	<link rel="stylesheet" href="../../css/member/component/date-bar.css">
 	<link rel="stylesheet" href="../../css/member/component/exception-req.css">
 	
-	<script src="./script.js"></script>
+	<script src="../../js/member.js"></script>
 
 </head>
 
@@ -102,11 +105,13 @@
 					<span>1h</span>
 					<span>13h</span>
 				</div>
+
 			</div>
+
 			<!-- exception-req-box -->
             <form class="exception-req-box">
-                <label class="exception">사전 예외 신청</label>
-                <textarea placeholder="사전 예외 신청 메시지를 입력해주세요."></textarea>
+                <label class="late">지각 사유</label>
+                <textarea placeholder="지각 사유 메시지를 입력해주세요."></textarea>
             </form>
 
 			<div>

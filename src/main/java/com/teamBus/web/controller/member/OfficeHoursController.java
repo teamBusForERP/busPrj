@@ -10,21 +10,21 @@ public class OfficeHoursController {
 	
 	@GetMapping("list")
 	public String list() {
-		return "/member/office-hours/list.html";
+		return "/member/office-hours/list";
 	}
 
 	@GetMapping("register")
 	public String register() {
-		return "/member/office-hours/register.html";
+		return "/member/office-hours/register";
 	}
 	
 	@GetMapping("exception-req")
 	public String exceptionReq() {
-		return "/member/office-hours/exception-req.html";
+		return "/member/office-hours/exception-req";
 	}
 	
 	@GetMapping("reasons-for-late")
 	public String reasonsForLate() {
-		return "/member/office-hours/reasons-for-late.html";
+		return "/member/office-hours/reasons-for-late";
 	}
 }

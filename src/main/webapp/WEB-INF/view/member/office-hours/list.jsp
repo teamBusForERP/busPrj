@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +16,7 @@
 	<link rel="stylesheet" href="../../css/member/component/side-bar.css" />
 	<link rel="stylesheet" href="../../css/member/component/list.css" />
 
-	<script src="./script.js"></script>
+	<script src="../../js/member.js"></script>
 </head>
 
 <body>

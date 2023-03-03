@@ -95,20 +95,24 @@
 .list-content .content-name .profile-img img {
 	width: 45px;
 	height: 45px;
+	margin-left: 20px;
 	margin-right: 9px;
 }
 
 .list-content .content-name .profile-name {
 	height: 22px;
+	width: 74px;
 	margin-top: 5px;
 	font-size: 15px;
 }
 
 .list-content .content-name .profile-position {
 	height: 19px;
+	width: 74px;
 	font-size: 13px;
 	color: #A0A0A0
 }
+
 .progress {
 	width: 305px;
 	height: 18px;

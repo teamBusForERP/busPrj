@@ -1,27 +1,35 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>근무 조회 페이지</title>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>근무 조회 페이지</title>
 
-	<link rel="stylesheet" href="../../css/reset.css">
-	<link rel="stylesheet" href="../../css/util.css">
-	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
-		rel="stylesheet">
+<link rel="stylesheet" href="../../css/reset.css">
+<link rel="stylesheet" href="../../css/util.css">
+<link
+	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+	rel="stylesheet">
 
-	<link rel="stylesheet" href="../../css/component/date-filter.css">
-	<link rel="stylesheet" href="../../css/component/progress-bar.css">
-	<link rel="stylesheet" href="../../css/hr-admin/component/filter-bar.css">
-	<link rel="stylesheet" href="../../css/hr-admin/component/layout.css">
-	<link rel="stylesheet" href="../../css/hr-admin/component/choose-date-btn.css">
-	<link rel="stylesheet" href="../../css/hr-admin/component/pc-side-bar.css">
-	<link rel="stylesheet" href="../../css/hr-admin/component/table.css">
+<link rel="stylesheet" href="../../css/component/date-filter.css">
+<link rel="stylesheet" href="../../css/component/progress-bar.css">
+<link rel="stylesheet"
+	href="../../css/hr-admin/component/filter-bar.css">
+<link rel="stylesheet" href="../../css/hr-admin/component/layout.css">
+<link rel="stylesheet"
+	href="../../css/hr-admin/component/choose-date-btn.css">
+<link rel="stylesheet"
+	href="../../css/hr-admin/component/pc-side-bar.css">
+<link rel="stylesheet" href="../../css/hr-admin/component/table.css">
 
-	<script src="./script.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.7/dayjs.min.js"></script>
+<script src="../../js/hr-admin.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.7/dayjs.min.js"></script>
 </head>
 
 <body>
@@ -31,7 +39,8 @@
 			<!-- 로고 -->
 			<div class="logo">
 				<!-- <img src="./img/logo.png" alt="로고이미지"> -->
-				<svg width="193" height="50" viewBox="0 0 193 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<svg width="193" height="50" viewBox="0 0 193 50" fill="none"
+					xmlns="http://www.w3.org/2000/svg">
 					<path
 						d="M191.104 11.5451C192.446 18.2541 191.908 25.2367 191.908 32.0643C191.908 34.0593 190.903 35.9326 189.018 36.6986C184.837 38.3968 179.207 37.5629 174.742 37.5629C170.05 37.5629 165.65 37.192 160.988 36.639C157.822 36.2634 154.588 36.429 151.436 35.8939C149.642 35.5892 148.369 35.2329 147.771 33.5246C146.913 31.074 146.579 28.5511 146.579 25.9696C146.579 23.0235 146.485 20.0626 146.579 17.1182C146.651 14.8449 147.962 12.0046 148.873 9.92084C149.702 8.02579 151.082 8.05817 152.926 8.05817C156.622 8.05817 160.318 8.05817 164.013 8.05817C167.798 8.05817 171.452 7.97137 175.174 8.60952C176.858 8.89821 178.526 9.25994 180.196 9.60791C181.221 9.82144 182.401 9.71433 183.385 9.99535C185.679 10.6509 188.206 11.2769 190.567 11.2769"
 						stroke="#0745A3" stroke-width="1.91308" stroke-linecap="round" />
@@ -82,22 +91,17 @@
 					</div>
 
 					<div class="profile-txt">
-						<span class="name">이수현</span>
-						<span class="position">사원</span>
+						<span class="name">이수현</span> <span class="position">사원</span>
 					</div>
 
 				</div>
 
 				<div class="profile-bottom">
 					<div class="profile-group">
-						<span>
-							뉴렉처인재개발원
-						</span>
+						<span> 뉴렉처인재개발원 </span>
 					</div>
 					<div class="profile-team">
-						<span>
-							인사팀
-						</span>
+						<span> 인사팀 </span>
 					</div>
 				</div>
 			</div>
@@ -107,18 +111,14 @@
 				<section class="menu-box">
 					<h1 class="menu-title">내 근무 정보</h1>
 					<ul>
-						<li>
-							<a>근무 조회</a>
-						</li>
+						<li><a>근무 조회</a></li>
 					</ul>
 				</section>
 
 				<section class="menu-box">
 					<h1 class="menu-title">사원 근무 정보</h1>
 					<ul>
-						<li>
-							<a>근무 조회</a>
-						</li>
+						<li><a>근무 조회</a></li>
 					</ul>
 				</section>
 			</nav>
@@ -153,13 +153,13 @@
 
 					<!-- ------------------------------ 기간 필터 -->
 					<div class="date-filter">
-						<div class="side-padding"> </div>
+						<div class="side-padding"></div>
 						<div class="date-filter-button selected">일</div>
-						<div class="vertical-bar"> </div>
+						<div class="vertical-bar"></div>
 						<div class="date-filter-button">주</div>
-						<div class="vertical-bar"> </div>
+						<div class="vertical-bar"></div>
 						<div class="date-filter-button">월</div>
-						<div class="side-padding"> </div>
+						<div class="side-padding"></div>
 					</div>
 					<!-- ------------------------------ 버튼 -->
 					<button class="filter-btn">조회 대상</button>
@@ -181,6 +181,42 @@
 					<div class="head-note">비고</div>
 				</div>
 
+<%-- 				${list[0]} --%>
+				<c:forEach var="item" items="${list}" begin="0" end="5">
+					<div class="list-content">
+						<div class="content-name">
+							<div class="profile-img">
+								<img src="../../img/profile.png" alt="profile">
+							</div>
+								<div class="profile-wrap">
+								<!-- 이름 5글자, 직책 6글자까지 정상적으로 출력 가능 -->
+								<p class="profile-name">${item.name}</p>
+								<p class="profile-position">인턴</p>
+							</div>
+						</div>
+						<div class="content-dept">디자인팀</div>
+						<div class="content-work-time">
+							<div class="progress">
+								<div class="progress-bar"></div>
+								<div class="time-offset-items time-offset-day">
+									<div>0</div>
+									<div>8</div>
+									<div>12</div>
+									<div>14</div>
+								</div>
+							</div>
+							<div class="detail-time">
+								<span>3시간 40분</span> <span>/</span> <span>8시간</span>
+							</div>
+						</div>
+						<div class="content-start-time">09:10</div>
+						<div class="content-end-time">18:30</div>
+						<div class="content-rest-time">1시간 00분</div>
+						<div class="content-note">
+							<button>보기</button>
+						</div>
+					</div>
+				</c:forEach>
 				<div class="list-content">
 					<div class="content-name">
 						<div class="profile-img">
@@ -195,8 +231,7 @@
 					<div class="content-dept">디자인팀</div>
 					<div class="content-work-time">
 						<div class="progress">
-							<div class="progress-bar">
-							</div>
+							<div class="progress-bar"></div>
 							<div class="time-offset-items time-offset-day">
 								<div>0</div>
 								<div>8</div>
@@ -205,43 +240,7 @@
 							</div>
 						</div>
 						<div class="detail-time">
-							<span>3시간 40분</span>
-							<span>/</span>
-							<span>8시간</span>
-						</div>
-					</div>
-					<div class="content-start-time">09:10</div>
-					<div class="content-end-time">18:30</div>
-					<div class="content-rest-time">1시간 00분</div>
-					<div class="content-note"><button>보기</button></div>
-				</div>
-				<div class="list-content">
-					<div class="content-name">
-						<div class="profile-img">
-							<img src="../../img/profile.png" alt="profile">
-						</div>
-						<div class="profile-wrap">
-							<!-- 이름 5글자, 직책 6글자까지 정상적으로 출력 가능 -->
-							<p class="profile-name">가나다</p>
-							<p class="profile-position">인턴</p>
-						</div>
-					</div>
-					<div class="content-dept">디자인팀</div>
-					<div class="content-work-time">
-						<div class="progress">
-							<div class="progress-bar">
-							</div>
-							<div class="time-offset-items time-offset-day">
-								<div>0</div>
-								<div>8</div>
-								<div>12</div>
-								<div>14</div>
-							</div>
-						</div>
-						<div class="detail-time">
-							<span>3시간 40분</span>
-							<span>/</span>
-							<span>8시간</span>
+							<span>3시간 40분</span> <span>/</span> <span>8시간</span>
 						</div>
 					</div>
 					<div class="content-start-time">09:10</div>
@@ -251,9 +250,7 @@
 				</div>
 
 				<!-- temp -->
-				<br><br>
-				주
-				<br>
+				<br> <br> 주 <br>
 				<!-- temp -->
 
 				<!-- 주/월 단위 column width : 
@@ -281,8 +278,7 @@
 					<div class="content-dept">디자인팀</div>
 					<div class="content-work-time-wm">
 						<div class="progress">
-							<div class="progress-bar">
-							</div>
+							<div class="progress-bar"></div>
 							<div class="time-offset-items time-offset-week">
 								<div>0</div>
 								<div>40</div>
@@ -291,18 +287,14 @@
 							</div>
 						</div>
 						<div class="detail-time">
-							<span>3시간 40분</span>
-							<span>/</span>
-							<span>8시간</span>
+							<span>3시간 40분</span> <span>/</span> <span>8시간</span>
 						</div>
 					</div>
 					<div class="content-rest-time-wm">1시간 00분</div>
 				</div>
 
 				<!-- temp -->
-				<br><br>
-				월
-				<br>
+				<br> <br> 월 <br>
 				<!-- temp -->
 
 				<div class="list-head">
@@ -326,8 +318,7 @@
 					<div class="content-dept">디자인팀</div>
 					<div class="content-work-time-wm">
 						<div class="progress">
-							<div class="progress-bar">
-							</div>
+							<div class="progress-bar"></div>
 							<div class="time-offset-items time-offset-week">
 								<div>0</div>
 								<div></div>
@@ -336,15 +327,11 @@
 							</div>
 						</div>
 						<div class="detail-time">
-							<span>3시간 40분</span>
-							<span>/</span>
-							<span>8시간</span>
+							<span>3시간 40분</span> <span>/</span> <span>8시간</span>
 						</div>
 					</div>
 					<div class="content-rest-time-wm">1시간 00분</div>
 				</div>
-
-
 			</main>
 		</section>
 	</div>

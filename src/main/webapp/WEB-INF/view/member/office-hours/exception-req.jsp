@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,10 +17,9 @@
 	<link rel="stylesheet" href="../../css/member/component/profile-card.css">
 
 	<link rel="stylesheet" href="../../css/member/component/date-bar.css">
-	<link rel="stylesheet" href="../../css/member/component/commute-info.css">
-	<link rel="stylesheet" href="../../css/member/component/rest-editor-box.css">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.7/dayjs.min.js"></script>
-	<script src="./script.js"></script>
+	<link rel="stylesheet" href="../../css/member/component/exception-req.css">
+	
+	<script src="../../js/member.js"></script>
 
 </head>
 
@@ -30,7 +31,7 @@
 		<div class="hamburger">
 		</div>
 	</div>
-
+	
 	<div class="menu-b d-none"></div>
 	<aside class="side-bar d-none">
 
@@ -103,67 +104,19 @@
 					<span>1h</span>
 					<span>13h</span>
 				</div>
-
-				<div class="rest-edit">
-					<span>휴게편집</span>
-					<div class="rest-toggle rest-toggle-off"></div>
-					<div class="rest-toggle rest-toggle-on d-none"></div>
-
-				</div>
 			</div>
-
-			<!-- commute-info -->
-
-			<div class="commute-info">
-				<button class="" type="submit"><span>출근</span></button>
-				<button class="" type="submit"><span>퇴근</span></button>
-				<button class="rest d-none" type="submit"><span>휴게</span></button>
-			</div>
+			<!-- exception-req-box -->
+            <form class="exception-req-box">
+                <label class="exception">사전 예외 신청</label>
+                <textarea placeholder="사전 예외 신청 메시지를 입력해주세요."></textarea>
+            </form>
 
 			<div>
-				<button class="submit-button">출근</button>
-			</div>
-
-			<div class="exception-req">
-				<a href="">사전예외신청</a>
+				<button class="submit-button">저장</button>
 			</div>
 		</section>
-
-
-		<!-- //휴게편집창 추가 -->
-		<div class="rest-editor-box d-none">
-			<hr>
-			<section class="rest-editor">
-				<h1> ☕️ 휴게</h1>
-				<hr>
-				<div class="rest-edit-box">
-
-					<div class="choose-date-btn">
-						<button class="date-btn " id="minus-s"></button>
-						<span class="choose-date" id="start-restTime"></span>
-						<button class="date-btn " id="plus-s"></button>
-					</div>
-
-					<div class="from-text-box">
-
-						<div class="from-text">
-							부터
-						</div>
-
-					</div>
-
-					<div class="choose-date-btn">
-						<button class="date-btn " id="minus-e"></button>
-						<span class="choose-date" id="end-restTime"></span>
-						<button class="date-btn " id="plus-e"></button>
-					</div>
-				</div>
-				<button type="button" class="rest-edit-submit">저장</button>
-			</section>
-		</div>
-		<!-- ↑↑↑↑휴게편집창 추가 ↑↑↑↑-->
-
 	</div>
 </body>
 
 </html>
+

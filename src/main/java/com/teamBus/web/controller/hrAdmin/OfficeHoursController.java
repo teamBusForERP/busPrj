@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -22,15 +23,16 @@ public class OfficeHoursController {
 //	}
 
 	@GetMapping("list")
-	public String list() {
+	public String list(Model model) {
 		
 		List<Menu> list = service.getList();
+		model.addAttribute("list", list);
 		
-		for (Menu l : list) {
-			System.out.println(l);
-		}
+//		for (Menu l : list) {
+//			System.out.println(l);
+//		}
 		
-		return "/hr-admin/office-hours/list.html";
+		return "/hr-admin/office-hours/list";
 	}
 
 }
