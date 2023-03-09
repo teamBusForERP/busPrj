@@ -1,11 +1,13 @@
 
 .date-bar {
 	width: 322px;
+	height: 25px;
 	display: flex;
 	margin: 30px auto 0 auto;
 	align-items: baseline;
 	justify-content: center;
 	white-space: nowrap;
+	box-sizing: border-box;
 }
 
 .date-bar .date {
@@ -48,6 +50,7 @@
 .date-bar .rest-edit {
 	display: flex;
 	align-items: center;
+	width: 85px;
 }
 
 .date-bar .rest-edit span {
