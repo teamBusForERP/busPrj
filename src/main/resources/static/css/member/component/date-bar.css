@@ -50,7 +50,7 @@
 .date-bar .rest-edit {
 	display: flex;
 	align-items: center;
-	width: 85px;
+	width: auto;
 }
 
 .date-bar .rest-edit span {

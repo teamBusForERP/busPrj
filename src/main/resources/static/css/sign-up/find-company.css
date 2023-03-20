@@ -1,0 +1,14 @@
+.wrap{
+	display: flex;
+	flex-direction: column;
+	/* border:1px solid black; */
+}
+
+.com-search-result{
+	width: 335px;
+	height: 370px;
+}
+
+.btn-blue, .btn-white {
+	margin: 20px auto 0;
+}

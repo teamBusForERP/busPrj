@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>login</title>
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/util.css">
+	<link rel="stylesheet" href="./css/login.css">
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+		integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+</head>
+
+<body>
+	<div class="wrap">
+		<!-- logo -->
+		<div class="logo">
+			<svg width="50" height="41" viewBox="0 0 50 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path fill-rule="evenodd" clip-rule="evenodd"
+					d="M36.1888 0H0V27.6224H36.1888C43.8165 27.6224 50 21.4389 50 13.8112C50 6.18348 43.8165 0 36.1888 0ZM36.6345 4.19579H3.74986V23.4266H36.6345C41.9449 23.4266 46.2499 19.1216 46.2499 13.8112C46.2499 8.50075 41.9449 4.19579 36.6345 4.19579Z"
+					fill="#5A8FE0" />
+				<path fill-rule="evenodd" clip-rule="evenodd"
+					d="M36.1888 12.5874H0V40.2098H36.1888C43.8165 40.2098 50 34.0263 50 26.3986C50 18.7709 43.8165 12.5874 36.1888 12.5874ZM36.6345 16.7832H3.74986V36.014H36.6345C41.9449 36.014 46.2499 31.709 46.2499 26.3986C46.2499 21.0881 41.9449 16.7832 36.6345 16.7832Z"
+					fill="#5A8FE0" />
+			</svg>
+		</div>
+
+		<!-- 로그인 영역 -->
+		<div class="login-box1">
+			<div class="login-input">
+				<div class="login-top">
+					<!-- id -->
+					<div class="id">
+						<input type="email" placeholder="아이디 및 이메일">
+					</div>
+
+					<!-- pwd -->
+					<div class="pwd">
+						<input type="password" placeholder="비밀번호">
+						<div class="pwd-hidden">
+							<!-- <i class="fa-regular fa-eye"></i> -->
+						</div>
+					</div>
+				</div>
+				<div class="login-bottom">
+					<a href="">비밀번호</a>
+					<span>or</span>
+					<a href="">아이디</a>
+					<span>찾기</span>
+				</div>
+			</div>
+			<div class="login-btn">
+
+				<button class="btn">로그인</button>
+
+				<div class="sign-up">
+					<a href="">회원가입</a>
+				</div>
+			</div>
+		</div>
+
+		<!-- 다른 소셜 로그인 -->
+		<div class="login-box2">
+			<!-- 또는 -->
+			<div class="login-box2-txt">
+				<span class="striped-line"></span>
+				<span class="striped-text">또는</span>
+				<span class="striped-line"></span>
+			</div>
+			<!-- 소셜 로그인 버튼 -->
+			<div class="login-box2-link">
+				<div class="google">
+					<a class="method-action" href="">
+						<div class="g-icon">
+							<img src="./img/google-icon.svg" alt="">
+						</div>
+						Google 계정 로그인
+					</a>
+				</div>
+				<div class="kakao">
+					<a class="method-action" href="">
+						<div class="k-icon">
+							<img src="./img/kakao-icon.svg" alt="">
+						</div>
+						Kakao 계정 로그인
+					</a>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+</body>
+
+</html>

@@ -13,6 +13,7 @@
 
 /* 눈금 */
 .time-offset-items {
+	margin-top: 4px;
 	display: grid;
 	width: 100%;
 	height: 10px;

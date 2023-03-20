@@ -1,0 +1,27 @@
+.btn-blue {
+	width: 335px;
+	height: 54px;
+	border-radius: 10px;
+	box-sizing: border-box;
+	background-color: #5A8FE0;
+	color: #fff;
+	font-size: 16px;
+	font-weight: 600;
+}
+
+.disabled {
+	opacity: 0.5;
+	cursor: default;
+}
+
+.btn-white {
+	width: 335px;
+	height: 54px;
+	border-radius: 10px;
+	box-sizing: border-box;
+	background-color:  #fff;
+	color:#5A8FE0;
+	border: 1px solid #5A8FE0;
+	font-size: 16px;
+	font-weight: 600;
+}

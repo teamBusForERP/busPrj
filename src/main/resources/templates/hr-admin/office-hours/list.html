@@ -1,36 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-<meta charset="UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>근무 조회 페이지</title>
-
-<link rel="stylesheet" href="../../css/reset.css">
-<link rel="stylesheet" href="../../css/util.css">
-<link
-	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
-	rel="stylesheet">
-
-<link rel="stylesheet" href="../../css/component/date-filter.css">
-<link rel="stylesheet" href="../../css/component/progress-bar.css">
-<link rel="stylesheet"
-	href="../../css/hr-admin/component/filter-bar.css">
-<link rel="stylesheet" href="../../css/hr-admin/component/layout.css">
-<link rel="stylesheet"
-	href="../../css/hr-admin/component/choose-date-btn.css">
-<link rel="stylesheet"
-	href="../../css/hr-admin/component/pc-side-bar.css">
-<link rel="stylesheet" href="../../css/hr-admin/component/table.css">
-
-<script src="../../js/hr-admin.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.7/dayjs.min.js"></script>
-</head>
+<html lang="en"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleeaf/layout"
+	layout:decorate="hr-admin/inc/layout">
 
 <body>
 	<div class="page-wrap">
@@ -39,8 +11,7 @@
 			<!-- 로고 -->
 			<div class="logo">
 				<!-- <img src="./img/logo.png" alt="로고이미지"> -->
-				<svg width="193" height="50" viewBox="0 0 193 50" fill="none"
-					xmlns="http://www.w3.org/2000/svg">
+				<svg width="193" height="50" viewBox="0 0 193 50" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path
 						d="M191.104 11.5451C192.446 18.2541 191.908 25.2367 191.908 32.0643C191.908 34.0593 190.903 35.9326 189.018 36.6986C184.837 38.3968 179.207 37.5629 174.742 37.5629C170.05 37.5629 165.65 37.192 160.988 36.639C157.822 36.2634 154.588 36.429 151.436 35.8939C149.642 35.5892 148.369 35.2329 147.771 33.5246C146.913 31.074 146.579 28.5511 146.579 25.9696C146.579 23.0235 146.485 20.0626 146.579 17.1182C146.651 14.8449 147.962 12.0046 148.873 9.92084C149.702 8.02579 151.082 8.05817 152.926 8.05817C156.622 8.05817 160.318 8.05817 164.013 8.05817C167.798 8.05817 171.452 7.97137 175.174 8.60952C176.858 8.89821 178.526 9.25994 180.196 9.60791C181.221 9.82144 182.401 9.71433 183.385 9.99535C185.679 10.6509 188.206 11.2769 190.567 11.2769"
 						stroke="#0745A3" stroke-width="1.91308" stroke-linecap="round" />
@@ -130,7 +101,7 @@
 			<header class="content-header">
 				<h1 class="main-title">근무정보</h1>
 			</header>
-			<main>
+			<main layout:fragment="main">
 				<!-- ------------------------------필터 바 -->
 				<div class="filter-bar">
 					<!-- ------------------------------날짜 선택 버튼 -->
@@ -139,37 +110,40 @@
 						<span class="choose-date" id="showDate">일</span>
 						<button class="date-btn-plus" id="date-btn-plus"></button>
 					</div>
-					<!-- <div class="choose-date-btn">
-						<button class="week-btn " id="minus" ></button>
+					<!-- <div class="choose-date-btn d-none">
+						<button class="date-btn-minus" id="date-btn-minus" ></button>
 						<span class="choose-date" id="showWeek">주</span>
-						<button class="week-btn " id="plus" ></button>
+						<button class="date-btn-plus" id="date-btn-plus" ></button>
 					</div>
 					
-					<div class="choose-date-btn">
-						<button class="month-btn" id="minus" ></button>
+					<div class="choose-date-btn d-none">
+						<button class="date-btn-minus" id="date-btn-minus" ></button>
 						<span class="choose-date" id="showMonth">월</span>
-						<button class="month-btn" id="plus" ></button>
+						<button class="date-btn-plus" id="date-btn-plus" ></button>
 					</div> -->
 
-					<!-- ------------------------------ 기간 필터 -->
-					<div class="date-filter">
-						<div class="side-padding"></div>
-						<div class="date-filter-button selected">일</div>
-						<div class="vertical-bar"></div>
-						<div class="date-filter-button">주</div>
-						<div class="vertical-bar"></div>
-						<div class="date-filter-button">월</div>
-						<div class="side-padding"></div>
+					<div class="head-btn">
+						<!-- ------------------------------ 기간 필터 -->
+						<div class="date-filter">
+							<div class="side-padding"></div>
+							<div id="filter-day" class="date-filter-button selected">일</div>
+							<div class="vertical-bar"></div>
+							<div id="filter-week" class="date-filter-button">주</div>
+							<div class="vertical-bar"></div>
+							<div id="filter-month" class="date-filter-button">월</div>
+							<div class="side-padding"></div>
+						</div>
+						<!-- ------------------------------ 버튼 -->
+						<button class="filter-btn">조회 대상</button>
+						<button class="filter-btn">근태 필터</button>
 					</div>
-					<!-- ------------------------------ 버튼 -->
-					<button class="filter-btn">조회 대상</button>
-					<button class="filter-btn">근태 필터</button>
+
 
 				</div>
 
 				<!-- 일 단위 column width : 
 					| 이름   | 부서  | 근무시간 | 출근시간 | 퇴근시간 | 휴게시간 | 비고 |
-					| 149px | 117px | 467px  | 116px   | 107px  |  107px  | 93px | -->
+					| 150px | 120px | 550px  |  80px   |  80px  |  100px  | 60px | -->
 
 				<div class="list-head">
 					<div class="head-name">이름</div>
@@ -181,42 +155,39 @@
 					<div class="head-note">비고</div>
 				</div>
 
-<%-- 				${list[0]} --%>
-				<c:forEach var="item" items="${list}" begin="0" end="5">
-					<div class="list-content">
-						<div class="content-name">
-							<div class="profile-img">
-								<img src="../../img/profile.png" alt="profile">
-							</div>
-								<div class="profile-wrap">
-								<!-- 이름 5글자, 직책 6글자까지 정상적으로 출력 가능 -->
-								<p class="profile-name">${item.name}</p>
-								<p class="profile-position">인턴</p>
-							</div>
+				<div class="list-content">
+					<div class="content-name">
+						<div class="profile-img">
+							<img src="../../img/profile.png" alt="profile">
 						</div>
-						<div class="content-dept">디자인팀</div>
-						<div class="content-work-time">
-							<div class="progress">
-								<div class="progress-bar"></div>
-								<div class="time-offset-items time-offset-day">
-									<div>0</div>
-									<div>8</div>
-									<div>12</div>
-									<div>14</div>
-								</div>
-							</div>
-							<div class="detail-time">
-								<span>3시간 40분</span> <span>/</span> <span>8시간</span>
-							</div>
-						</div>
-						<div class="content-start-time">09:10</div>
-						<div class="content-end-time">18:30</div>
-						<div class="content-rest-time">1시간 00분</div>
-						<div class="content-note">
-							<button>보기</button>
+						<div class="profile-wrap">
+							<!-- 이름 5글자, 직책 6글자까지 정상적으로 출력 가능 -->
+							<p class="profile-name">aa</p>
+							<p class="profile-position">인턴</p>
 						</div>
 					</div>
-				</c:forEach>
+					<div class="content-dept">디자인팀</div>
+					<div class="content-work-time">
+						<div class="progress">
+							<div class="progress-bar"></div>
+							<div class="time-offset-items time-offset-day">
+								<div>0</div>
+								<div>8</div>
+								<div>12</div>
+								<div>14</div>
+							</div>
+						</div>
+						<div class="detail-time">
+							<span>3시간 40분</span> <span>/</span> <span>8시간</span>
+						</div>
+					</div>
+					<div class="content-start-time">09:10</div>
+					<div class="content-end-time">18:30</div>
+					<div class="content-rest-time">1시간 00분</div>
+					<div class="content-note">
+						<button>보기</button>
+					</div>
+				</div>
 				<div class="list-content">
 					<div class="content-name">
 						<div class="profile-img">
@@ -249,22 +220,23 @@
 					<div class="content-note">-</div>
 				</div>
 
+
 				<!-- temp -->
 				<br> <br> 주 <br>
 				<!-- temp -->
 
 				<!-- 주/월 단위 column width : 
 					| 이름   | 부서  | 근무시간 | 휴게시간 |
-					| 149px | 117px | 762px  | 129px   | -->
+					| 159px | 120px | 770px  | 100px   | -->
 
-				<div class="list-head">
+				<div class="list-head-wm">
 					<div class="head-name">이름</div>
 					<div class="head-dept">부서</div>
-					<div class="head-work-time-wm">근무 시간</div>
-					<div class="head-rest-time-wm">휴게 시간</div>
+					<div class="head-work-time-">근무 시간</div>
+					<div class="head-rest-time-">휴게 시간</div>
 				</div>
 
-				<div class="list-content">
+				<div class="list-content-wm">
 					<div class="content-name">
 						<div class="profile-img">
 							<img src="../../img/profile.png" alt="profile">
@@ -287,7 +259,7 @@
 							</div>
 						</div>
 						<div class="detail-time">
-							<span>3시간 40분</span> <span>/</span> <span>8시간</span>
+							<span>50시간</span> <span>/</span> <span>70시간</span>
 						</div>
 					</div>
 					<div class="content-rest-time-wm">1시간 00분</div>
@@ -297,14 +269,14 @@
 				<br> <br> 월 <br>
 				<!-- temp -->
 
-				<div class="list-head">
+				<div class="list-head-wm">
 					<div class="head-name">이름</div>
 					<div class="head-dept">부서</div>
-					<div class="head-work-time-wm">근무 시간</div>
-					<div class="head-rest-time-wm">휴게 시간</div>
+					<div class="head-work-time-">근무 시간</div>
+					<div class="head-rest-time-">휴게 시간</div>
 				</div>
 
-				<div class="list-content">
+				<div class="list-content-wm">
 					<div class="content-name">
 						<div class="profile-img">
 							<img src="../../img/profile.png" alt="profile">
@@ -327,14 +299,15 @@
 							</div>
 						</div>
 						<div class="detail-time">
-							<span>3시간 40분</span> <span>/</span> <span>8시간</span>
+							<span>160시간</span> <span>/</span> <span>160시간</span>
 						</div>
 					</div>
 					<div class="content-rest-time-wm">1시간 00분</div>
 				</div>
+				
 			</main>
-		</section>
-	</div>
+
+
 
 </body>
 

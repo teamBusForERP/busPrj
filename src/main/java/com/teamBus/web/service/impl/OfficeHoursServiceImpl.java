@@ -1,27 +1,20 @@
 package com.teamBus.web.service.impl;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.teamBus.web.entity.Menu;
-import com.teamBus.web.repository.MenuRepository;
+import com.teamBus.web.entity.ClockIn;
+import com.teamBus.web.repository.ClockInRepository;
 import com.teamBus.web.service.OfficeHoursService;
 
 @Service
 public class OfficeHoursServiceImpl implements OfficeHoursService {
-
+	
 	@Autowired
-	private MenuRepository repository;
+	ClockInRepository clockInRepository;
 
-//	public OfficeHoursServiceImpl(MenuRepository repository) {
-//		this.repository = repository;
-//	}
-
-	@Override
-	public List<Menu> getList() {
-		return repository.findAll();
+	public void addClockIn(String employeeId) {
+		ClockIn clockIn = new ClockIn(null, null, Integer.parseInt(employeeId));
+		clockInRepository.insertClockIn(clockIn);
 	}
-
 }

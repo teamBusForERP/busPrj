@@ -22,6 +22,13 @@ window.onload = function () {
 		// 	sideMenu.style.transform = "translateX(100vw)";
 		// }
 	})
+
+	function sideMenuOffListener(){
+		sideMenu.classList.add("d-none");
+		sideMenub.classList.add("d-none");
+	}
+	
+
 	restToggleOff.addEventListener("click", restToggleListener);
 	restToggleOn.addEventListener("click", restToggleListener);
 
@@ -32,12 +39,15 @@ window.onload = function () {
 	}
 
 
+
 	//휴게편집창
 	restButton.addEventListener("click", restEditorOnListener);
 	restEditSubmit.addEventListener("click", restEditorOffListener);
 
 	function restEditorOnListener() {
-		restEditorBox.classList.remove("d-none");
+		// restEditorBox.classList.remove("d-none");
+		restEditorBox.classList.add("teston");
+		// restEditorBox.classList.add("testoff");
 		sideMenub.classList.remove("d-none");
 		// restEditorBox.style.transition = "all 0.6s ease-in-out";
 		// restEditorBox.style.transform = "translateY(100vh)";
@@ -45,7 +55,9 @@ window.onload = function () {
 	}
 
 	function restEditorOffListener() {
-		restEditorBox.classList.add("d-none");
+		// restEditorBox.classList.add("d-none");
+		restEditorBox.classList.remove("teston");
+		// restEditorBox.classList.remove("testoff");
 		sideMenub.classList.add("d-none");
 		// restEditorBox.style.transform = "translateY(0)";
 
@@ -56,9 +68,14 @@ window.onload = function () {
 
 	// 팝업 외부 화면 클릭으로 창 닫기---------
 	addEventListener("mouseup", (e) => {
-		if (!restEditorBox.classList.contains("d-none")) {
+		if (restEditorBox.classList.contains("teston")) {
 			if (!restEditorBox.contains(e.target)) {
 				restEditorOffListener();
+			}
+		}
+		if (!sideMenu.classList.contains("d-none")) {
+			if (!sideMenu.contains(e.target)) {
+				sideMenuOffListener();
 			}
 		}
 	});

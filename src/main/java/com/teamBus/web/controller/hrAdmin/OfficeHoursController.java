@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.teamBus.web.entity.Member;
 import com.teamBus.web.entity.Menu;
 import com.teamBus.web.service.OfficeHoursService;
 
@@ -25,8 +26,10 @@ public class OfficeHoursController {
 	@GetMapping("list")
 	public String list(Model model) {
 		
-		List<Menu> list = service.getList();
-		model.addAttribute("list", list);
+//		List<Menu> list = service.getList();
+//		List<Member> mList = service.getMemberList();
+//		model.addAttribute("list", list);
+//		model.addAttribute("mList", mList);
 		
 //		for (Menu l : list) {
 //			System.out.println(l);

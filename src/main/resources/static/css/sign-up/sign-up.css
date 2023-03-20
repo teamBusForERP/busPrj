@@ -1,0 +1,162 @@
+/* 버튼관련 */
+
+button {
+	border-width: 2px;
+	cursor: pointer;
+	background-color: #FFFFFF;
+}
+
+/* 헤더부분 */
+.sign-up-header {
+	box-sizing: border-box;
+	margin: 0 20px;
+	display: flex;
+	height: 60px;
+	/* border: 1px solid black; */
+	align-items: center;
+}
+
+.header-left {
+	height : 14px;
+	width : 8.3px;
+	background-image: url("data:image/svg+xml,%3Csvg width='9' height='14' viewBox='0 0 9 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.49902 1.645L3.36942 7L8.49902 12.355L6.91982 14L0.199825 7L6.91982 -7.19052e-08L8.49902 1.645Z' fill='%23878686'/%3E%3C/svg%3E%0A");
+}
+
+.header-rignt {
+	height: 14px;
+	width: 8.3px;
+}
+
+.title {
+	font-size: 18px;
+	font-weight: bold;
+	text-align: center;
+	flex-grow: 1;
+}
+
+/* 폼박스 관련 */
+
+
+.form-box{
+    /* background-color: aqua; */
+    height: 502px;
+
+}
+
+    .form-box label {
+
+        font-size: 13px;
+        font-weight: bold;
+
+        margin-left: 13px;
+
+    }
+
+    .form-box input, .form-box button{
+        /* 가운데 정렬 */
+        margin: 8px auto 0; 
+        /* 위 8px, 좌우정렬, 아래 0  */
+
+        width: 335px;
+        height: 40px;
+        border-radius: 10px;
+        box-sizing: border-box;
+        box-shadow: 5px 5px 20px rgb(0 0 0 / 8%);
+        
+        display: flex;
+        align-items: center;
+
+        border: thin;
+        border-style: solid;
+        border-color: #C6CDD6;
+    }
+
+    .form-box input[placeholder]{
+        /* border-left-width: 15px; */
+        /* border-color: #FFFFFF; */
+        padding-left: 15px;
+        
+
+    }   
+
+    .form-box div{
+        margin-top: 20px;
+        height: 64px; 
+    }
+
+        .form-box .phone-number-input{
+            width: 237px;
+        }
+
+        
+        .form-box .number-and-button{
+            display: flex;
+            height: 0;
+            
+            margin-top: 0;
+        }
+
+        .form-box .certification-receive-btn{
+            margin-left: 0px;
+            display: block;
+
+            width: 88px;
+            height: 40px;
+            border-radius: 10px;
+            box-sizing: border-box;
+            background-color:  #F4F4F4;
+            color:#B4B6BA;
+            border: 1px solid #B4B6BA;
+            font-size: 11px;
+            /* font-weight: 600; */
+
+
+        }
+
+
+
+
+        /* 별개 마진탑 */
+        .name{
+            margin-top: 41px;
+        }
+
+
+        
+
+
+.next-btn{
+    /* background-color: black; */
+    margin: 53px 12.5px 0; 
+
+    
+}
+
+
+
+    .btn{
+
+        width: 335px;
+        height: 54px;
+        border-radius: 10px;
+        box-sizing: border-box;
+        background-color: #5A8FE0;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 600;
+        
+    }
+    .btn:hover{
+        background-color: #4E79BB;
+        transition: 0.3s;
+    } 
+
+    /* 해야할 사항
+
+        휴대폰번호 정렬
+         / 인증번호 받기 박스 손질
+
+        다음 버튼 정렬
+
+    
+    */
