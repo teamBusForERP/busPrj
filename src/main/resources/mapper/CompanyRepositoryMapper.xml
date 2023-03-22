@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.teamBus.web.repository.CompanyRepository">
+
+	<resultMap id="companyResultMap" type="Company">
+		<result property="ceoName" column="ceo_name" />
+		<result property="establishmentDate" column="establishment_date" />
+		<result property="phoneNumber" column="phone_number" />
+	</resultMap>
+
+	<select id="findById" resultMap="companyResultMap">
+		select *
+		from company
+		where id = #{companyId}
+	</select>
+	
+<!-- 	<select id="" resultType=""> -->
+<!-- 		select * -->
+<!-- 		from company -->
+<!-- 	</select> -->
+
+<!--  	<insert id="insert"> -->
+<!-- 		insert into company() -->
+<!-- 		value () -->
+<!-- 	</insert> -->
+	
+<!-- 	<update id="update"> -->
+<!-- 	</update> -->
+	
+<!-- 	<delete id="delete"> -->
+<!-- 		delete from company -->
+<!-- 	</delete> -->
+
+</mapper>

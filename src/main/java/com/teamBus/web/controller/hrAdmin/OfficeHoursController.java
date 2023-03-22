@@ -8,34 +8,46 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.teamBus.web.entity.Member;
-import com.teamBus.web.entity.Menu;
+import com.teamBus.web.entity.AdminListDayView;
+import com.teamBus.web.entity.Company;
+import com.teamBus.web.entity.Employee;
+import com.teamBus.web.service.CommonService;
 import com.teamBus.web.service.OfficeHoursService;
 
 @Controller("hrAdminOfficeHoursController")
 @RequestMapping("/hr-admin/office-hours")
 public class OfficeHoursController {
-	
-	@Autowired
-	private OfficeHoursService service;
-	
-//	public OfficeHoursController(OfficeHoursService service) {
-//		this.service = service;
-//	}
 
-	@GetMapping("list")
-	public String list(Model model) {
-		
-//		List<Menu> list = service.getList();
-//		List<Member> mList = service.getMemberList();
-//		model.addAttribute("list", list);
-//		model.addAttribute("mList", mList);
-		
-//		for (Menu l : list) {
-//			System.out.println(l);
-//		}
-		
-		return "/hr-admin/office-hours/list";
-	}
+    @Autowired
+    private OfficeHoursService service;
+
+    @Autowired
+    private CommonService commonService;
+
+//    public OfficeHoursController(OfficeHoursService service) {
+//        this.service = service;
+//    }
+
+    @GetMapping("list")
+    public String list(Model model) {
+
+    	int employeeId = 1;
+    	Employee e = commonService.getLoginInfo(employeeId);
+    	model.addAttribute("loginInfo", e);
+    	Company c = commonService.getCompanyInfo(e.getCompanyId());
+    	model.addAttribute("companyInfo", c);
+    	
+//        List<Employee> list = service.getList();
+//        model.addAttribute("list",list);
+//        LoginInfo loginInfo = commonService.getLoginInfo(employeeId);
+//        model.addAttribute("loginInfo", loginInfo);
+
+        List<AdminListDayView> dayList = service.getDayList(e.getCompanyId());
+        model.addAttribute("dayList",dayList);
+
+
+
+        return "/hr-admin/office-hours/list";
+    }
 
 }

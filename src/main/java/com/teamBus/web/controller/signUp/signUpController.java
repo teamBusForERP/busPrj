@@ -20,10 +20,4 @@ public class signUpController {
 		return "/sign-up/select";
 	}
 	
-	@PostMapping("select")
-	public String postSelect(@RequestParam("user-name") String userName){
-		System.out.println(userName);
-		return "redirect:select";
-	}
-
 }

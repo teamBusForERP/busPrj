@@ -52,21 +52,21 @@
 			<div class="profile-wrap">
 				<div class="profile-top">
 					<div class="profile-img">
-						<img src="../../img/profile.png" alt="프로필이미지" />
+						<img th:src="@{${loginInfo.image}}" alt="프로필이미지" />
 					</div>
 
 					<div class="profile-txt">
-						<span class="name">이수현</span> <span class="position">사원</span>
+						<span class="name" th:text="${loginInfo.name}">이수현</span> <span class="position" th:text="${loginInfo.position}">사원</span>
 					</div>
 
 				</div>
 
 				<div class="profile-bottom">
 					<div class="profile-group">
-						<span> 뉴렉처인재개발원 </span>
+						<span th:text="${companyInfo.name}"> 뉴렉처인재개발원 </span>
 					</div>
 					<div class="profile-team">
-						<span> 인사팀 </span>
+						<span th:text="${loginInfo.department+'팀'}"> 인사팀 </span>
 					</div>
 				</div>
 			</div>
