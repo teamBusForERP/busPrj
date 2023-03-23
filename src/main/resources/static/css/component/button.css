@@ -57,7 +57,9 @@
 	height: 45px;
 	margin-top: 60px;
 }
-
+.m-top-40{
+	margin-top: 40px;
+}
 /* rest-edit btn */
 .rest-edit-btn{
 	width: 200px;

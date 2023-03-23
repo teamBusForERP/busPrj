@@ -1,19 +1,24 @@
 
 .date-bar {
-	width: 322px;
-	height: 25px;
+	width: 312px;
+	height: 20px;
 	display: flex;
 	margin: 30px auto 0 auto;
-	align-items: baseline;
-	justify-content: center;
+	align-items: initial;
+	justify-content: space-between;
 	white-space: nowrap;
 	box-sizing: border-box;
 }
 
-.date-bar .date {
+.date-bar .date-wrap {
 	font-weight: 500;
 	font-size: 1.3rem;
-	margin-right: 8px;
+	display: flex;
+	align-items: center;
+}
+.date-bar .calender-img{
+	width: 20px;
+	margin-right: 5px;
 }
 
 .date-bar .time {
@@ -50,7 +55,6 @@
 .date-bar .rest-edit {
 	display: flex;
 	align-items: center;
-	width: auto;
 }
 
 .date-bar .rest-edit span {

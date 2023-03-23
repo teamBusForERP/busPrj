@@ -6,14 +6,6 @@
 		margin-top: 35px;
 	}
 
-
-	.exception-req-box {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-		
-    }
-
     .exception-req-box .exception {
         margin-right: 214px;
         margin-bottom: 9px;

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
 	<meta charset="UTF-8">
@@ -60,10 +60,10 @@
 			</div>
 			<div class="login-btn">
 
-				<button class="btn-blue" onClick="location.href='./admin-select.html'">로그인</button>
+				<button class="btn-blue" formmethod="post" onClick="location.href='./admin-select'">로그인</button>
 
 				<div class="sign-up">
-					<a href="./sign-up/sign-up.html">회원가입</a>
+					<a href="sign-up/user-info">회원가입</a>
 				</div>
 			</div>
 		</form>

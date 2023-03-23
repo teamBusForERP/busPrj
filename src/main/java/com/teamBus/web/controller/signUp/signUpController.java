@@ -20,4 +20,18 @@ public class signUpController {
 		return "/sign-up/select";
 	}
 	
+	@GetMapping("create-company")
+	public String createCompany() {
+		return "/sign-up/create-company";
+	}
+	
+	@GetMapping("find-company")
+	public String findCompany() {
+		return "/sign-up/find-company";
+	}
+	
+	@GetMapping("waiting")
+	public String wating() {
+		return "/sign-up/waiting";
+	}
 }
