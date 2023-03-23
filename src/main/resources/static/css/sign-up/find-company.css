@@ -1,14 +1,14 @@
 .wrap{
 	display: flex;
 	flex-direction: column;
-	/* border:1px solid black; */
 }
 
 .com-search-result{
 	width: 335px;
 	height: 370px;
+	margin: 0 auto;
 }
 
-.btn-blue, .btn-white {
-	margin: 20px auto 0;
+.btn-blue{
+	margin-top: 20px;
 }

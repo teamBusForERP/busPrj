@@ -1,17 +1,12 @@
 .rest-editor-box {
-  /* height: 455px; */
   height:0px;
   width: 360px;
   position: absolute;
   bottom: 0px;
   z-index: 100;
   transition: all 0.6s ease-in-out;
-  /* transform-origin: 0px 360px; */
   visibility: hidden;
   transform:scaleY(0);
-  /* overflow: hidden; */
-  /* transform:translateY(0); */
-  /* transform: scale(1, 0); */
   
 }
 .teston{
@@ -21,10 +16,6 @@
   height: 455px;
 }
 
-/* .testoff{
-  transform:translateY(1);
-  transform:scaleY(1);
-} */
 
 .rest-editor {
   display: block;
@@ -64,18 +55,6 @@
   margin: 65px auto auto;
 }
 
-.rest-editor>button {
-  width: 200px;
-  height: 45px;
-  display: block;
-  margin: 0 auto;
-  margin-top: 81px;
-  border-radius: 15px;
-  font-size: 1rem;
-  text-align: center;
-  background-color: #5A8FE0;
-  color: white;
-}
 
 
 /* --------------------------------- 시간임시 */
@@ -121,7 +100,6 @@
   font-size: 18px;
 
   line-height: 1.7;
-  /* identical to box height */
   
   text-transform: lowercase;
   text-align: center;

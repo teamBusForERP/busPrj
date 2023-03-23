@@ -3,7 +3,7 @@
 		flex-direction: column;
 		align-items: center;
 		height: 222px;
-		margin-top: 15px;
+		margin-top: 20px;
 	}
 
 	.commute-info button {
@@ -24,7 +24,7 @@
 		padding-left: 26px;
 	}
 
-	.submit-button {
+	/* .submit-button {
 		width: 200px;
 		height: 45px;
 		display: block;
@@ -35,7 +35,7 @@
 		text-align: center;
 		background-color: #5A8FE0;
 		color: white;
-	}
+	} */
 
 	.exception-req {
 		width: 86px;

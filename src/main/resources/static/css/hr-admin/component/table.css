@@ -103,6 +103,7 @@
 	width: 80%;
 	height: 18px;
 	margin-right: 5px;
+	border-radius: 2px;
 }
 
 .progress-bar {

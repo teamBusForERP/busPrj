@@ -1,14 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>login</title>
+	<title>회원가입</title>
 	<link rel="stylesheet" href="../css/reset.css">
 	<link rel="stylesheet" href="../css/util.css">
+    <link rel="stylesheet" href="../css/component/button.css">
     <link rel="stylesheet" href="../css/sign-up/sign-up.css">
+    <link rel="stylesheet" href="../css/sign-up/sign-up-header.css">
 
 	<link rel="stylesheet"
 		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -22,23 +24,10 @@
 <body>
 	<div class="wrap">
 
-		<!-- head
-		<div class="head">
-
-            <div>
-                <svg width="9" height="14" viewBox="0 0 9 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M8.49902 1.645L3.36942 7L8.49902 12.355L6.91982 14L0.199825 7L6.91982 -7.19052e-08L8.49902 1.645Z" fill="#878686"/>
-                </svg>
-            </div>
-
-			<div>
-                회원가입
-            </div>
-
-		</div> -->
-
         <header class="sign-up-header">
-            <div class="header-left"></div>
+            <div class="header-left">
+                <a href="../login.html"></a>
+            </div>
             <h1 class="title">회원가입</h1>
             <div class="header-rignt"></div>
         </header>
@@ -48,7 +37,7 @@
 		<div class="sign-up-box1">
 			<div class="sign-up-input">
 
-				<form class="sign-up-form">
+				<form action="../sign-up/select.html" class="sign-up-form" method="">
                     <div class="form-box">
                             <div class="name">
                                 <label for="user-name">이름</label>
@@ -87,10 +76,8 @@
                             </div>
                     </div>
 
-
-                    <div class="next-btn">
-                        <button type="submit" class="btn">다음</button>
-                    </div>
+                    <button type="submit" class="btn-blue">다음</button>
+                    
                     
                 </form>
 

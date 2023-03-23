@@ -15,11 +15,9 @@
 .filter-bar .date-filter {
 	width: 148px;
 	height: 39px;
+	cursor: pointer;
 }
 
-.filter-bar .date-filter {
-	/* margin-left: 455px; */
-}
 
 .filter-bar .filter-btn {
 	border: 1px #CECECE solid;

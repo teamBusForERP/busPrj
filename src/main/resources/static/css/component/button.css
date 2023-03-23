@@ -1,27 +1,68 @@
-.btn-blue {
+.btn-wrap{
+	text-align: center;
+}
+
+.btn-blue,.btn-white {
 	width: 335px;
 	height: 54px;
 	border-radius: 10px;
 	box-sizing: border-box;
+	font-size: 16px;
+	font-weight: 400;
+	text-align: center;
+}
+.btn-blue{
 	background-color: #5A8FE0;
 	color: #fff;
-	font-size: 16px;
-	font-weight: 600;
 }
-
+.btn-blue:hover{
+	background-color: #4E79BB;
+	transition: 0.3s;
+}
+.btn-white{
+	background-color:  #fff;
+	color:#5A8FE0;
+	border: 1px solid #5A8FE0;
+	margin-top: 20px;
+}
+.btn-blue a{
+	color: #fff;
+	text-align: center;
+	line-height: 54px;
+}
+.btn-white a{
+	color:#5A8FE0;
+	text-align: center;
+	line-height: 54px;
+}
 .disabled {
 	opacity: 0.5;
 	cursor: default;
 }
 
-.btn-white {
-	width: 335px;
-	height: 54px;
-	border-radius: 10px;
-	box-sizing: border-box;
-	background-color:  #fff;
-	color:#5A8FE0;
-	border: 1px solid #5A8FE0;
-	font-size: 16px;
-	font-weight: 600;
+/* admin-select btn */
+.adminselc-btn-wrap {
+	margin-top: 130px;
+}
+.adminselc-btn-bottom{
+	margin-top: 50px;
+}
+.adminselc-btn-height{
+	height: 74px;
+}
+
+/* register btn */
+.register-btn{
+	width: 200px;
+	height: 45px;
+	margin-top: 60px;
+}
+
+/* rest-edit btn */
+.rest-edit-btn{
+	width: 200px;
+	height: 45px;
+	margin: 0 auto;
+    display: block;
+    margin-top: 81px;
 }

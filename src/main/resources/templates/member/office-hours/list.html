@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
 	<meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Document</title>
+	<title>내 근무시간 조회</title>
 
 	<link rel="stylesheet" href="../../css/reset.css" />
 	<link rel="stylesheet" href="../../css/util.css" />
@@ -77,9 +77,11 @@
 				<!-- 버튼 -->
 
 				<div class="day-fillter">
-					<button class="back">&lt; </button>
+					<div class="day-btn-wrap">
+						<button class="back"> </button>
+						<button class="front"></button>
+					</div>
 					<span class="bold"> 1.23 (월) - 1.29 (일) </span>
-					<button class="front">&gt;</button>
 				</div>
 			</section>
 

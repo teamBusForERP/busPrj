@@ -69,20 +69,6 @@ a{
 .login-btn{
 	margin-top:35px;
 }
-.btn{
-	width: 335px;
-	height: 54px;
-	border-radius: 10px;
-	box-sizing: border-box;
-	background-color: #5A8FE0;
-	color: #fff;
-	font-size: 16px;
-	font-weight: 600;
-}
-.btn:hover{
-	background-color: #4E79BB;
-	transition: 0.3s;
-}
 
 /* --- 또는 ------------------------------- */
 .login-box2{
