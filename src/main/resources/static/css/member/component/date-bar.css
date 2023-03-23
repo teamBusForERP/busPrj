@@ -55,6 +55,8 @@
 .date-bar .rest-edit {
 	display: flex;
 	align-items: center;
+	padding-top: 3px;
+	box-sizing: border-box;
 }
 
 .date-bar .rest-edit span {
