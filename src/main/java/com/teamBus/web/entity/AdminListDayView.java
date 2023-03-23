@@ -22,9 +22,4 @@ public class AdminListDayView {
 	private Time breakTimeStart;
 	private Time breakTimeEnd;
 	private Integer exId;
-	
-
-	
-
-	
 }
