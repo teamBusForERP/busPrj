@@ -28,7 +28,7 @@ public class HomeController {
 			return "admin-select";
 		else {
 			redirectAttr.addFlashAttribute("errorMessage","암호가 틀렸습니다.");
-			return "redirect:/loginform";
+			return "redirect:";
 		}
 	}
 	

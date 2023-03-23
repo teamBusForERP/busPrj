@@ -1,171 +1,106 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Document</title>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleeaf/layout"
+	layout:decorate="member/inc/layout">
 
-<link rel="stylesheet" href="../../css/reset.css">
-<link rel="stylesheet" href="../../css/util.css">
+<div class="wrap" layout:fragment="main">
 
-<link rel="stylesheet" href="../../css/member/component/side-bar.css">
-
-<link rel="stylesheet"
-	href="../../css/member/component/profile-card.css">
-
-<link rel="stylesheet" href="../../css/member/component/date-bar.css">
-<link rel="stylesheet"
-	href="../../css/member/component/commute-info.css">
-<link rel="stylesheet"
-	href="../../css/member/component/rest-editor-box.css">
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.7/dayjs.min.js"></script>
-<script src="../../js/member.js"></script>
-
-</head>
-
-<body>
-
-	<!-- side-bar -->
-
-	<div class="ham-wrap">
-		<div class="hamburger"></div>
-	</div>
-
-	<div class="menu-b d-none"></div>
-	<aside class="side-bar d-none">
-
-		<div class="profile">
-			<span class="name" th:text=${loginInfo.name}>임한응</span>
-			<span class="position" th:text=${loginInfo.position}>사원</span>
-		</div>
-		<div class="profile-hr">
-			<hr />
+	<!-- profile-card  -->
+	<header class="profile-card">
+		<div class="profile-card-top">
+			<div class="profile-card-img">
+				<img src="../../img/profile.png" alt="프로필이미지" />
+			</div>
+			<span th:text=${loginInfo.name}>임한응</span> 님, 안녕하세요.
 		</div>
 
-		<nav>
-			<section>
-				<h1>내 근무 정보</h1>
-				<ul>
-					<li><a href="">근무시간입력</a></li>
-					<li><a href="">근무시간조회</a></li>
-				</ul>
-			</section>
-
-			<section>
-				<h1>설정</h1>
-				<ul>
-					<li><a href="">1-1</a></li>
-				</ul>
-			</section>
-		</nav>
-	</aside>
-
-	<!-- wrap -->
-
-	<div class="wrap">
-
-		<!-- profile-card  -->
-		<header class="profile-card">
-			<div class="profile-card-top">
-				<div class="profile-card-img">
-					<img src="../../img/profile.png" alt="프로필이미지" />
-				</div>
-				<span th:text=${loginInfo.name}>임한응</span> 님, 안녕하세요.
+		<div class="profile-card-bottom">
+			<div class="profile-card-dept">
+				<span th:text=${companyInfo.name}>뉴렉처 인재개발원</span>
 			</div>
-
-			<div class="profile-card-bottom">
-				<div class="profile-card-dept">
-					<span th:text=${companyInfo.name}>뉴렉처 인재개발원</span>
-				</div>
-				<div class="profile-card-team">
-					<span th:text=${loginInfo.department}>버스 1팀</span>
-				</div>
+			<div class="profile-card-team">
+				<span th:text="${loginInfo.department} + 팀">버스 1팀</span>
 			</div>
-		</header>
+		</div>
+	</header>
 
-		<!-- date-bar -->
-		<section>
-			<h1 class="d-none">commute-info</h1>
+	<!-- date-bar -->
+	<section>
+		<h1 class="d-none"> commute-info</h1>
 
-			<div class="date-bar">
+		<div class="date-bar">
+			<div class="date-wrap">
+				<div class="calender-img">
+					<img src="../../img/calendar.png" alt="달력 이미지">
+				</div>
 				<div class="date">
-					<span style="margin :0 10px;"> 🗓️</span><span>2월</span> <span>15일</span>
-				</div>
-				<div class="time">
-					<!-- <span>8h</span> <span>1h</span> <span>13h</span> -->
-				</div>
-
-				<div class="rest-edit">
-					<span>휴게편집</span>
-					<div class="rest-toggle rest-toggle-off"></div>
-					<div class="rest-toggle rest-toggle-on d-none"></div>
-
+					<span>2월 15일</span>
 				</div>
 			</div>
 
-			<!-- commute-info -->
+			<div class="rest-edit">
+				<span>휴게편집</span>
+				<div class="rest-toggle rest-toggle-off"></div>
+				<div class="rest-toggle rest-toggle-on d-none"></div>
 
-			<div class="commute-info">
-				<button class="" type="submit">
-					<span>출근</span>
-					<span style="margin-left:150px;" th:text="${worktime} == null? '' : ${worktime.clockIn}"></span>
-				</button>
-				<button class="" type="submit">
-					<span>퇴근</span>
-					<span style="margin-left:150px;" th:text="${worktime} == null? '' : ${worktime.clockOut}"></span>
-				</button>
-				<button class="rest d-none" type="submit">
-					<span>휴게</span>
-				</button>
 			</div>
-			<div>
-				<form action="register" method="post">
-					<button type="submit" class="submit-button"	
-						th:text="${status} == '0'? '출근' : '퇴근'">출근</button>
-					<input type="hidden" name="status" th:value="${status}" />
-				</form>
-			</div>
-
-			<div class="exception-req">
-				<a href="exception-req">사전예외신청</a>
-			</div>
-		</section>
-
-
-		<!-- //휴게편집창 추가 -->
-		<div class="rest-editor-box">
-			<hr>
-			<section class="rest-editor">
-				<h1>☕️ 휴게</h1>
-				<hr>
-				<div class="rest-edit-box">
-
-					<div class="choose-date-btn">
-						<button class="date-btn " id="minus-s"></button>
-						<span class="choose-date" id="start-restTime"></span>
-						<button class="date-btn " id="plus-s"></button>
-					</div>
-
-					<div class="from-text-box">
-
-						<div class="from-text">부터</div>
-
-					</div>
-
-					<div class="choose-date-btn">
-						<button class="date-btn " id="minus-e"></button>
-						<span class="choose-date" id="end-restTime"></span>
-						<button class="date-btn " id="plus-e"></button>
-					</div>
-				</div>
-				<button type="button" class="rest-edit-submit">저장</button>
-			</section>
 		</div>
-		<!-- ↑↑↑↑휴게편집창 추가 ↑↑↑↑-->
 
+		<!-- commute-info -->
+
+		<div class="commute-info">
+			<button class="" type="submit"><span>출근</span><span
+					th:text="${worktime} == null? '' : ${worktime.clockIn}">12:12</span></button>
+			<button class="" type="submit"><span>퇴근</span><span
+					th:text="${worktime} == null? '' : ${worktime.clockOut}">12:12</span></button>
+			<button class="rest d-none" type="submit"><span>휴게</span><span>12:12</span></button>
+		</div>
+		<div>
+			<form action="register" method="post">
+				<div class="btn-wrap">
+					<button type="submit" class="btn-blue register-btn" th:text="${status} == '0'? '출근' : '퇴근'">출근</button>
+				</div>
+				<input type="hidden" name="status" th:value="${status}"/>
+			</form>
+		</div>
+
+		<div class="exception-req">
+			<a href="exception-req">사전예외신청</a>
+		</div>
+	</section>
+
+
+	<!-- //휴게편집창 추가 -->
+	<div class="rest-editor-box">
+		<hr>
+		<section class="rest-editor">
+			<h1> ☕️ 휴게</h1>
+			<hr>
+			<div class="rest-edit-box">
+
+				<div class="choose-date-btn">
+					<button class="date-btn " id="minus-s"></button>
+					<span class="choose-date" id="start-restTime"></span>
+					<button class="date-btn " id="plus-s"></button>
+				</div>
+
+				<div class="from-text-box">
+
+					<div class="from-text">
+						부터
+					</div>
+
+				</div>
+
+				<div class="choose-date-btn">
+					<button class="date-btn " id="minus-e"></button>
+					<span class="choose-date" id="end-restTime"></span>
+					<button class="date-btn " id="plus-e"></button>
+				</div>
+			</div>
+			<button type="button" class="btn-blue rest-edit-submit">저장</button>
+		</section>
 	</div>
-</body>
+	<!-- ↑↑↑↑휴게편집창 추가 ↑↑↑↑-->
 
-</html>
+</div>
