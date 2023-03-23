@@ -5,7 +5,9 @@ import com.teamBus.web.entity.Employee;
 
 public interface CommonService {
 
-	Employee getLoginInfo(int employeeId);
-	Company getCompanyInfo(int companyId);
+	Employee getEmployeeByEmployeeId(int employeeId);
+	
+	Company getCompanyByCompanyId(int companyId);
+	String getCompanyNameByCompanyId(int companyId);
 	
 }

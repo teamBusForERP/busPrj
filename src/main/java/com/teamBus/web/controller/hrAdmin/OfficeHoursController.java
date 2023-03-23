@@ -32,10 +32,10 @@ public class OfficeHoursController {
     public String list(Model model) {
 
     	int employeeId = 1;
-    	Employee e = commonService.getLoginInfo(employeeId);
+    	Employee e = commonService.getEmployeeByEmployeeId(employeeId);
     	model.addAttribute("loginInfo", e);
-    	Company c = commonService.getCompanyInfo(e.getCompanyId());
-    	model.addAttribute("companyInfo", c);
+    	String companyName = commonService.getCompanyNameByCompanyId(e.getCompanyId());
+    	model.addAttribute("companyName", companyName);
     	
 //        List<Employee> list = service.getList();
 //        model.addAttribute("list",list);

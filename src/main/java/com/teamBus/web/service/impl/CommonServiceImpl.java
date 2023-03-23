@@ -19,15 +19,20 @@ public class CommonServiceImpl implements CommonService {
 	private CompanyRepository companyRepository;
 
 	@Override
-	public Employee getLoginInfo(int employeeId) {
+	public Employee getEmployeeByEmployeeId(int employeeId) {
 		
 		return employeeRepository.findById(employeeId);
 	}
 
 	@Override
-	public Company getCompanyInfo(int companyId) {
+	public Company getCompanyByCompanyId(int companyId) {
 		
 		return companyRepository.findById(companyId);
+	}
+	
+	public String getCompanyNameByCompanyId(int companyId) {
+		
+		return companyRepository.findById(companyId).getName();
 	}
 	
 

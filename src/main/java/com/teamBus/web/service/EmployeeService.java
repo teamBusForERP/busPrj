@@ -8,7 +8,7 @@ import com.teamBus.web.entity.Employee;
 public interface EmployeeService {
 
 //	List<Employee> getList();
-	Employee getEmployeeById(int employeeId);
+	Employee getById(int employeeId);
 	
 	
 }
