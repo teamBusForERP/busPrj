@@ -38,7 +38,6 @@ public class OfficeHoursController {
     	model.addAttribute("companyName", companyName);
 		
 		Worktime w = service.getTodayWorktimeById(employeeId);
-//		System.out.printf("worktime : %s\n", w);
 		if(w == null) {
 			model.addAttribute("status", 0);
 			System.out.println("출근 전");
