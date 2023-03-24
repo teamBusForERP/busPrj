@@ -58,13 +58,13 @@ class EmployeeRepositoryTest {
 		
 	}
 	
-//	@Test
+	@Test
 	void updateTest() {
 
 		Employee em = new Employee
 			(10,1, //구분1  
 			"0000","박동조","01012323522","q@a.com", //구분2
-			null,null,null,null,null,null); //구분3
+			null,"인성팀","대리",'1',null,'1'); //구분3
 		
 		int t = repository.update(em);
 		System.out.println("update "+t);
@@ -73,7 +73,7 @@ class EmployeeRepositoryTest {
 		
 	}
 	
-	@Test
+//	@Test
 	void deleteTest() {
 
 		
