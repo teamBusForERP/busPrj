@@ -14,8 +14,8 @@
 
 	<!-- create -->
 	<insert id="insert" parameterType="Company">
-		insert into employee(company_id, password,name,phone_number,email)
-		value ( #{companyId},#{password},#{name},#{phoneNumber},#{email} )
+		insert into company (name)
+		value ( #{name} )
 	</insert>
 	
 	<!-- read -->
@@ -30,27 +30,40 @@
 		where id = #{companyId}
 	</select>
 	
+	<!-- 
+	UPDATE `busdb`.`company` 
+	SET 
+		`id` = '3', 
+		`name` = 'oldandNewlecture', 
+		`ceo_name` = '김', 
+		`phone_number` = '027004306', 
+		`address` = '백범로47', 
+		`email` = 'a.bck@gmail.com' 
+	WHERE (`id` = '1106');
+	 -->
+	
 	<!-- update -->
 	  <update id="update" parameterType="Company">
-	 		update employee
+	 		update company
 	 		<set>
-	 			<if test="password != null">password=#{password}</if>
 	 			<if test="name != null">name=#{name},</if>
-			<if test="phoneNumber != null">phoneNumber=#{phoneNumber},</if>
-			<if test="image != null">image=#{image},</if>
-			<if test="department != null">department=#{department},</if>
-			<if test="position != null">position=#{position},</if>
-			<if test="authority != null">authority=#{authority},</if>
-			<if test="joinStatus != null">joinStatus=#{joinStatus},</if>
-		</set>
+	 			
+				<if test="image != null">image=#{image},</if>
+	 			<if test="ceoName != null">ceo_name=#{ceoName},</if>
+	 			
+				<if test="establishmentDate != null">establishment_date=#{establishmentDate},</if>
+				<if test="phoneNumber != null">phone_number=#{phoneNumber},</if>
+				<if test="address != null">address=#{address},</if>
+				<if test="email != null">email=#{email}</if>
+			</set>
 		where id= #{id}
 	  </update>
 	  
 	  <!-- delete  -->
   	 <delete id="delete">
   		delete 
-  		from employee 
-  		where id = #{id}
+  		from company 
+  		where id = #{companyId}
  	 </delete>
 
 

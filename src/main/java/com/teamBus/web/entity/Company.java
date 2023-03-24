@@ -13,13 +13,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Company {
 	
-	private int id;
-	private String name;
-	private String image;
-	private String ceoName;
-	private Date establishmentDate;
-	private String phoneNumber;
-	private String address;
-	private String email;
+	private Integer id;	
+	private String name; //update
+	
+	private String image; //update
+	private String ceoName; //update
+	
+	private Date establishmentDate;	//update
+	private String phoneNumber; //update
+	private String address;	//update
+	private String email;	//update
 
 }

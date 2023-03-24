@@ -19,7 +19,7 @@ public interface CompanyRepository {
 		// update
 		int update(Company emp);
 		// delete
-		int delete(Company id);
+		int delete(int companyId);
 		
 //view
 }
