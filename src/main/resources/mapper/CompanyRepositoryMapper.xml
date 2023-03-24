@@ -4,77 +4,48 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.teamBus.web.repository.CompanyRepository">
 
-	<resultMap id="companyResultMap" type="Company">
+	<resultMap id="CompanyResultMap" type="Company">
 		<result property="ceoName" column="ceo_name" />
-		<result property="establishmentDate" column="establishment_date" />
+		<result property="establishmentDate"
+			column="establishment_date" />
 		<result property="phoneNumber" column="phone_number" />
 	</resultMap>
 
-<!-- 기본형 -->
-
-	<!-- create -->
-	<insert id="insert" parameterType="Company">
+	<insert id="insertNew" parameterType="Company">
 		insert into company (name)
-		value ( #{name} )
+		values (#{name})
 	</insert>
-	
-	<!-- read -->
-			<!-- 아직 안만듬 -->
-			<!-- <select id="findAll" resultMap="companyResultMap">
-				select *
-				from company
-			</select> -->
-	<select id="findById" resultMap="companyResultMap">
+
+	<select id="findAll" resultMap="CompanyResultMap">
 		select *
 		from company
-		where id = #{companyId}
 	</select>
-	
-	<!-- 
-	UPDATE `busdb`.`company` 
-	SET 
-		`id` = '3', 
-		`name` = 'oldandNewlecture', 
-		`ceo_name` = '김', 
-		`phone_number` = '027004306', 
-		`address` = '백범로47', 
-		`email` = 'a.bck@gmail.com' 
-	WHERE (`id` = '1106');
-	 -->
-	
-	<!-- update -->
-	  <update id="update" parameterType="Company">
-	 		update company
-	 		<set>
-	 			<if test="name != null">name=#{name},</if>
-	 			
-				<if test="image != null">image=#{image},</if>
-	 			<if test="ceoName != null">ceo_name=#{ceoName},</if>
-	 			
-				<if test="establishmentDate != null">establishment_date=#{establishmentDate},</if>
-				<if test="phoneNumber != null">phone_number=#{phoneNumber},</if>
-				<if test="address != null">address=#{address},</if>
-				<if test="email != null">email=#{email}</if>
-			</set>
-		where id= #{id}
-	  </update>
-	  
-	  <!-- delete  -->
-  	 <delete id="delete">
-  		delete 
-  		from company 
-  		where id = #{companyId}
- 	 </delete>
 
-
-
-<!-- view -->
-	<!-- <select id="findViewByCompanyId" resultMap="adminListDayViewResultMap">
+	<select id="findById" resultMap="CompanyResultMap">
 		select *
-		from admin_list_day_view
-		where company_id = #{companyId}
+		from company
+		where id =
+		#{companyId}
 	</select>
- -->
 
+	<update id="update" parameterType="Company">
+		update company
+		<set>
+			<if test="name != null">name=#{name},</if>
+			<if test="image != null">image=#{image},</if>
+			<if test="ceoName != null">ceo_name=#{ceoName},</if>
+			<if test="establishmentDate != null">establishment_date=#{establishmentDate},</if>
+			<if test="phoneNumber != null">phone_number=#{phoneNumber},</if>
+			<if test="address != null">address=#{address},</if>
+			<if test="email != null">email=#{email}</if>
+		</set>
+		where id= #{id}
+	</update>
+
+	<delete id="delete">
+		delete
+		from company
+		where id = #{companyId}
+	</delete>
 
 </mapper>

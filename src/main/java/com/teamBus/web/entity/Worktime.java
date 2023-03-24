@@ -16,11 +16,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Worktime {
 	
-	Integer id;
-	Integer employeeId;
-	LocalDate date;
-	LocalTime clockIn;
-	LocalTime breakTimeStart;
-	LocalTime breakTimeEnd;
-	LocalTime clockOut;
+	private Integer id;
+	private Integer employeeId;
+	private LocalDate date;
+	private LocalTime clockIn;
+	private LocalTime breakTimeStart;
+	private LocalTime breakTimeEnd;
+	private LocalTime clockOut;
 }

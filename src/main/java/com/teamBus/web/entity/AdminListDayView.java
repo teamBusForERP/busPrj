@@ -10,6 +10,7 @@ import lombok.Data;
 @Data
 @Builder
 public class AdminListDayView {
+	
 	private Integer id; 
 	private Integer companyId;
 	private String name;
@@ -22,9 +23,4 @@ public class AdminListDayView {
 	private Time breakTimeStart;
 	private Time breakTimeEnd;
 	private Integer exId;
-	
-
-	
-
-	
 }

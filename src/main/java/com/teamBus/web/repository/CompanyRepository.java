@@ -10,16 +10,14 @@ import com.teamBus.web.entity.Employee;
 @Mapper
 public interface CompanyRepository {
 	
-//기본형
-		// create
-		int insert(Company emp);
-		// read
-//		List<Company> findAll();
-		Company findById(int companyId);
-		// update
-		int update(Company emp);
-		// delete
-		int delete(int companyId);
+	List<Company> findAll();
+	Company findById(int companyId);
 		
-//view
+//	int insert(Company company);
+	int insertNew(Company company);
+	
+	int update(Company company);
+	
+	int delete(int companyId);
+	
 }

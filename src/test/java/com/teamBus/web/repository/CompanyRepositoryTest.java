@@ -34,7 +34,7 @@ class CompanyRepositoryTest {
 //		System.out.println(list);
 //	}
 	
-	@Test
+	//@Test
 	void findByIdTest() {
 		
 		Company cm = repository.findById(3);
@@ -48,7 +48,7 @@ class CompanyRepositoryTest {
 //		System.out.println(list);
 //	}
 	
-//	@Test
+	@Test
 	void insertTest() {
 
 	
@@ -57,7 +57,7 @@ class CompanyRepositoryTest {
 				null, null,
 				null, null, null, null);	
 		
-		int t = repository.insert(cp);
+		int t = repository.insertNew(cp);
 		System.out.println(t);
 		
 	}

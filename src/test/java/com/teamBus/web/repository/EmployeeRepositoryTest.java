@@ -51,7 +51,7 @@ class EmployeeRepositoryTest {
 			"0000","박동조","01012323522","q@a.com", //구분2
 			null,null,null,null,null,null); //구분3
 		
-		int t = repository.insert(em);
+		int t = repository.insertNew(em);
 		System.out.println(t);
 		
 //		System.out.println(list);
