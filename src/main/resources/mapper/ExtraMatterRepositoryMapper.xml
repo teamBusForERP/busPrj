@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.teamBus.web.repository.ExtraMatterRepository">
+
+	<resultMap id="ExtraMatterResultMap" type="ExtraMatter">
+		<result property="dateTime" column="date_time" />
+		<result property="employeeId" column="employee_id" />
+		<result property="matterType" column="matter_type" />
+	</resultMap>
+
+	<select id="findById" resultMap="ExtraMatterResultMap">
+		select *
+		from extra_matter
+		where id = #{id}
+	</select>
+	
+	<select id="findAll" resultMap="ExtraMatterResultMap">
+		select *
+		from extra_matter
+	</select>
+
+<!--  	<insert id="insert" parameterType="ExtraMatter">
+		insert into extra_matter (id, date_time, employee_id, matter_type, reason)
+		values (#{id}, #{dateTime}, #{employeeId}, #{matterType}, #{reason})
+	</insert> -->
+	
+	<insert id="insertNow" parameterType="ExtraMatter">
+		insert into extra_matter (employee_id, matter_type, reason)
+		values (#{employeeId}, #{matterType}, #{reason})
+	</insert>
+	
+	<update id="update" parameterType="ExtraMatter">
+		update extra_matter
+		<set>
+			<if test = "dateTime != null">date_time = ${dateTime},</if>
+			<if test = "employeeId != null">employee_id = ${employeeId},</if>
+			<if test = "matterType != null">matter_type = ${matterType},</if>
+			<if test = "reason != null">reason = ${reason}</if>
+		</set>
+		where id = ${id}
+	</update>
+	
+	<delete id="delete">
+		delete from extra_matter
+		where id = ${id}
+	</delete>
+
+</mapper>
