@@ -12,11 +12,50 @@
 		<result property="clockOut" column="clock_out" />
 	</resultMap>
 	
+	<select id="findAll" resultMap="WorktimeResultMap">
+		select *
+		from worktime
+	</select>
+	
+	<select id="findById" resultMap="WorktimeResultMap">
+		select *
+		from worktime
+		where id=#{id}
+	</select>
+	
+	<select id="findTodayByEmployeeId" resultMap="WorktimeResultMap">
+		select *
+		from worktime
+		where employee_id = #{id}
+		and date = date(now())
+	</select>
+	
+	<!-- <insert id="insert" parameterType="Worktime">
+		insert into worktime(employee_id, date, clock_in, break_time_start, break_time_end,clock_out)
+		value (#{employeeId}, #{date}, #{clockIn}, #{breakTimeStart}, #{breakTimeEnd},#{clockOut})
+	</insert> -->
+	
+	<insert id="insertNow" parameterType="Worktime">
+		insert worktime(employee_id) 
+		values (#{employeeId})
+	</insert>
+	
 	<insert id="addWorktime">
 		insert worktime(employee_id) 
 		values (#{employeeId})
 	</insert>
 	
+	<update id="update" parameterType="Worktime">
+		update worktime
+		<set>
+			<if test="date != null">date = #{date}</if>
+			<if test="clockIn != null">clock_in = #{clockIn}</if>
+			<if test="clockOut != null">clock_out = #{clockOut}</if>
+			<if test="breakTimeStart != null">break_time_start = #{breakTimeStart}</if>
+			<if test="breakTimeEnd != null">break_time_end = #{breakTimeEnd}</if>
+		</set>
+		where id = #{id}
+	</update>
 	
 	<update id="updateWorktime" parameterType="Worktime">
 		update worktime
@@ -46,15 +85,10 @@
 <!-- 	</update> -->
 
 	<delete id="delete">
-		delete from menu
+		delete 
+		from worktime
 		where id=${id}
 	</delete>
 	
-	<select id="findTodayByEmployeeId" resultMap="WorktimeResultMap">
-		select *
-		from worktime
-		where employee_id = #{id}
-		and date = date(now())
-	</select>
 
 </mapper>

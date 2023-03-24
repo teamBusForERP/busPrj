@@ -30,7 +30,7 @@ public class OfficeHoursServiceImpl implements OfficeHoursService {
 	@Override
 	public void regClockOut(int employeeId) {
 		Worktime worktime = new Worktime(null, employeeId, null, null, null, null, LocalTime.now());
-		worktimeRepository.updateWorktime(worktime);
+		worktimeRepository.update(worktime);
 	}
 
 	@Override
