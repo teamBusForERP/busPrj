@@ -19,32 +19,31 @@
 		<result property="clockOut" column="clock_out" />
 		<result property="exId" column="ex_id" />
 	</resultMap>
-	
-<!-- 기본형 -->
 
-	<!-- create -->
-	<insert id="insert" parameterType="Employee">
-		insert into employee(company_id, password, name, phone_number, email)
-		value (#{companyId}, #{password}, #{name}, #{phoneNumber}, #{email})
-	</insert>
-	
-	<!-- read -->
 	<select id="findAll" resultMap="EmployeeResultMap">
 		select *
 		from employee
 	</select>
+
 	<select id="findById" resultMap="EmployeeResultMap">
 		select *
 		from employee
-		where id = #{id}
+		where id =
+		#{id}
 	</select>
+
+	<insert id="insertNew" parameterType="Employee">
+		insert into
+		employee(company_id, password, name, phone_number, email)
+		values
+		(#{companyId}, #{password}, #{name}, #{phoneNumber}, #{email})
+	</insert>
 	
-	<!-- update -->
-	  <update id="update" parameterType="Employee">
-  		update employee
-  		<set>
-  			<if test="password != null">password = #{password},</if>
-  			<if test="name != null">name = #{name},</if>
+	<update id="update" parameterType="Employee">
+		update employee
+		<set>
+			<if test="password != null">password = #{password},</if>
+			<if test="name != null">name = #{name},</if>
 			<if test="phoneNumber != null">phone_number = #{phoneNumber},</if>
 			<if test="image != null">image = #{image},</if>
 			<if test="department != null">department = #{department},</if>
@@ -53,20 +52,19 @@
 			<if test="joinStatus != null">join_status = #{joinStatus}</if>
 		</set>
 		where id= #{id}
-	  </update>
-	  
-	  <!-- delete  -->
-  	 <delete id="delete">
-  		delete 
-  		from employee 
-  		where id = #{id}
- 	 </delete>
+	</update>
 
-<!-- view -->
-	<select id="findViewByCompanyId" resultMap="adminListDayViewResultMap">
-		select *
-		from admin_list_day_view
+	<delete id="delete">
+		delete
+		from employee
+		where id = #{id}
+	</delete>
+
+
+	<!-- view -->
+	<select id="findViewByCompanyId" resultMap="adminListDayViewResultMap"> 
+		select * from admin_list_day_view
 		where company_id = #{companyId}
 	</select>
-	
+
 </mapper>

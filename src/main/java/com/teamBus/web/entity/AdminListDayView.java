@@ -10,6 +10,7 @@ import lombok.Data;
 @Data
 @Builder
 public class AdminListDayView {
+	
 	private Integer id; 
 	private Integer companyId;
 	private String name;

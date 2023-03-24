@@ -45,6 +45,7 @@
 		values (#{employeeId})
 	</insert>
 	
+<<<<<<< HEAD
 	<update id="update" parameterType="Worktime">
 		update worktime
 		<set>
@@ -57,6 +58,8 @@
 		where id = #{id}
 	</update>
 	
+=======
+>>>>>>> devCRUD
 	<update id="updateWorktime" parameterType="Worktime">
 		update worktime
 		<set>
@@ -71,18 +74,6 @@
 					order by date desc
 					limit 1)
 	</update>
-	
-<!-- 		<update id="update" parameterType="Worktime"> -->
-<!-- 		update worktime -->
-<!-- 		<set> -->
-<!-- 			<if test="clockIn != null">clock_in=#{clockIn},</if> -->
-<!-- 			<if test="clock_out != null">clock_out=#{clockOut},</if> -->
-<!-- 		</set> -->
-<!-- 				where id = (select id from worktime -->
-<!-- 					where employee_id = #{employeeId} -->
-<!-- 					order by date desc -->
-<!-- 					limit 1) -->
-<!-- 	</update> -->
 
 	<delete id="delete">
 		delete 

@@ -11,74 +11,78 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
 
 import com.teamBus.web.entity.AdminListDayView;
+import com.teamBus.web.entity.Company;
 import com.teamBus.web.entity.Employee;
+
+// 자료형 변경 
+
+// company name unique 
+// 삭제시 외래키 제약 꼭 확인
 
 
 @AutoConfigureTestDatabase(replace = Replace.NONE)
 @MybatisTest
-class EmployeeRepositoryTest {
+class CompanyRepositoryTest {
 	
 	@Autowired
-	private EmployeeRepository repository;
+	private CompanyRepository repository;
 	
 
 //	@Test
-	void findTest() {
-		List <Employee> list = repository.findAll();
-		System.out.println(list);
-	}
+//	void findTest() {
+//		List <Employee> list = repository.findAll();
+//		System.out.println(list);
+//	}
 	
-//	@Test
+	//@Test
 	void findByIdTest() {
 		
-		Employee em = repository.findById(10);
+		Company cm = repository.findById(3);
 		
-		System.out.println(em);
+		System.out.println(cm);
 	}
 	
-//	@Test
-	void findidViewTest() {
-		List <AdminListDayView> list = repository.findViewByCompanyId(1);
-		System.out.println(list);
-	}
+////	@Test
+//	void findidViewTest() {
+//		List <AdminListDayView> list = repository.findViewByCompanyId(1);
+//		System.out.println(list);
+//	}
 	
-//	@Test
+	@Test
 	void insertTest() {
 
 	
-		Employee em = new Employee
-			(null,1, //구분1  
-			"0000","박동조","01012323522","q@a.com", //구분2
-			null,null,null,null,null,null); //구분3
+		Company cp = new Company(
+				null,"LG",
+				null, null,
+				null, null, null, null);	
 		
-		int t = repository.insertNew(em);
+		int t = repository.insertNew(cp);
 		System.out.println(t);
+		
+	}
+
+//	@Test
+	void updateTest() {
+
+		Company cp = new Company(
+				1,"LG2",
+				null, "구광모",
+				null, "0270004306", "백범로47", "a@back.com");	
+		
+		
+		int t = repository.update(cp);
+		System.out.println("update "+ t);
 		
 //		System.out.println(list);
 		
 	}
 	
-	@Test
-	void updateTest() {
-
-		Employee em = new Employee
-			(10,1, //구분1  
-			"0000","박동조","01012323522","q@a.com", //구분2
-			null,"인성팀","대리",'1',null,'1'); //구분3
-		
-		int t = repository.update(em);
-		System.out.println("update "+t);
-		
-//		System.out.println(list);
-		
-	}
 	
 //	@Test
 	void deleteTest() {
-
 		
-		
-		int t = repository.delete(10);
+		int t = repository.delete(3);
 		System.out.println("delete "+t);
 		
 //		System.out.println(list);

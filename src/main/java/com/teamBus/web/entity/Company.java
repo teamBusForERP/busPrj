@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Company {
 	
-	private int id;
+	private Integer id;	
 	private String name;
 	private String image;
 	private String ceoName;
@@ -21,5 +21,4 @@ public class Company {
 	private String phoneNumber;
 	private String address;
 	private String email;
-
 }

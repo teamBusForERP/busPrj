@@ -4,33 +4,48 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.teamBus.web.repository.CompanyRepository">
 
-	<resultMap id="companyResultMap" type="Company">
+	<resultMap id="CompanyResultMap" type="Company">
 		<result property="ceoName" column="ceo_name" />
-		<result property="establishmentDate" column="establishment_date" />
+		<result property="establishmentDate"
+			column="establishment_date" />
 		<result property="phoneNumber" column="phone_number" />
 	</resultMap>
 
-	<select id="findById" resultMap="companyResultMap">
+	<insert id="insertNew" parameterType="Company">
+		insert into company (name)
+		values (#{name})
+	</insert>
+
+	<select id="findAll" resultMap="CompanyResultMap">
 		select *
 		from company
-		where id = #{companyId}
 	</select>
-	
-<!-- 	<select id="" resultType=""> -->
-<!-- 		select * -->
-<!-- 		from company -->
-<!-- 	</select> -->
 
-<!--  	<insert id="insert"> -->
-<!-- 		insert into company() -->
-<!-- 		value () -->
-<!-- 	</insert> -->
-	
-<!-- 	<update id="update"> -->
-<!-- 	</update> -->
-	
-<!-- 	<delete id="delete"> -->
-<!-- 		delete from company -->
-<!-- 	</delete> -->
+	<select id="findById" resultMap="CompanyResultMap">
+		select *
+		from company
+		where id =
+		#{companyId}
+	</select>
+
+	<update id="update" parameterType="Company">
+		update company
+		<set>
+			<if test="name != null">name=#{name},</if>
+			<if test="image != null">image=#{image},</if>
+			<if test="ceoName != null">ceo_name=#{ceoName},</if>
+			<if test="establishmentDate != null">establishment_date=#{establishmentDate},</if>
+			<if test="phoneNumber != null">phone_number=#{phoneNumber},</if>
+			<if test="address != null">address=#{address},</if>
+			<if test="email != null">email=#{email}</if>
+		</set>
+		where id= #{id}
+	</update>
+
+	<delete id="delete">
+		delete
+		from company
+		where id = #{companyId}
+	</delete>
 
 </mapper>

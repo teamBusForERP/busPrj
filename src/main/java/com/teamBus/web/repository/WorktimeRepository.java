@@ -18,9 +18,8 @@ public interface WorktimeRepository {
 	
 	int insertNow(Worktime worktime);
 	void addWorktime(int employeeId);
+	
 	void updateWorktime(Worktime worktime);
-//	void updateWorktime(int employeeId, Time clockOut);
-//	void updateWorktime(int employeeId, Time breakTimeStart, Time breakTimeEnd);
-//	void updateWorktime(int employeeId, Time breakTimeStart, Time breakTimeEnd, Time clockOut);
+	
 	Worktime findTodayByEmployeeId(int employeeId);
 }

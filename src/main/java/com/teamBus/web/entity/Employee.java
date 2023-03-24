@@ -12,23 +12,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Employee {
-	
-	//구분1
+
 	private Integer id;
-	private Integer companyId; 
-	
-	//구분2
-	private String password; //update
-	private String name; //update
-	private String phoneNumber; //update
+	private Integer companyId;
+	private String password;
+	private String name;
+	private String phoneNumber;
 	private String email;
-	
-	//구분3
-	private String image; //update
-	private String department; //update
-	private String position; //update
-	private Character authority; //update
+	private String image;
+	private String department;
+	private String position;
+	private Character authority;
 	private Date joinDate;
-	private Character joinStatus; //update
-	
+	private Character joinStatus;
 }
