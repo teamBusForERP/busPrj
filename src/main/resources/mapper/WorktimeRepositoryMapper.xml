@@ -23,29 +23,11 @@
 		where id=#{id}
 	</select>
 	
-	<select id="findTodayByEmployeeId" resultMap="WorktimeResultMap">
-		select *
-		from worktime
-		where employee_id = #{id}
-		and date = date(now())
-	</select>
-	
-	<!-- <insert id="insert" parameterType="Worktime">
-		insert into worktime(employee_id, date, clock_in, break_time_start, break_time_end,clock_out)
-		value (#{employeeId}, #{date}, #{clockIn}, #{breakTimeStart}, #{breakTimeEnd},#{clockOut})
-	</insert> -->
-	
 	<insert id="insertNow" parameterType="Worktime">
 		insert worktime(employee_id) 
 		values (#{employeeId})
 	</insert>
 	
-	<insert id="addWorktime">
-		insert worktime(employee_id) 
-		values (#{employeeId})
-	</insert>
-	
-<<<<<<< HEAD
 	<update id="update" parameterType="Worktime">
 		update worktime
 		<set>
@@ -58,8 +40,19 @@
 		where id = #{id}
 	</update>
 	
-=======
->>>>>>> devCRUD
+	<delete id="delete">
+		delete 
+		from worktime
+		where id=${id}
+	</delete>
+	
+
+
+	<insert id="addWorktime">
+		insert worktime(employee_id) 
+		values (#{employeeId})
+	</insert>
+	
 	<update id="updateWorktime" parameterType="Worktime">
 		update worktime
 		<set>
@@ -75,11 +68,13 @@
 					limit 1)
 	</update>
 
-	<delete id="delete">
-		delete 
+	<select id="findTodayByEmployeeId" resultMap="WorktimeResultMap">
+		select *
 		from worktime
-		where id=${id}
-	</delete>
+		where employee_id = #{id}
+		and date = date(now())
+	</select>
+
 	
 
 </mapper>
