@@ -92,8 +92,7 @@
 			th:text="${#temporals.format(row.clockOut, 'HH:mm')}">18:30</div>
 		<div class="content-rest-time">1시간 00분</div>
 		<div class="content-note">
-			<button th:if="${row.exId == null}">--</button>
-			<button th:unless="${row.exId == null}">보기</button>
+			<button th:text="${row.exId}==null? '--':'보기'">--</button>
 		</div>
 	</div>
 
