@@ -25,8 +25,8 @@
 
 	<!-- create -->
 	<insert id="insert" parameterType="Employee">
-		insert into employee(company_id, password,name,phone_number,email)
-		value ( #{companyId},#{password},#{name},#{phoneNumber},#{email} );
+		insert into employee(company_id, password, name, phone_number, email)
+		value (#{companyId}, #{password}, #{name}, #{phoneNumber}, #{email})
 	</insert>
 	
 	<!-- read -->
@@ -44,14 +44,14 @@
 	  <update id="update" parameterType="Employee">
   		update employee
   		<set>
-  			<if test="password != null">password=#{password}</if>
-  			<if test="name != null">name=#{name},</if>
-			<if test="phoneNumber != null">phoneNumber=#{phoneNumber},</if>
-			<if test="image != null">image=#{image},</if>
-			<if test="department != null">department=#{department},</if>
-			<if test="position != null">position=#{position},</if>
-			<if test="authority != null">authority=#{authority},</if>
-			<if test="joinStatus != null">joinStatus=#{joinStatus},</if>
+  			<if test="password != null">password = #{password},</if>
+  			<if test="name != null">name = #{name},</if>
+			<if test="phoneNumber != null">phone_number = #{phoneNumber},</if>
+			<if test="image != null">image = #{image},</if>
+			<if test="department != null">department = #{department},</if>
+			<if test="position != null">position = #{position},</if>
+			<if test="authority != null">authority = #{authority},</if>
+			<if test="joinStatus != null">join_status = #{joinStatus}</if>
 		</set>
 		where id= #{id}
 	  </update>
@@ -62,8 +62,6 @@
   		from employee 
   		where id = #{id}
  	 </delete>
-
-
 
 <!-- view -->
 <!-- 	<select id="findViewByCompanyId" resultMap="adminListDayViewResultMap">
