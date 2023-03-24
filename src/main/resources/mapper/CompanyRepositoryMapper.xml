@@ -10,27 +10,58 @@
 		<result property="phoneNumber" column="phone_number" />
 	</resultMap>
 
+<!-- 기본형 -->
+
+	<!-- create -->
+	<insert id="insert" parameterType="Company">
+		insert into employee(company_id, password,name,phone_number,email)
+		value ( #{companyId},#{password},#{name},#{phoneNumber},#{email} )
+	</insert>
+	
+	<!-- read -->
+			<!-- 아직 안만듬 -->
+			<!-- <select id="findAll" resultMap="companyResultMap">
+				select *
+				from company
+			</select> -->
 	<select id="findById" resultMap="companyResultMap">
 		select *
 		from company
 		where id = #{companyId}
 	</select>
 	
-<!-- 	<select id="" resultType=""> -->
-<!-- 		select * -->
-<!-- 		from company -->
-<!-- 	</select> -->
+	<!-- update -->
+	  <update id="update" parameterType="Company">
+	 		update employee
+	 		<set>
+	 			<if test="password != null">password=#{password}</if>
+	 			<if test="name != null">name=#{name},</if>
+			<if test="phoneNumber != null">phoneNumber=#{phoneNumber},</if>
+			<if test="image != null">image=#{image},</if>
+			<if test="department != null">department=#{department},</if>
+			<if test="position != null">position=#{position},</if>
+			<if test="authority != null">authority=#{authority},</if>
+			<if test="joinStatus != null">joinStatus=#{joinStatus},</if>
+		</set>
+		where id= #{id}
+	  </update>
+	  
+	  <!-- delete  -->
+  	 <delete id="delete">
+  		delete 
+  		from employee 
+  		where id = #{id}
+ 	 </delete>
 
-<!--  	<insert id="insert"> -->
-<!-- 		insert into company() -->
-<!-- 		value () -->
-<!-- 	</insert> -->
-	
-<!-- 	<update id="update"> -->
-<!-- 	</update> -->
-	
-<!-- 	<delete id="delete"> -->
-<!-- 		delete from company -->
-<!-- 	</delete> -->
+
+
+<!-- view -->
+	<!-- <select id="findViewByCompanyId" resultMap="adminListDayViewResultMap">
+		select *
+		from admin_list_day_view
+		where company_id = #{companyId}
+	</select>
+ -->
+
 
 </mapper>

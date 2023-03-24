@@ -10,7 +10,7 @@
 		<result property="joinDate" column="join_date" />
 		<result property="joinStatus" column="join_status" />
 	</resultMap>
-
+<!-- 
 	<resultMap id="adminListDayViewResultMap" type="AdminListDayView">
 		<result property="companyId" column="company_id" />
 		<result property="clockIn" column="clock_in" />
@@ -19,7 +19,7 @@
 		<result property="clockOut" column="clock_out" />
 		<result property="exId" column="ex_id" />
 	</resultMap>
-	
+ -->	
 	
 <!-- 기본형 -->
 
@@ -66,11 +66,11 @@
 
 
 <!-- view -->
-	<select id="findViewByCompanyId" resultMap="adminListDayViewResultMap">
+<!-- 	<select id="findViewByCompanyId" resultMap="adminListDayViewResultMap">
 		select *
 		from admin_list_day_view
 		where company_id = #{companyId}
-	</select>
+	</select> -->
 	
 	
 </mapper>
