@@ -19,5 +19,6 @@ public interface WorktimeRepository {
 	
 	void addWorktime(int employeeId);
 	void updateWorktime(Worktime worktime);
+	Worktime findRecentByEmployeeId(int employeeId);
 	Worktime findTodayByEmployeeId(int employeeId);
 }

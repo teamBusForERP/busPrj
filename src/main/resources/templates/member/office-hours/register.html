@@ -46,13 +46,15 @@
 			</div>
 		</div>
 
+
+
 		<!-- commute-info -->
 
 		<div class="commute-info">
 			<button class="" type="submit"><span>출근</span><span
-					th:text="${worktime} == null? '' : ${worktime.clockIn}">12:12</span></button>
+					th:text="${worktime} == null? '' : ${#temporals.format(worktime.clockIn, 'HH:mm')}">12:12</span></button>
 			<button class="" type="submit"><span>퇴근</span><span
-					th:text="${worktime} == null? '' : ${worktime.clockOut}">12:12</span></button>
+					th:text="${worktime} == null? '' : ${#temporals.format(worktime.clockOut, 'HH:mm')}">12:12</span></button>
 			<button class="rest d-none" type="submit"><span>휴게</span><span>12:12</span></button>
 		</div>
 		<div>

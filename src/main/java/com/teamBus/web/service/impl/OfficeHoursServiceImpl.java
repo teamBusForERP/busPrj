@@ -29,14 +29,12 @@ public class OfficeHoursServiceImpl implements OfficeHoursService {
 
 	@Override
 	public void regClockOut(int employeeId) {
-		Worktime worktime = new Worktime(null, employeeId, null, null, null, null, LocalTime.now());
-		worktimeRepository.update(worktime);
+		
+		Worktime recentWorktime = worktimeRepository.findRecentByEmployeeId(employeeId);
+		recentWorktime.setClockIn(LocalTime.now());
+		worktimeRepository.updateWorktime(recentWorktime);
 	}
-
-	@Override
-	public Worktime getTodayWorktimeById(int employeeId) {
-		return worktimeRepository.findTodayByEmployeeId(employeeId);
-	}
+	
 
 	@Override
 	public List<Employee> getList() {
@@ -46,6 +44,11 @@ public class OfficeHoursServiceImpl implements OfficeHoursService {
 	@Override
 	public List<AdminListDayView> getDayList(Integer companyId) {
 		return employeeRepository.findViewByCompanyId(companyId);
+	}
+
+	@Override
+	public Worktime getTodayWorktimeById(int employeeId) {
+		return worktimeRepository.findTodayByEmployeeId(employeeId);
 	}
 
 }

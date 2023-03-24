@@ -46,14 +46,20 @@
 		where id=${id}
 	</delete>
 	
-
+	<select id="findTodayByEmployeeId" resultMap="WorktimeResultMap">
+		select *
+		from worktime
+		where employee_id = #{id}
+		and date = date(now())
+	</select>
+	
 
 	<insert id="addWorktime">
 		insert worktime(employee_id) 
 		values (#{employeeId})
 	</insert>
 	
-	<update id="updateWorktime" parameterType="Worktime">
+<!-- 	<update id="updateWorktime" parameterType="Worktime">
 		update worktime
 		<set>
 			<if test="date != null">date = #{date}</if>
@@ -66,13 +72,14 @@
 					where employee_id = #{employeeId}
 					order by date desc
 					limit 1)
-	</update>
+	</update> -->
 
-	<select id="findTodayByEmployeeId" resultMap="WorktimeResultMap">
+	<select id="findRecentByEmployeeId" resultMap="WorktimeResultMap">
 		select *
 		from worktime
-		where employee_id = #{id}
-		and date = date(now())
+		where employee_id = #{employeeId}
+		order by date desc
+		limit 1
 	</select>
 
 	
