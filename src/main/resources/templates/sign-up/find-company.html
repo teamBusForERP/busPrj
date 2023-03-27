@@ -28,20 +28,21 @@
 			<div class="header-rignt"></div>
 		</header>
 
-		<div class="search-input">
-			<input type="text" class="input-box" placeholder="회사명 검색">
-			<div class="search-icon"></div>
-		</div>
-
-		<div class="com-search-result">
-			<div></div>
-		</div>
-		
-		<div class="btn-wrap">
-			<button class="btn-blue" onClick="location.href='../sign-up/waiting'">요청하기</button>
-			<button class="btn-white" onClick="location.href='../login'">취소</button>
-		</div>
-		
+		<form action="/sign-up/find-company" class="find-company-form" method="post">
+			<div class="search-input">
+				<input type="text" class="input-box" name="user-company"placeholder="회사명 검색">
+				<div class="search-icon"></div>
+			</div>
+	
+			<div class="com-search-result">
+				<div></div>
+			</div>
+			
+			<div class="btn-wrap">
+				<button type="submit" class="btn-blue" onClick="location.href='../sign-up/waiting'">요청하기</button>
+				<button class="btn-white" onClick="location.href='../login'">취소</button>
+			</div>
+		</form>
 
 	</div>
 

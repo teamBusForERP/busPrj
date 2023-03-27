@@ -15,10 +15,12 @@ public class Employee {
 
 	private Integer id;
 	private Integer companyId;
+	
 	private String password;
 	private String name;
 	private String phoneNumber;
 	private String email;
+	
 	private String image;
 	private String department;
 	private String position;

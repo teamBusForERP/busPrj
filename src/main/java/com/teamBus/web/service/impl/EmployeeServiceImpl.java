@@ -37,6 +37,17 @@ public class EmployeeServiceImpl implements EmployeeService {
 		String info = pw + "\n" + at;
 		return info;
 	}
+
+	@Override
+	public int signUp(Employee emp) {
+		// TODO Auto-generated method stub
+		
+		int x = repository.insertNew(emp);
+		
+		return x;
+	}
+
+
 	
 	
 
