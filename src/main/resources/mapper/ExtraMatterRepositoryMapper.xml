@@ -20,6 +20,12 @@
 		select *
 		from extra_matter
 	</select>
+	
+	<select id="findByEmployeeId" resultMap="ExtraMatterResultMap">
+		select *
+		from extra_matter
+		where employee_id= #{employeeId}
+	</select>
 
 <!--  	<insert id="insert" parameterType="ExtraMatter">
 		insert into extra_matter (id, date_time, employee_id, matter_type, reason)
