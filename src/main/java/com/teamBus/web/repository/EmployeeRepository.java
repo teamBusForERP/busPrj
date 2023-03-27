@@ -12,6 +12,7 @@ public interface EmployeeRepository {
 
 	List<Employee> findAll();
 	Employee findById(Integer id);
+	Employee findByIdEmail(Integer id, String email);
 	
 //	int insert(Employee employee);
 	int insertNew(Employee employee);

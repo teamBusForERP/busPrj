@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.teamBus.web.entity.Employee;
 import com.teamBus.web.service.EmployeeService;
 
 @Controller
@@ -25,15 +26,33 @@ public class HomeController {
 	}
 	
 	@PostMapping("login")
-	public String postLogin(@RequestParam(name = "email-name") String email, String pwd,
-			RedirectAttributes redirectAttr) {
-		System.out.printf("%s %s\n", email, pwd);
+	public String postLogin(
+			@RequestParam(name = "email-name") String email, 
+												String pwd,
+							RedirectAttributes redirectAttr
+		){
+		String loginInfo = service.getLoginInfo(email);
+		String [] info = loginInfo.split("\n");
+		System.out.println(info[0]);
+		System.out.println(info[1]);
 		
-		if (email.equals("admin@abc.com") && pwd.equals("admin"))
-			return "admin-select";
+		if (pwd.equals(info[0])) {
+			System.out.println("로그인성공");
+			
+			if(info[1].equals("1")) {
+				System.out.println("관리자계정");
+				return "admin-select";
+				}
+			else { 
+				System.out.println("근로자계정");
+				return "redirect:/member/office-hours/register";
+			}
+		}
 		else {
+			System.out.println("로그인실패");
 			redirectAttr.addFlashAttribute("errorMessage","암호가 틀렸습니다.");
-			return "redirect:";
+//			return "redirect:/loginform";
+			return "login";
 		}
 	}
 	

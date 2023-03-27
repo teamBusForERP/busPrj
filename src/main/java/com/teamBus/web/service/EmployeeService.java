@@ -10,5 +10,6 @@ public interface EmployeeService {
 //	List<Employee> getList();
 	Employee getById(int employeeId);
 	
+	String getLoginInfo(String email);
 	
 }

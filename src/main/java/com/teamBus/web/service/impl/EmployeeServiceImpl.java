@@ -13,10 +13,31 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Autowired
 	private EmployeeRepository repository;
 	
-	@Override
-	public Employee getEmployeeById(int employeeId) {
+//	@Override
+//	public Employee getEmployeeById(int employeeId) {
+//
+//		return repository.findById(employeeId);
+//	}
 
+	@Override
+	public Employee getById(int employeeId) {
+		// TODO Auto-generated method stub
 		return repository.findById(employeeId);
 	}
+
+	@Override
+	public String getLoginInfo(String email) {
+		// TODO Auto-generated method stub
+		Employee em = repository.findByIdEmail(null,email);
+		
+		//비밀번호 계정 불러오기
+		String pw = em.getPassword();
+		char at = em.getAuthority();
+		
+		String info = pw + "\n" + at;
+		return info;
+	}
+	
+	
 
 }

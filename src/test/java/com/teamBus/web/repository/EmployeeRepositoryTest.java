@@ -36,6 +36,14 @@ class EmployeeRepositoryTest {
 		System.out.println(em);
 	}
 	
+	@Test
+	void findByIdEmailTest() {
+		
+		Employee em = repository.findByIdEmail(null,"jym2013@gmail.com");
+		
+		System.out.println(em);
+	}
+	
 //	@Test
 	void findidViewTest() {
 		List <AdminListDayView> list = repository.findViewByCompanyId(1);
