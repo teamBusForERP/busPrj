@@ -96,10 +96,9 @@ public class OfficeHoursController {
 
 		if (now.isAfter(defaultTime)) {
 			System.out.println("지각사유");
-			matterType = 2;
+			model.addAttribute("status", 2);
 		} else if (now.isBefore(defaultTime)) {
 			System.out.println("사전예외신청");
-			matterType = 1;
 			model.addAttribute("status", 1);
 		}
 		return "/member/office-hours/exception-req";
@@ -108,12 +107,11 @@ public class OfficeHoursController {
 	@PostMapping("exception-req")
 	public String exceptionReqPost(
 			int matterType,
-			@RequestParam(name="exception-reason",required = false) String reason,
-			Model model) {
+			@RequestParam(name="exception-reason",required = false) String reason) {
 		
 		int employeeId = 1;
 		
-		commonService.addExtraMatter(employeeId,matterType,reason);
+		commonService.addExtraMatter(employeeId, matterType, reason);
 		
 			
 		return "redirect:register";
