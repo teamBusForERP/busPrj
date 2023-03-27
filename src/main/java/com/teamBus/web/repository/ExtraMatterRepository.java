@@ -10,11 +10,13 @@ import com.teamBus.web.entity.ExtraMatter;
 public interface ExtraMatterRepository {
 	
 	ExtraMatter findById(int id);
+	ExtraMatter findByEmployeeId(int employeeId);
 	List<ExtraMatter> findAll();
 	
 //	int insert(ExtraMatter extraMatter);
-	int insertNow(ExtraMatter extraMatter);
+	ExtraMatter insertNow(ExtraMatter extraMatter);
 	int update(ExtraMatter extraMatter);
 	int delete(int id);
+	void insertNow(int employeeId, int matterType, String reason);
 	
 }

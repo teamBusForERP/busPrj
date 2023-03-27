@@ -9,17 +9,17 @@
 	<header class="profile-card">
 		<div class="profile-card-top">
 			<div class="profile-card-img">
-				<img src="../../img/profile.png" alt="프로필이미지" />
+				<img th:src="@{${loginInfo.image}}" src="../../img/profile.png" alt="프로필이미지" />
 			</div>
-			<span>임한응</span> 님, 안녕하세요.
+			<span th:text=${loginInfo.name}>임한응</span> 님, 안녕하세요.
 		</div>
 
 		<div class="profile-card-bottom">
 			<div class="profile-card-dept">
-				<span>뉴렉처 인재개발원</span>
+				<span th:text=${companyName}>뉴렉처 인재개발원</span>
 			</div>
 			<div class="profile-card-team">
-				<span>버스 1팀</span>
+				<span th:text="${loginInfo.department} + 팀">버스 1팀</span>
 			</div>
 		</div>
 	</header>
@@ -34,19 +34,21 @@
 					<img src="../../img/calendar.png" alt="달력 이미지">
 				</div>
 				<div class="date">
-					<span>2월 15일</span>
+					<span th:text="${#temporals.format(today, 'M'+'월'+' dd'+'일')}">2월 15일</span>
 				</div>
 			</div>
 		</div>
 		<!-- exception-req-box -->
 		<form action="exception-req" method="post">
+			<input type="hidden" th:value="${status}" name="matterType">
 			<div class="exception-req-box">
-				<label class="exception">사전 예외 신청</label>
-				<textarea name="name" placeholder="사전 예외 신청 메시지를 입력해주세요."></textarea>
+				<label th:text="${status} == '1' ? '사전 예외 신청' : '지각 사유'" class="exception">사전 예외 신청</label>
+				<textarea th:if="${status} == '1'" name="exception-reason" placeholder="사전 예외 신청 메시지를 입력해주세요."></textarea>
+				<textarea th:if="${status} != '1'" name="exception-reason" placeholder="지각 사유를 입력해주세요."></textarea>
 			</div>
 
 			<div class="btn-wrap">
-				<button class="btn-blue register-btn m-top-40">저장</button>
+				<button type="submit" class="btn-blue register-btn m-top-40">저장</button>
 			</div>
 		</form>
 	</section>
