@@ -50,33 +50,25 @@ public class OfficeHoursController {
     	LocalDate today = LocalDate.now();
     	model.addAttribute("today", today);
 		
-		Worktime w = service.getTodayWorktimeById(employeeId);
-		if(w == null) {
-			model.addAttribute("status", 0);
-			System.out.println("출근 전");
-		} else {
-			model.addAttribute("status", 1);
-			System.out.println("출근 후");
-			model.addAttribute("worktime", w);
-		}
+    	Worktime recentWorktime = service.getRecentByEmployeeId(employeeId);
+    	int status = service.getStatusByWorktime(recentWorktime);
+    	
+    	model.addAttribute("status", status);
+    	model.addAttribute("worktime", recentWorktime);
+    	
 		
 		
 		return "/member/office-hours/register";
 	}
 	
 	@PostMapping("register")
-	public String postRegister(String status, Model model) {
+	public String postRegister(int status, Model model) {
 		
     	int employeeId = 1;
     	
-		if (status.equals("0")) {
-			System.out.println("출근 등록");
-			service.addWorktime(employeeId);
-		} else {
-			System.out.println("퇴근 등록");
-			service.regClockOut(employeeId);
-		}
-		return "redirect:/member/office-hours/register";
+    	service.regWorktimeByStatus(employeeId, status);
+
+    	return "redirect:/member/office-hours/register";
 	}
 	
 	@GetMapping("exception-req")

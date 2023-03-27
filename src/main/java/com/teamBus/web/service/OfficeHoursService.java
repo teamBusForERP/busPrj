@@ -12,12 +12,19 @@ import com.teamBus.web.entity.Worktime;
 @Service
 public interface OfficeHoursService {
 	
+	// member/register 사용 메소드
+	Worktime getRecentByEmployeeId(int employeeId);
+	int getStatusByWorktime(Worktime recentWorktime);
+	void regWorktimeByStatus(int employeeId, int status);
+	
+
 	void addWorktime(int employeeId);
 	void regClockOut(int employeeId);
-	Worktime getTodayWorktimeById(int employeeId);
+	
 	
 //	admin/list service
 	List<Employee> getList();
     List<AdminListDayView> getDayList(Integer companyId);
+	
 
 }
