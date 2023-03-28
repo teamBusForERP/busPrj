@@ -16,6 +16,7 @@ public interface OfficeHoursService {
 	Worktime getRecentByEmployeeId(int employeeId);
 	int getStatusByWorktime(Worktime recentWorktime);
 	void regWorktimeByStatus(int employeeId, int status);
+	void editResttime(int employeeId, int status, LocalTime restStart, LocalTime restEnd);
 	
 
 	void addWorktime(int employeeId);

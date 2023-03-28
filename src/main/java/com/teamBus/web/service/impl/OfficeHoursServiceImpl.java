@@ -46,7 +46,7 @@ public class OfficeHoursServiceImpl implements OfficeHoursService {
 		// 0: 출근등록 전 상태
 		// 1: 근무 중 상태,
 		// 2: 퇴근등록 완료 상태
-		// 3: 예외처리(최근근무정보가 오늘이 아닌 상태)
+		// 3: 예외처리(퇴근시간이 등록되지 않은 최근근무정보가 오늘이 아닌 상태)
 
 		if (recentWorktime != null) {
 			if (recentWorktime.getDate().equals(LocalDate.now())) { // 최근근무정보가 오늘인 경우
@@ -85,23 +85,24 @@ public class OfficeHoursServiceImpl implements OfficeHoursService {
 		
 		int recentWorktimeId = worktimeRepository.findRecentByEmployeeId(employeeId).getId();
 		Worktime w = new Worktime();
+		w.setId(recentWorktimeId);
+		w.setClockOut(LocalTime.now());
 		
 		switch (status) {
 		case 0: // 일반적인 출근 등록 입력
 			worktimeRepository.addWorktime(employeeId);
 			break;
+			
 		case 1:
-			// 최근 근무정보의 퇴근시간이 null인 상태에서 퇴근시간 입력 (근무상태->퇴근등록)
-			w.setId(recentWorktimeId);
-			w.setClockOut(LocalTime.now());
+			// 최근 근무정보의 퇴근시간이 null인 상태에서 퇴근시간 입력 (근무상태 -> 퇴근등록)
 			worktimeRepository.update(w);
 			break;
+			
 		case 2:
-			// 최근 근무정보에 퇴근 시간이 이미 입력된 상태에서 퇴근시간 변경 (퇴근상태->퇴근등록)
-			w.setId(recentWorktimeId);
-			w.setClockOut(LocalTime.now());
+			// 최근 근무정보에 퇴근 시간이 이미 입력된 상태에서 퇴근시간 변경 (퇴근상태 -> 퇴근등록)
 			worktimeRepository.update(w);
 			break;
+			
 		case 3:
 			// 오늘이 아닌 퇴근 등록되지 않은 최근근무정보가 있는 상태
 			// - 1. 근무 중 상태이나 자정이 넘은 경우
@@ -109,6 +110,32 @@ public class OfficeHoursServiceImpl implements OfficeHoursService {
 			break;
 		}
 	}
+	
+	public void editResttime(int employeeId, int status, LocalTime restStart, LocalTime restEnd) {
+		// 0: 출근등록 전 상태
+		// 1: 근무 중 상태,
+		// 2: 퇴근등록 완료 상태
+		// 3: 예외처리(퇴근시간이 등록되지 않은 최근근무정보가 오늘이 아닌 상태)
+		
+		int recentWorktimeId = worktimeRepository.findRecentByEmployeeId(employeeId).getId();
+		Worktime w = new Worktime();
+		w.setId(recentWorktimeId);
+		w.setBreakTimeStart(restStart);
+		w.setBreakTimeEnd(restEnd);
+		
+		switch (status) {
+		case 0: // 당일 출근 등록이 안된 상태
+			break;
+			
+		case 1: // 근무상태 -> 휴게시간 수정
+		case 2: // 퇴근상태 -> 휴게시간 수정
+		case 3: // 퇴근이 등록되지 않은 상태 -> 휴게시간 수정 
+			worktimeRepository.update(w);
+			break;
+		}
+		
+	}
+	
 
 	@Override
 	public List<Employee> getList() {
