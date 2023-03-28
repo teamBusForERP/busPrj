@@ -1,5 +1,7 @@
 package com.teamBus.web.service.impl;
 
+import java.time.LocalTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -51,6 +53,27 @@ public class CommonServiceImpl implements CommonService {
 	public void addExtraMatter(int employeeId, int matterType, String reason) {
 		// TODO Auto-generated method stub
 		 extraMatterRepository.insertNow(employeeId,matterType,reason);
+	}
+
+	@Override
+	public int getMatterTypeStatus() {
+		
+		/// 기준시간
+		LocalTime defaultTime = LocalTime.of(9, 30, 00);
+		System.out.println(defaultTime);
+
+		// 현재시간
+		LocalTime now = LocalTime.now();
+		System.out.println(now);
+
+		if (now.isAfter(defaultTime)) {
+			System.out.println("지각사유");
+			return 2; 
+		} else {
+			System.out.println("사전예외신청");
+			return 1;
+		}
+		
 	}
 
 	

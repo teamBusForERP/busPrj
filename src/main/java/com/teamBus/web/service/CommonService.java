@@ -12,4 +12,6 @@ public interface CommonService {
 	String getCompanyNameByCompanyId(int companyId);
 	ExtraMatter getExtraMatterByEmployeeId(int employeeId);
 	void addExtraMatter(int employeeId,int matterType,String reason);
+
+	int getMatterTypeStatus();
 }

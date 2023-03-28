@@ -40,11 +40,11 @@
 		</div>
 		<!-- exception-req-box -->
 		<form action="exception-req" method="post">
-			<input type="hidden" th:value="${status}" name="matterType">
+			<input type="hidden" th:value="${MatterTypeStatus}" name="matterType">
 			<div class="exception-req-box">
-				<label th:text="${status} == '1' ? '사전 예외 신청' : '지각 사유'" class="exception">사전 예외 신청</label>
-				<textarea th:if="${status} == '1'" name="exception-reason" placeholder="사전 예외 신청 메시지를 입력해주세요."></textarea>
-				<textarea th:if="${status} != '1'" name="exception-reason" placeholder="지각 사유를 입력해주세요."></textarea>
+				<label th:text="${MatterTypeStatus} == '1' ? '사전 예외 신청' : '지각 사유'" class="exception">사전 예외 신청</label>
+				<textarea th:if="${MatterTypeStatus} == '1'" name="exception-reason" placeholder="사전 예외 신청 메시지를 입력해주세요."></textarea>
+				<textarea th:if="${MatterTypeStatus} != '1'" name="exception-reason" placeholder="지각 사유를 입력해주세요."></textarea>
 			</div>
 
 			<div class="btn-wrap">

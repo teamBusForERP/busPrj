@@ -77,7 +77,7 @@ public class OfficeHoursController {
 		int employeeId = 1;
 		
 		Employee e = commonService.getEmployeeByEmployeeId(employeeId);
-    	model.addAttribute("loginInfo", e);
+    	model.addAttribute("loginInfo", e); 
     	
     	String companyName = commonService.getCompanyNameByCompanyId(e.getCompanyId());
     	model.addAttribute("companyName", companyName);
@@ -86,21 +86,10 @@ public class OfficeHoursController {
     	LocalDate today = LocalDate.now();
     	model.addAttribute("today", today);
 		
-		// 기준시간
-		LocalTime defaultTime = LocalTime.of(9, 30, 00);
-		System.out.println(defaultTime);
-
-		// 현재시간
-		LocalTime now = LocalTime.now();
-		System.out.println(now);
-
-		if (now.isAfter(defaultTime)) {
-			System.out.println("지각사유");
-			model.addAttribute("status", 2);
-		} else if (now.isBefore(defaultTime)) {
-			System.out.println("사전예외신청");
-			model.addAttribute("status", 1);
-		}
+    	//시간에 따라 지각사유 or 사전예외신청 
+    	int MatterTypeStatus = commonService.getMatterTypeStatus();
+    	model.addAttribute("MatterTypeStatus", MatterTypeStatus);
+    	
 		return "/member/office-hours/exception-req";
 	}
 	
