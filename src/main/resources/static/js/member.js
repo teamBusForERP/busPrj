@@ -88,7 +88,7 @@ window.onload = function () {
 	let dateS = dayjs();
 	dateS = dateS.set("hour", 13);
 	dateS = dateS.set("minute", 00);
-	//   let dateS = dayjs("12:00", "A hh:mm");
+	dateS = dateS.set("second", 00);
 	console.log(dateS);
 
 	let dateE = dateS.add(1, "hour");
@@ -123,7 +123,6 @@ window.onload = function () {
 
 	function displayTime() {
 		formatDateS = dateS.format("A hh:mm");
-
 		formatDateS = formatDateS.replace("AM", "오전");
 		formatDateS = formatDateS.replace("PM", "오후");
 		startRestTime.innerText = formatDateS;
@@ -132,6 +131,8 @@ window.onload = function () {
 		formatDateE = formatDateE.replace("AM", "오전");
 		formatDateE = formatDateE.replace("PM", "오후");
 		endRestTime.innerText = formatDateE;
+		document.querySelector("#date-s-val").value = dateS;
+		document.querySelector("#date-e-val").value = dateE;
 	}
 
 	btnPlusS.addEventListener("click", dateStartPlusHandler)

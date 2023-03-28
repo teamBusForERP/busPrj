@@ -79,7 +79,7 @@
 
 
 	<!-- //휴게편집창 추가 -->
-	<div class="rest-editor-box">
+	<form class="rest-editor-box" action="reg-rest" method="post">
 		<hr>
 		<section class="rest-editor">
 			<h1> ☕️ 휴게</h1>
@@ -87,28 +87,29 @@
 			<div class="rest-edit-box">
 
 				<div class="choose-date-btn">
-					<button class="date-btn " id="minus-s"></button>
+					<button type="button" class="date-btn " id="minus-s"></button>
 					<span class="choose-date" id="start-restTime"></span>
-					<button class="date-btn " id="plus-s"></button>
+					<input type="hidden" id="date-s-val" name="rest-start">
+					<button type="button" class="date-btn " id="plus-s"></button>
 				</div>
 
 				<div class="from-text-box">
-
 					<div class="from-text">
 						부터
 					</div>
-
 				</div>
 
 				<div class="choose-date-btn">
-					<button class="date-btn " id="minus-e"></button>
+					<button type="button" class="date-btn " id="minus-e"></button>
 					<span class="choose-date" id="end-restTime"></span>
-					<button class="date-btn " id="plus-e"></button>
+					<input type="hidden" id="date-e-val" name="rest-end">
+					<button type="button" class="date-btn " id="plus-e"></button>
 				</div>
 			</div>
-			<button type="button" class="btn-blue rest-edit-submit">저장</button>
+			<input type="hidden" name="status" th:value="${status}"/>
+			<button type="submit" class="btn-blue rest-edit-submit">저장</button>
 		</section>
-	</div>
+	</form>
 	<!-- ↑↑↑↑휴게편집창 추가 ↑↑↑↑-->
 
 </div>
