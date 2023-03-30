@@ -1,5 +1,6 @@
 package com.teamBus.web.service;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -25,7 +26,6 @@ public interface OfficeHoursService {
 	
 //	admin/list service
 	List<Employee> getList();
-    List<AdminListDayView> getDayList(Integer companyId);
-	
+    List<AdminListDayView> getDayList(Integer companyId, LocalDate date);
 
 }

@@ -1,6 +1,7 @@
 package com.teamBus.web.service.impl;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -32,7 +33,7 @@ public class OfficeHoursServiceImpl implements OfficeHoursService {
 	public void regClockOut(int employeeId) {
 
 		Worktime recentWorktime = worktimeRepository.findRecentByEmployeeId(employeeId);
-		recentWorktime.setClockIn(LocalTime.now());
+		recentWorktime.setClockIn(LocalDateTime.now());
 		worktimeRepository.update(recentWorktime);
 	}
 
@@ -83,10 +84,13 @@ public class OfficeHoursServiceImpl implements OfficeHoursService {
 		// 2: 퇴근등록 완료 상태
 		// 3: 예외처리(퇴근시간이 등록되지 않은 최근근무정보가 오늘이 아닌 상태)
 		
-		int recentWorktimeId = worktimeRepository.findRecentByEmployeeId(employeeId).getId();
 		Worktime w = new Worktime();
-		w.setId(recentWorktimeId);
-		w.setClockOut(LocalTime.now());
+		
+		if(status != 0) {
+			int recentWorktimeId = worktimeRepository.findRecentByEmployeeId(employeeId).getId();
+			w.setId(recentWorktimeId);
+			w.setClockOut(LocalDateTime.now());
+		}
 		
 		switch (status) {
 		case 0: // 일반적인 출근 등록 입력
@@ -105,7 +109,9 @@ public class OfficeHoursServiceImpl implements OfficeHoursService {
 			
 		case 3:
 			// 오늘이 아닌 퇴근 등록되지 않은 최근근무정보가 있는 상태
+			
 			// - 1. 근무 중 상태이나 자정이 넘은 경우
+			
 			// - 2. 단순 퇴근등록이 누락된 경우
 			break;
 		}
@@ -143,8 +149,8 @@ public class OfficeHoursServiceImpl implements OfficeHoursService {
 	}
 
 	@Override
-	public List<AdminListDayView> getDayList(Integer companyId) {
-		return employeeRepository.findViewByCompanyId(companyId);
+	public List<AdminListDayView> getDayList(Integer companyId, LocalDate date) {
+		return employeeRepository.findViewByCompanyId(companyId, date);
 	}
 
 }

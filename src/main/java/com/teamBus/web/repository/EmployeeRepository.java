@@ -1,5 +1,6 @@
 package com.teamBus.web.repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -23,6 +24,6 @@ public interface EmployeeRepository {
 	
 //view
 	//HR관리자 계정에서내역조회 
-    List<AdminListDayView> findViewByCompanyId(Integer companyId);
+    List<AdminListDayView> findViewByCompanyId(Integer companyId, LocalDate date);
     
 }

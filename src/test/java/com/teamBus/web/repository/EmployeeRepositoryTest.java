@@ -45,12 +45,6 @@ class EmployeeRepositoryTest {
 	}
 	
 //	@Test
-	void findidViewTest() {
-		List <AdminListDayView> list = repository.findViewByCompanyId(1);
-		System.out.println(list);
-	}
-	
-//	@Test
 	void insertTest() {
 
 	
