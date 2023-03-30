@@ -22,23 +22,6 @@
 		<result property="restHoursSum" column="resthours_sum" />
 	</resultMap>
 	
-	<select id="findhoursByFilter" resultMap="listWmViewMap">
-		select 
-			id, company_id, name, image, department, position, 
-		    sec_to_time(sum(time_to_sec(workhours))) workhours_sum,
-		    sec_to_time(sum(time_to_sec(resthours))) resthours_sum 
-		from 
-			admin_list_wm_view
-    	<where>
-    		<if test="employeeId != null">and id = #{employeeId}</if>
-    		<if test="fromDate != null">and DATE_FORMAT(date,'%Y-%m-%d') between #{fromDate} and #{toDate}</if>
-   		</where>
-    	group by 
-    		id, company_id, name, image, department, position;
-	</select>
-	
-	
-	
 	<select id="findAll" resultMap="WorktimeResultMap">
 		select *
 		from worktime
@@ -109,6 +92,20 @@
 		limit 1
 	</select>
 
+	<select id="findhoursByFilter" resultMap="listWmViewMap">
+			select 
+				id, company_id, name, image, department, position, 
+			    sec_to_time(sum(time_to_sec(workhours))) workhours_sum,
+			    sec_to_time(sum(time_to_sec(resthours))) resthours_sum 
+			from 
+				admin_list_wm_view
+	    	<where>
+	    		<if test="employeeId != null">and id = #{employeeId}</if>
+	    		<if test="fromDate != null">and DATE_FORMAT(date,'%Y-%m-%d') between #{fromDate} and #{toDate}</if>
+	   		</where>
+	    	group by 
+	    		id, company_id, name, image, department, position;
+		</select>
 	
 
 </mapper>

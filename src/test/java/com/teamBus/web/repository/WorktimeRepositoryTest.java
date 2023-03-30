@@ -30,12 +30,14 @@ class WorktimeRepositoryTest {
 //		Date date1 = new Date(2023,02,26);
 //		System.out.println(date1);
 		
-//		ListWmView wm = repository.findhoursByFilter(1, null, null);
-		ListWmView wm = repository.findhoursByFilter(1, "2023-03-26", "2023-04-01");
-//		ListWmView wm = repository.findhoursByFilter(1);
+		ListWmView wm = repository.findhoursByFilter(1, "2023-03-26", "2023-03-26");
+		ListWmView wm1 = repository.findhoursByFilter(1, "2023-03-26", "2023-04-01");
+		ListWmView wm2 = repository.findhoursByFilter(1, "2023-03-01", "2023-03-31");
 
 		
 		System.out.println(wm);
+		System.out.println(wm1);
+		System.out.println(wm2);
 	}
 	
 	

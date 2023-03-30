@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.teamBus.web.entity.AdminListDayView;
 import com.teamBus.web.entity.Employee;
+import com.teamBus.web.entity.ListWmView;
 import com.teamBus.web.entity.Worktime;
 
 @Service
@@ -26,6 +27,8 @@ public interface OfficeHoursService {
 //	admin/list service
 	List<Employee> getList();
     List<AdminListDayView> getDayList(Integer companyId);
+    
+    ListWmView getWRHorusByFilter(int employeeId, String fromDate, String toDate);
 	
 
 }
