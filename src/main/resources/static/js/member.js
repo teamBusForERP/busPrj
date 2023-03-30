@@ -8,6 +8,14 @@ window.onload = function () {
 	let restEditorBox = document.querySelector(".rest-editor-box");
 	let restEditSubmit = document.querySelector(".rest-edit-submit");
 
+	let dateFilter = document.querySelector(".date-filter");
+	console.log(dateFilter);
+	let dateFilterButtonSeleted = dateFilter.querySelector("#1");
+	console.log(dateFilterButton);
+
+	
+
+
 
 	let sideMenu = document.querySelector(".side-bar")
 	hamburgerBtn.addEventListener("click", function () {

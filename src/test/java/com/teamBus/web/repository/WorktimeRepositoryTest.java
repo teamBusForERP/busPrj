@@ -2,6 +2,7 @@ package com.teamBus.web.repository;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Date;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -11,6 +12,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.teamBus.web.entity.ListWmView;
 import com.teamBus.web.entity.Worktime;
 
 @MybatisTest
@@ -19,6 +21,23 @@ class WorktimeRepositoryTest {
 
 	@Autowired
 	private WorktimeRepository repository;
+	
+	
+	
+	@Test
+	void findhoursByFilter() {
+//		2023-03-26, 2023-04-01);
+//		Date date1 = new Date(2023,02,26);
+//		System.out.println(date1);
+		
+//		ListWmView wm = repository.findhoursByFilter(1, null, null);
+		ListWmView wm = repository.findhoursByFilter(1, "2023-03-26", "2023-04-01");
+//		ListWmView wm = repository.findhoursByFilter(1);
+
+		
+		System.out.println(wm);
+	}
+	
 	
 	//@Test
 	void testFindAll() {
@@ -35,7 +54,7 @@ class WorktimeRepositoryTest {
 		System.out.println(findId);
 	}
 	
-	@Test
+//	@Test
 	void testinsertNow() {
 		Worktime wt = new Worktime(null, 2, null, null, null, null, null);
 		

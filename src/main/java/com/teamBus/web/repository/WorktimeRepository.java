@@ -1,9 +1,11 @@
 package com.teamBus.web.repository;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.teamBus.web.entity.ListWmView;
 import com.teamBus.web.entity.Worktime;
 
 @Mapper
@@ -21,4 +23,10 @@ public interface WorktimeRepository {
 	void updateWorktime(Worktime worktime);
 	Worktime findRecentByEmployeeId(int employeeId);
 	Worktime findTodayByEmployeeId(int employeeId);
+	
+	
+//	ListWmView findhoursByFilter(int employeeId, Date fromDate, Date toDate);
+	ListWmView findhoursByFilter(int employeeId, String fromDate, String toDate);
+//	ListWmView findhoursByFilter(int employeeId);
+	
 }
