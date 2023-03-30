@@ -10,9 +10,6 @@ window.onload = function () {
 
 	let dateFilter = document.querySelector(".date-filter");
 	console.log(dateFilter);
-	let dateFilterButtonSeleted = dateFilter.querySelector("#1");
-	console.log(dateFilterButton);
-
 	
 
 
