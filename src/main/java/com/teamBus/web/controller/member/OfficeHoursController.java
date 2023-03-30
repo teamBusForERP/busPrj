@@ -27,18 +27,18 @@ public class OfficeHoursController {
 
     @Autowired
     private CommonService commonService;
-
-	private int matterType;
     
+    int employeeId = 7;
+
 	@GetMapping("list")
 	public String list() {
 		return "/member/office-hours/list";
 	}
 
+	
 	@GetMapping("register")
 	public String register(Model model) {
-		int employeeId = 1;
-    	
+		
 		Employee e = commonService.getEmployeeByEmployeeId(employeeId);
     	model.addAttribute("loginInfo", e);
     	
@@ -52,19 +52,19 @@ public class OfficeHoursController {
     	Worktime recentWorktime = service.getRecentByEmployeeId(employeeId);
     	int status = service.getStatusByWorktime(recentWorktime);
     	
-    	model.addAttribute("status", status);
-    	model.addAttribute("worktime", recentWorktime);
+    	if (status != 0)
+    		model.addAttribute("worktime", recentWorktime);
+//    	if (status == 3)
+//    		return "redirect:/member/office-hours/exception-req";
+		
+		model.addAttribute("status", status);
     	
-		
-		
 		return "/member/office-hours/register";
 	}
 	
 	@PostMapping("register")
 	public String postRegister(int status) {
 		
-    	int employeeId = 1;
-    	
     	System.out.println(status);
     	
     	service.regWorktimeByStatus(employeeId, status);
@@ -78,8 +78,6 @@ public class OfficeHoursController {
 			@RequestParam (name="rest-start", required = false) Date sDate,
 			@RequestParam (name="rest-end", required = false) Date eDate) {
 		
-		int employeeId = 1;
-		
     	LocalTime restStart = LocalTime.ofInstant(sDate.toInstant(), ZoneId.systemDefault());
     	LocalTime restEnd = LocalTime.ofInstant(eDate.toInstant(), ZoneId.systemDefault());
     	
@@ -90,8 +88,6 @@ public class OfficeHoursController {
 	
 	@GetMapping("exception-req")
 	public String exceptionReq(Model model) {
-		
-		int employeeId = 1;
 		
 		Employee e = commonService.getEmployeeByEmployeeId(employeeId);
     	model.addAttribute("loginInfo", e); 
@@ -114,8 +110,6 @@ public class OfficeHoursController {
 	public String exceptionReqPost(
 			int matterType,
 			@RequestParam(name="exception-reason",required = false) String reason) {
-		
-		int employeeId = 1;
 		
 		commonService.addExtraMatter(employeeId, matterType, reason);
 		

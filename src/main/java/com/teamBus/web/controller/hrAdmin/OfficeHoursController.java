@@ -1,5 +1,6 @@
 package com.teamBus.web.controller.hrAdmin;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +43,7 @@ public class OfficeHoursController {
 //        LoginInfo loginInfo = commonService.getLoginInfo(employeeId);
 //        model.addAttribute("loginInfo", loginInfo);
 
-        List<AdminListDayView> dayList = service.getDayList(e.getCompanyId());
+        List<AdminListDayView> dayList = service.getDayList(e.getCompanyId(), LocalDate.now());
         model.addAttribute("dayList",dayList);
 
 

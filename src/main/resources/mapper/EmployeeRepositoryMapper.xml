@@ -78,6 +78,7 @@
 	<select id="findViewByCompanyId" resultMap="adminListDayViewResultMap"> 
 		select * from admin_list_day_view
 		where company_id = #{companyId}
+			and date = #{date}
 	</select>
 
 </mapper>
