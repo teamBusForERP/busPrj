@@ -28,7 +28,7 @@ public interface OfficeHoursService {
 	List<Employee> getList();
     List<AdminListDayView> getDayList(Integer companyId);
     
-    ListWmView getWRHorusByFilter(int employeeId, String fromDate, String toDate);
+    String getWRHorusByFilter(int employeeId, String fromDate, String toDate);
 	
 
 }
