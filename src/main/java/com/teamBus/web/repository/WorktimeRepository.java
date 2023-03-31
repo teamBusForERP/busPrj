@@ -24,9 +24,6 @@ public interface WorktimeRepository {
 	Worktime findRecentByEmployeeId(int employeeId);
 	Worktime findTodayByEmployeeId(int employeeId);
 	
-	
-//	ListWmView findhoursByFilter(int employeeId, Date fromDate, Date toDate);
 	ListWmView findhoursByFilter(int employeeId, String fromDate, String toDate);
-//	ListWmView findhoursByFilter(int employeeId);
 	
 }

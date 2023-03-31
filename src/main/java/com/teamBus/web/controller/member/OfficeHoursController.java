@@ -1,5 +1,6 @@
 package com.teamBus.web.controller.member;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.ZoneId;
@@ -31,7 +32,32 @@ public class OfficeHoursController {
     int employeeId = 7;
 
 	@GetMapping("list")
-	public String list() {
+	public String list(
+//			int employeeId, //종업원 id
+//			String fromDate, //시작일 
+//			String toDate,	//종료 일
+			Model model
+			){
+		
+		//tmp값
+		int employeeId = 1;
+		String fromDate = "2023-03-01";
+		String toDate = "2023-03-31";
+		
+		//서비스에서 받은 값 / 근무,휴게시간 나누기
+		String time = service.getWRHorusByFilter(1, fromDate, toDate);
+		String []times = time.split("\n");
+		
+		// : 단위로 나누기
+		String []worktime = times[0].split(":");
+		String []resttime = times[1].split(":");
+		//나눈것을 시간 분으로 만들기
+		String workTimePrint = worktime[0] + "시간 " + worktime[1] + "분";
+		String restTimeprint = resttime[0] + "시간 " + resttime[1] + "분";
+		
+		model.addAttribute("workTime", workTimePrint);
+		model.addAttribute("restTime", restTimeprint);
+		
 		return "/member/office-hours/list";
 	}
 

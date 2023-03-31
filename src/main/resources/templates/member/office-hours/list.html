@@ -35,7 +35,8 @@
 				<div class="work-hour-text">
 					<div class="bold">근무</div>
 					<div class="border"></div>
-					<div class="time">36시간</div>
+					<div th:text="${workTime}"
+						class="time">36시간</div>
 				</div>
 
 				<!-- 프로그래스 바 -->
@@ -58,7 +59,8 @@
 				<div class="rest-hour-text">
 					<div class="bold">휴게</div>
 					<div class="border"></div>
-					<div class="time">6시간 30분</div>
+					<div th:text="${restTime}" 
+						class="time">6시간 30분</div>
 				</div>
 
 				<!-- 프로그래스 바 -->

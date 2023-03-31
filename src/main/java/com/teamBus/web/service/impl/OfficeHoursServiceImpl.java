@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.teamBus.web.entity.AdminListDayView;
 import com.teamBus.web.entity.Employee;
+import com.teamBus.web.entity.ListWmView;
 import com.teamBus.web.entity.Worktime;
 import com.teamBus.web.repository.EmployeeRepository;
 import com.teamBus.web.repository.WorktimeRepository;
@@ -151,6 +152,14 @@ public class OfficeHoursServiceImpl implements OfficeHoursService {
 	@Override
 	public List<AdminListDayView> getDayList(Integer companyId, LocalDate date) {
 		return employeeRepository.findViewByCompanyId(companyId, date);
+	}
+
+	@Override
+	public String getWRHorusByFilter(int employeeId, String fromDate, String toDate) {
+		// TODO Auto-generated method stub
+		String work = worktimeRepository.findhoursByFilter(employeeId, fromDate, toDate).getWorkHoursSum();
+		String rest = worktimeRepository.findhoursByFilter(employeeId, fromDate, toDate).getRestHoursSum();
+		return work + "\n" + rest;
 	}
 
 }
