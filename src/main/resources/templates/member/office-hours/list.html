@@ -11,21 +11,21 @@
 			<!-- 버튼 -->
 			<div class="date-filter">
 				<div class="side-padding"></div>
-				<div id="1" class="date-filter-button selected">일</div>
+				<div id="1" class="date-filter-button" :class="{'selected': dateUnit=='day'}" @:click="dateUnitHandler('day')">일</div>
 				<div class="vertical-bar"></div>
-				<div id="2" class="date-filter-button">주</div>
+				<div id="2" class="date-filter-button" :class="{'selected': dateUnit=='week'}" @:click="dateUnitHandler('week')">주</div>
 				<div class="vertical-bar"></div>
-				<div id="3" class="date-filter-button">월</div>
+				<div id="3" class="date-filter-button" :class="{'selected': dateUnit=='month'}" @:click="dateUnitHandler('month')">월</div>
 				<div class="side-padding"></div>
 			</div>
 			<!-- 버튼 -->
 
 			<div class="day-fillter">
 				<div class="day-btn-wrap">
-					<button class="back"> </button>
-					<button class="front"></button>
+					<button class="back" @:click="datepagingHandler('minus')"> </button>
+					<button class="front" @:click="datepagingHandler('plus')"></button>
 				</div>
-				<span class="bold"> 1.23 (월) - 1.29 (일) </span>
+				<span class="bold"> {{showDate}} </span>
 			</div>
 		</section>
 
@@ -35,7 +35,7 @@
 				<div class="work-hour-text">
 					<div class="bold">근무</div>
 					<div class="border"></div>
-					<div th:text="${workTime}"
+					<div 
 						class="time">36시간</div>
 				</div>
 
@@ -59,7 +59,7 @@
 				<div class="rest-hour-text">
 					<div class="bold">휴게</div>
 					<div class="border"></div>
-					<div th:text="${restTime}" 
+					<div 
 						class="time">6시간 30분</div>
 				</div>
 
