@@ -83,14 +83,16 @@
 				</div>
 			</div>
 			<div class="detail-time">
-				<span>3시간 40분</span> <span>/</span> <span>8시간</span>
+				<span th:text="${#temporals.format(row.workhours, 'HH')}=='00'?${#temporals.format(row.workhours, 'mm'+'분')}:${#temporals.format(row.workhours,'H'+'시간'+'mm'+'분')}">3시간 40분</span> 
+				<span>/</span> 
+				<span>8시간</span>
 			</div>
 		</div>
 		<div class="content-start-time"
 			th:text="${#temporals.format(row.clockIn, 'HH:mm')}">09:10</div>
 		<div class="content-end-time"
 			th:text="${#temporals.format(row.clockOut, 'HH:mm')}">18:30</div>
-		<div class="content-rest-time">1시간 00분</div>
+		<div class="content-rest-time" th:text="${#temporals.format(row.resthours, 'mm')}=='00'?${#temporals.format(row.resthours, 'H'+'시간')}:${#temporals.format(row.resthours,'H'+'시간'+'mm'+'분')}">1시간 00분</div>
 		<div class="content-note">
 			<button th:text="${row.exId}==null? '--':'보기'">--</button>
 		</div>
