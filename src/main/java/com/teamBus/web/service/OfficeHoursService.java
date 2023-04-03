@@ -28,5 +28,8 @@ public interface OfficeHoursService {
 //	admin/list service
 	List<Employee> getList();
     List<AdminListDayView> getDayList(Integer companyId, LocalDate date);
+    
+//	member/List service 추가
+    Worktime myWorkTime(int employeeId, String fromDate, String toDate);
 
 }

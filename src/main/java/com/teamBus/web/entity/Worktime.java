@@ -23,4 +23,7 @@ public class Worktime {
 	private LocalTime breakTimeStart;
 	private LocalTime breakTimeEnd;
 	private LocalDateTime clockOut;
+	//추가
+	private String totalWorkTime;
+	private String totalRestTime;
 }

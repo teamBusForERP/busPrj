@@ -36,7 +36,7 @@
 					<div class="bold">근무</div>
 					<div class="border"></div>
 					<div 
-						class="time">36시간</div>
+						class="time">{{totalWorkTime}}</div>
 				</div>
 
 				<!-- 프로그래스 바 -->
@@ -60,7 +60,7 @@
 					<div class="bold">휴게</div>
 					<div class="border"></div>
 					<div 
-						class="time">6시간 30분</div>
+						class="time">{{totalRestTime}}</div>
 				</div>
 
 				<!-- 프로그래스 바 -->
@@ -79,18 +79,18 @@
 			</div>
 		</section>
 
-		<section class="daytime-work">
+		<section class="daytime-work" :class="{'d-none': dateUnit !='day'}">
 			<div>출퇴근 시간</div>
 
 				<div class="go-leave">
 				<div class="go-work-time">
 					<span>출근</span>
-					<span>08:00</span>
+					<span>{{clockIn}}</span>
 				</div>
 
 				<div class="leave-work-time">
 					<span>퇴근</span>
-					<span>18:30</span>
+					<span>{{clockOut}}</span>
 				</div>
 			</div>
 		</section>

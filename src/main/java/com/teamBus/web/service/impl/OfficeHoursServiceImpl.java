@@ -155,11 +155,18 @@ public class OfficeHoursServiceImpl implements OfficeHoursService {
 	}
 
 	@Override
-	public String getWRHorusByFilter(int employeeId, String fromDate, String toDate) {
-		// TODO Auto-generated method stub
-		String work = worktimeRepository.findhoursByFilter(employeeId, fromDate, toDate).getWorkHoursSum();
-		String rest = worktimeRepository.findhoursByFilter(employeeId, fromDate, toDate).getRestHoursSum();
-		return work + "\n" + rest;
+	public Worktime myWorkTime(int employeeId, String fromDate, String toDate) {
+		
+		
+		return  worktimeRepository.findByIdFromView(employeeId, fromDate, toDate);
 	}
+
+//	@Override
+//	public String getWRHorusByFilter(int employeeId, String fromDate, String toDate) {
+//		// TODO Auto-generated method stub
+//		String work = worktimeRepository.findhoursByFilter(employeeId, fromDate, toDate).getWorkHoursSum();
+//		String rest = worktimeRepository.findhoursByFilter(employeeId, fromDate, toDate).getRestHoursSum();
+//		return work + "\n" + rest;
+//	}
 
 }

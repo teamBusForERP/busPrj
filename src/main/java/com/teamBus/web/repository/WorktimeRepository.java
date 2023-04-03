@@ -26,4 +26,7 @@ public interface WorktimeRepository {
 	
 	ListWmView findhoursByFilter(int employeeId, String fromDate, String toDate);
 	
+	//추가
+	Worktime findByIdFromView(int employeeId, String fromDate, String toDate);
+	
 }
