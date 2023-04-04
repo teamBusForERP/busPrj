@@ -18,6 +18,7 @@ public class ListWmView {
 	
 	private String name;
 	private String image;
+	private String department;
 	private String position;
 	
 	private String workHoursSum; //date 가 X

@@ -15,11 +15,28 @@
 
 	</resultMap>
 
+	<resultMap id="listDayViewMap" type="listDayView">
+		<result property="id" column="id" />
+		<result property="companyId" column="company_id" />
+		<result property="name" column="name" />
+		<result property="image" column="image" />
+		<result property="department" column="department" />
+		<result property="position" column="position" />
+		<result property="date" column="date" />
+		<result property="clockIn" column="clock_in" />
+		<result property="breakTimeStart" column="break_time_start" />
+		<result property="breakTimeEnd" column="break_time_end" />
+		<result property="clockOut" column="clock_out" />
+		<result property="workHours" column="workhours" />
+		<result property="restHours" column="resthours" />
+	</resultMap>
+
 	<resultMap id="listWmViewMap" type="listWmView">
 		<result property="id" column="id" />
 		<result property="companyId" column="company_id" />
 		<result property="name" column="name" />
 		<result property="image" column="image" />
+		<result property="department" column="department" />
 		<result property="position" column="position" />
 		<result property="workHoursSum" column="workhours_sum" />
 		<result property="restHoursSum" column="resthours_sum" />
@@ -103,7 +120,8 @@
 		<where>
 			<if test="employeeId != null">and id = #{employeeId}</if>
 			<if test="fromDate != null">and DATE_FORMAT(date,'%Y-%m-%d') between #{fromDate} and
-				#{toDate}</if>
+				#{toDate}
+			</if>
 		</where>
 		group by
 		id, company_id, name, image, department, position;
@@ -111,37 +129,58 @@
 
 
 
-	<!-- admin_list_wm_view -->
-	<select id="findByIdFromView" resultMap="WorktimeResultMap">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- DayView -->
+	<select id="findFromDayView" resultMap="listDayViewMap">
 		select
-			<choose>
-			<when test="toDate != null and toDate != ''">
-			sec_to_time(sum(time_to_sec(worktimes))) worktimes, sec_to_time(sum(time_to_sec(resthours))) resthours
-			</when>
-			<otherwise>
-				clock_in, clock_out, worktimes, resthours
-			</otherwise>
-			</choose>
-			from	
+		*
+		from
+		admin_list_day_view
+		where
 		<choose>
-			<when test="toDate != null and toDate != ''">
-				admin_list_wm_view
+			<when test=" companyId != null or companyId != ''">
+				company_id = #{companyId}
 			</when>
 			<otherwise>
-				admin_list_day_view
+				id = #{id}
 			</otherwise>
 		</choose>
-			where
-			id = #{employeeId}
-			<choose>
-			<when test=" toDate != null and toDate != ''">
-			and date between #{fromDate} and #{toDate}
-			group by id
+	</select>
+
+
+
+	<!-- WmView -->
+	<select id="findFromWmView" resultMap="listWmViewMap">
+		select
+		id, company_id, name, image, department, position,
+		sec_to_time(sum(time_to_sec(workhours))) workhours_sum,
+		sec_to_time(sum(time_to_sec(resthours))) resthours_sum
+		from
+		admin_list_wm_view
+		where
+		<choose>
+			<when test=" companyId != null or companyId != ''">
+				company_id = #{companyId}
 			</when>
 			<otherwise>
-			and date = #{fromDate}
+				id = #{id}
 			</otherwise>
-			</choose>
+		</choose>
+		and date between #{fromDate} and #{toDate}
+		group by id
 	</select>
 
 

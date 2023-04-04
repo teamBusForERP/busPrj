@@ -79,7 +79,9 @@ Vue
 
 						this.fromDate = this.initDate.startOf('M').format("YYYY-MM-DD");
 						this.toDate = this.initDate.endOf('M').format("YYYY-MM-DD");
-
+	
+						this.getList();
+							
 						break;
 				}
 			},

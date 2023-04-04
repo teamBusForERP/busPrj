@@ -9,19 +9,26 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Data
-@Builder
-@NoArgsConstructor
 @AllArgsConstructor
-public class Worktime {
+@NoArgsConstructor
+@Builder
+public class ListDayView {
+	private Integer id; //직원id
+	private Integer companyId;
 	
-	private Integer id;
-	private Integer employeeId;
+	private String name;
+	private String image;
+	private String department;
+	private String position;
 	private LocalDate date;
 	private LocalDateTime clockIn;
 	private LocalTime breakTimeStart;
 	private LocalTime breakTimeEnd;
 	private LocalDateTime clockOut;
-
+	
+	private String workHours; //date 가 X
+	private String restHours;
 }
+
+

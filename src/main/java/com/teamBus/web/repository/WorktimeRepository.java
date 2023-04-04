@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.teamBus.web.entity.ListDayView;
 import com.teamBus.web.entity.ListWmView;
 import com.teamBus.web.entity.Worktime;
 
@@ -27,6 +28,7 @@ public interface WorktimeRepository {
 	ListWmView findhoursByFilter(int employeeId, String fromDate, String toDate);
 	
 	//추가
-	Worktime findByIdFromView(int employeeId, String fromDate, String toDate);
+	List<ListDayView> findFromDayView(Integer employeeId, Integer companyId, String fromDate);
+	List<ListWmView> findFromWmView(Integer employeeId, Integer companyId, String fromDate, String toDate);
 	
 }
