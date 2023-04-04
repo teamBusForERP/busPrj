@@ -36,7 +36,7 @@
 					<div class="bold">근무</div>
 					<div class="border"></div>
 					<div 
-						class="time">{{totalWorkTime}}</div>
+						class="time">{{list.workHours}}</div>
 				</div>
 
 				<!-- 프로그래스 바 -->
@@ -60,7 +60,7 @@
 					<div class="bold">휴게</div>
 					<div class="border"></div>
 					<div 
-						class="time">{{totalRestTime}}</div>
+						class="time">{{list.restHours}}</div>
 				</div>
 
 				<!-- 프로그래스 바 -->
@@ -85,12 +85,12 @@
 				<div class="go-leave">
 				<div class="go-work-time">
 					<span>출근</span>
-					<span>{{clockIn}}</span>
+					<span v-for="(clockIn) in list">{{list.clockIn}}</span>
 				</div>
 
 				<div class="leave-work-time">
 					<span>퇴근</span>
-					<span>{{clockOut}}</span>
+					<span>{{list.clockOut}}</span>
 				</div>
 			</div>
 		</section>
