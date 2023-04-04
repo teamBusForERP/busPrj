@@ -27,7 +27,7 @@ public class ListDayView {
 	private LocalTime breakTimeEnd;
 	private LocalDateTime clockOut;
 	
-	private String workHours; //date 가 X
+	private String workHours;
 	private String restHours;
 }
 

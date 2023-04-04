@@ -28,7 +28,7 @@ public interface WorktimeRepository {
 	ListWmView findhoursByFilter(int employeeId, String fromDate, String toDate);
 	
 	//추가
-	List<ListDayView> findFromDayView(Integer employeeId, Integer companyId, String fromDate);
-	List<ListWmView> findFromWmView(Integer employeeId, Integer companyId, String fromDate, String toDate);
+	List<ListDayView> findFromDayView(Integer id, Integer companyId, String fromDate);
+	List<ListWmView> findFromWmView(Integer id, Integer companyId, String fromDate, String toDate);
 	
 }

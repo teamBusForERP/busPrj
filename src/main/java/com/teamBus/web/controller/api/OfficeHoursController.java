@@ -24,25 +24,25 @@ public class OfficeHoursController {
 	
 	@GetMapping("day")
 	public List<ListDayView> dayList(
-			@RequestParam(name="employeeId", required = false)Integer employeeId,
+			@RequestParam(name="id", required = false)Integer id,
 			@RequestParam(name="companyId", required = false)Integer companyId,
 			@RequestParam(name="fromDate" )String fromDate
 			) {
 		
-		List<ListDayView> list = service.WorkTimeList(employeeId, companyId, fromDate);
+		List<ListDayView> list = service.WorkTimeList(id, companyId, fromDate);
 		
 		return list;
 	}
 	
 	@GetMapping("days")
 	public List<ListWmView> wmList(
-			@RequestParam(name="employeeId", required = false)Integer employeeId,
+			@RequestParam(name="id", required = false)Integer id,
 			@RequestParam(name="companyId", required = false)Integer companyId,
 			@RequestParam(name="fromDate" )String fromDate,
 			@RequestParam(name="toDate" )String toDate
 			) {
 		
-		List<ListWmView> list = service.WorkTimesList(employeeId, companyId, fromDate, toDate);
+		List<ListWmView> list = service.WorkTimesList(id, companyId, fromDate, toDate);
 		
 		return list;
 	}

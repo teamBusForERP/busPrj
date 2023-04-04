@@ -156,15 +156,15 @@ public class OfficeHoursServiceImpl implements OfficeHoursService {
 	}
 
 	@Override
-	public List<ListDayView> WorkTimeList(Integer employeeId, Integer companyId, String fromDate) {
+	public List<ListDayView> WorkTimeList(Integer id, Integer companyId, String fromDate) {
 		
-		return worktimeRepository.findFromDayView(employeeId, companyId, fromDate);
+		return worktimeRepository.findFromDayView(id, companyId, fromDate);
 	}
 
 	@Override
-	public List<ListWmView> WorkTimesList(Integer employeeId, Integer companyId, String fromDate, String toDate) {
+	public List<ListWmView> WorkTimesList(Integer id, Integer companyId, String fromDate, String toDate) {
 		
-		return worktimeRepository.findFromWmView(employeeId, companyId, fromDate, toDate);
+		return worktimeRepository.findFromWmView(id, companyId, fromDate, toDate);
 	}
 
 	

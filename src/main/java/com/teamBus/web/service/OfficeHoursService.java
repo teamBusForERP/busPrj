@@ -31,7 +31,7 @@ public interface OfficeHoursService {
     List<AdminListDayView> getDayList(Integer companyId, LocalDate date);
     
 //	member/List service 추가
-    List<ListDayView> WorkTimeList(Integer employeeId, Integer companyId, String fromDate);
-    List<ListWmView> WorkTimesList(Integer employeeId, Integer companyId, String fromDate, String toDate);
+    List<ListDayView> WorkTimeList(Integer id, Integer companyId, String fromDate);
+    List<ListWmView> WorkTimesList(Integer id, Integer companyId, String fromDate, String toDate);
 
 }

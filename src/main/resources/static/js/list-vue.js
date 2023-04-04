@@ -3,24 +3,29 @@ Vue
 
 		data() {
 			return {
-				employeeId: "1", //임시
-				dateUnit: "",
-				showDate: "",
-				initDate: "",
-				page: 0,
-				fromDate: "",
-				toDate: "",
+				
+				list: [
+					{ Id: "1", //임시
+					companyId: "1",
+					name: "",
+					image: "",
+					department: "",
+					position: "",
+					date: "",
+					breakTimeStart: "",
+					breakTimeEnd: "",
+					workHours: "",
+					restHours: "",
+					clockIn: "",
+					clockOut: ""}
+					],
 
-
-				totalWorkTime: "",
-				totalRestTime: "",
-
-				clockIn: "",
-				clockOut: "",
-
-
-
-
+					dateUnit: "",
+					showDate: "",
+					initDate: "",
+					page: 0,
+					fromDate: "",
+					toDate: "",
 			};
 		},
 
@@ -28,8 +33,8 @@ Vue
 			dateUnitHandler(dateUnit) {
 				console.log(dateUnit);
 				this.initDate = dayjs();
-				this.toDate= "",
-				console.log(this.initDate);
+				this.toDate = "",
+					console.log(this.initDate);
 				switch (dateUnit) {
 					case 'day':
 						this.dateUnit = dateUnit;
@@ -44,7 +49,7 @@ Vue
 						this.showDate = this.initDate.format("YYYY.M.D") + dayOfWeek;
 
 						this.fromDate = this.initDate.format("YYYY-MM-DD");
-	
+
 						this.getList();
 						//                        this.findByDateUnit(this.date);
 
@@ -63,9 +68,9 @@ Vue
 
 						this.fromDate = this.initDate.startOf('w').format("YYYY-MM-DD");
 						this.toDate = this.initDate.endOf('w').format("YYYY-MM-DD");
-						
-						this.getList();
-						
+
+						this.getLists();
+
 						break;
 
 					case 'month':
@@ -79,9 +84,9 @@ Vue
 
 						this.fromDate = this.initDate.startOf('M').format("YYYY-MM-DD");
 						this.toDate = this.initDate.endOf('M').format("YYYY-MM-DD");
-	
-						this.getList();
-							
+
+						this.getLists();
+
 						break;
 				}
 			},
@@ -98,15 +103,24 @@ Vue
 			},
 
 			async getList() {
-				let response = await fetch(`http://localhost:80/api/officehours?employeeId=${this.employeeId}&fromDate=${this.fromDate}&toDate=${this.toDate}`);
+				let response = await fetch(`http://localhost:80/api/officehours/day?employeeId=${this.Id}&fromDate=${this.fromDate}`);
 				let list = await response.json();
-				this.clockIn = list.clockIn;
-				this.clockOut= list.clockOut;
-				this.totalWorkTime = list.totalWorkTime;
-				this.totalRestTime = list.totalRestTime;
+				//				this.clockIn = list.clockIn;
+				//				this.clockOut= list.clockOut;
+				//				this.totalWorkTime = list.totalWorkTime;
+				//				this.totalRestTime = list.totalRestTime;
 				console.log(list);
 
-				
+			},
+			async getLists() {
+				let response = await fetch(`http://localhost:80/api/officehours/days?employeeId=${this.companyId}&fromDate=${this.fromDate}&toDate=${this.toDate}`);
+				let list = await response.json();
+				//				this.clockIn = list.clockIn;
+				//				this.clockOut= list.clockOut;
+				//				this.totalWorkTime = list.totalWorkTime;
+				//				this.totalRestTime = list.totalRestTime;
+				console.log(list);
+
 			},
 
 			getDayOfWeek(number) {
