@@ -6,22 +6,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.teamBus.web.entity.Worktime;
-import com.teamBus.web.service.OfficeHoursService;
+import com.teamBus.web.entity.Company;
+import com.teamBus.web.entity.Employee;
+import com.teamBus.web.service.EmployeeService;
 
 @RestController
-@RequestMapping("api/officehours")
-public class OfficeHouresController {
+@RequestMapping("api/employee")
+public class EmployeeController {
 
 	@Autowired
-	OfficeHoursService service;
+	EmployeeService service;
 	
 	@GetMapping
-	public Worktime getWorktime(
+	public Employee getEmployee(
 		@RequestParam(name = "id") int employeeId) {
-			return service.getRecentByEmployeeId(employeeId);
+			return service.getById(employeeId);
 	}
-	
+
+	@GetMapping("company")
+	public Company getCompanybyEmployee(
+		@RequestParam(name = "eid") int employeeId) {
+			Employee e = service.getById(employeeId);
+			return service.getCompanyByCompanyId(e.getCompanyId());
+	}
+
 //	@PostMapping("register")
 //	public String postRegister(int status) {
 //		

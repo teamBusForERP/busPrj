@@ -12,17 +12,17 @@
 		<header class="profile-card">
 			<div class="profile-card-top">
 				<div class="profile-card-img">
-					<img th:src="@{${loginInfo.image}}" src="../../img/profile.png" alt="프로필이미지" />
+					<img :src="employee.image" alt="프로필이미지" />
 				</div>
-				<span th:text=${loginInfo.name}>임한응</span> 님, 안녕하세요.
+				<span>{{employee.name}}</span> 님, 안녕하세요.
 			</div>
 
 			<div class="profile-card-bottom">
 				<div class="profile-card-dept">
-					<span th:text=${companyName}>뉴렉처 인재개발원</span>
+					<span>{{companyName}}</span>
 				</div>
 				<div class="profile-card-team">
-					<span th:text="${loginInfo.department} + 팀">버스 1팀</span>
+					<span>{{employee.department}} 팀</span>
 				</div>
 			</div>
 		</header>
@@ -51,6 +51,8 @@
 			</div>
 
 
+			
+
 
 			<!-- commute-info -->
 
@@ -69,9 +71,13 @@
 			<div>
 				<form action="register" method="post">
 					<div class="btn-wrap">
-						<button type="submit" class="btn-blue register-btn">출근</button>
+						<button type="submit" class="btn-blue register-btn" v-if="workStatus==0">출근</button>
+						<button type="submit" class="btn-blue register-btn" v-if="workStatus==1">퇴근</button>
+						<button type="submit" class="btn-blue register-btn" v-if="workStatus==2">퇴근</button>
+						<button type="submit" class="btn-blue register-btn" v-if="workStatus==3">퇴근</button>
+						<!-- <button type="submit" class="btn-blue register-btn" v-if="workStatus==4">수정</button> -->
 					</div>
-					<input type="hidden" name="status" :value="workStatus" />
+					<input type="hidden" name="status" :value="workStatus"/>
 				</form>
 			</div>
 
@@ -91,7 +97,7 @@
 
 					<div class="choose-date-btn">
 						<button type="button" class="date-btn " id="minus-s"></button>
-						<span class="choose-date" id="start-restTime"></span>
+						<span class="choose-date">{{worktime.breakTimeStart}}</span>
 						<input type="hidden" id="date-s-val" name="rest-start">
 						<button type="button" class="date-btn " id="plus-s"></button>
 					</div>
@@ -103,12 +109,12 @@
 					</div>
 
 					<div class="choose-date-btn">
-						<button type="button" class="date-btn " id="minus-e"></button>
-						<span class="choose-date" id="end-restTime"></span>
-						<button type="button" class="date-btn " id="plus-e"></button>
+						<button type="button" class="date-btn" id="minus-e"></button>
+						<span class="choose-date">{{worktime.breakTimeEnd}}</span>
+						<button type="button" class="date-btn" id="plus-e"></button>
 					</div>
 				</div>
-				<input type="hidden" name="status" />
+				<input type="hidden" name="status" :value="workStatus"/>
 				<button type="submit" class="btn-blue rest-edit-submit">저장</button>
 			</section>
 		</form>

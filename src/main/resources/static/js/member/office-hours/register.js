@@ -2,16 +2,31 @@ Vue
 	.createApp({
 		data() {
 			return {
+				employee: "",
+				companyName: "",
 				workStatus: "",
 				today: "",
 				worktime: "",
+
 				sideBarOn: false,
 				restToggleOn: false,
 				restEditerOn: false,
-				menuBOn : false
+				menuBOn: false,
+
+				clockIn:"",
+				clockOut:"",
+				breakTimeStart:"",
+				breakTimeEnd:"",
+
 			};
 		},
 		methods: {
+			formatDate(){
+				console.log(this.worktime.clockIn);
+				console.log(this.worktime.clockOut);
+				console.log(this.worktime.breakTimeStart);
+				console.log(this.worktime.breakTimeEnd);
+			},
 			menuBHandler() {
 				this.menuBOn = false;
 				this.sideBarOn = false;
@@ -39,15 +54,13 @@ Vue
 
 				const today = dayjs().format('YYYY-MM-DD');
 				const curTime = dayjs();
-				
+
 				let defaultTime = dayjs(); // 야간근로 기준시간 오전 6시
 				defaultTime = defaultTime.set("hour", 6);
 				defaultTime = defaultTime.set("minute", 0);
 				defaultTime = defaultTime.set("second", 0);
 
 				const yesterday = dayjs(this.today).subtract(1, 'day').format('YYYY-MM-DD');
-
-				console.log(defaultTime.diff(curTime));
 
 				if (recentWorktime.date == today) { // 최근근무정보가 오늘인 경우
 					if (recentWorktime.clockOut == null) {
@@ -61,6 +74,7 @@ Vue
 					if (recentWorktime.clockOut != null) {
 						// 최근근무정보가 정상적으로 완료되었고, 오늘 날짜 기준 새로운 근무를 생성하기 전 상태
 						this.workStatus = 0;
+						this.worktime="";
 						console.log("출근 등록 전 상태");
 					} else if (recentWorktime.date == yesterday && defaultTime.diff(curTime) > 0) {
 						// 최근근무정보가 어제이고, 퇴근 등록이 되지 않은 상태에서 야간근로 기준시간인 오전 06시가 지나지 않은 경우
@@ -88,7 +102,25 @@ Vue
 						else {
 							this.worktime = JSON.parse(text);
 							this.setWorkStatus(this.worktime);
+							this.formatDate();
 						}
+					})
+					.catch(error => console.log('error', error));
+
+
+				// Employee
+				fetch("http://localhost/api/employee?id=1")
+					.then(response => response.json())
+					.then(result => {
+						this.employee = result
+					})
+					.catch(error => console.log('error', error));
+
+				//companyName
+				fetch("http://localhost/api/employee/company?eid=1")
+					.then(response => response.json())
+					.then(result => {
+						this.companyName = result.name;
 					})
 					.catch(error => console.log('error', error));
 			}

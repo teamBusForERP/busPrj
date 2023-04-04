@@ -15,7 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.teamBus.web.entity.Employee;
 import com.teamBus.web.entity.Worktime;
-import com.teamBus.web.service.CommonService;
+import com.teamBus.web.service.EmployeeService;
+import com.teamBus.web.service.ExtraMatterService;
 import com.teamBus.web.service.OfficeHoursService;
 
 @Controller("memberOfficeHoursController")
@@ -26,7 +27,10 @@ public class OfficeHoursController {
 	private OfficeHoursService service;	
 
     @Autowired
-    private CommonService commonService;
+    private EmployeeService employeeService;
+		
+		@Autowired
+    private ExtraMatterService extraMatterService;
     
     int employeeId = 1;
 
@@ -39,10 +43,10 @@ public class OfficeHoursController {
 //	@GetMapping("register")
 //	public String register(Model model) {
 //		
-//		Employee e = commonService.getEmployeeByEmployeeId(employeeId);
+//		Employee e = employeeService.getById(employeeId);
 //    	model.addAttribute("loginInfo", e);
 //    	
-//    	String companyName = commonService.getCompanyNameByCompanyId(e.getCompanyId());
+//    	String companyName = employeeService.getCompanyByCompanyId(e.getCompanyId()).getName();
 //    	model.addAttribute("companyName", companyName);
 //    	
 //    	//현재 날짜 
@@ -65,10 +69,10 @@ public class OfficeHoursController {
 	@GetMapping("register")
 	public String register(Model model) {
 		
-		Employee e = commonService.getEmployeeByEmployeeId(employeeId);
+		Employee e = employeeService.getById(employeeId);
     	model.addAttribute("loginInfo", e);
     	
-    	String companyName = commonService.getCompanyNameByCompanyId(e.getCompanyId());
+    	String companyName = employeeService.getCompanyByCompanyId(e.getCompanyId()).getName();
     	model.addAttribute("companyName", companyName);
     	
     	//현재 날짜 
@@ -115,10 +119,10 @@ public class OfficeHoursController {
 	@GetMapping("exception-req")
 	public String exceptionReq(Model model) {
 		
-		Employee e = commonService.getEmployeeByEmployeeId(employeeId);
+		Employee e = employeeService.getById(employeeId);
     	model.addAttribute("loginInfo", e); 
     	
-    	String companyName = commonService.getCompanyNameByCompanyId(e.getCompanyId());
+    	String companyName = employeeService.getCompanyByCompanyId(e.getCompanyId()).getName();
     	model.addAttribute("companyName", companyName);
     	
     	//현재 날짜 
@@ -126,7 +130,7 @@ public class OfficeHoursController {
     	model.addAttribute("today", today);
 		
     	//시간에 따라 지각사유 or 사전예외신청 
-    	int MatterTypeStatus = commonService.getMatterTypeStatus();
+    	int MatterTypeStatus = extraMatterService.getMatterTypeStatus();
     	model.addAttribute("MatterTypeStatus", MatterTypeStatus);
     	
 		return "/member/office-hours/exception-req";
@@ -137,7 +141,7 @@ public class OfficeHoursController {
 			int matterType,
 			@RequestParam(name="exception-reason",required = false) String reason) {
 		
-		commonService.addExtraMatter(employeeId, matterType, reason);
+				extraMatterService.addExtraMatter(employeeId, matterType, reason);
 		
 			
 		return "redirect:register";
