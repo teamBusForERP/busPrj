@@ -23,18 +23,44 @@ import com.teamBus.web.service.OfficeHoursService;
 public class OfficeHoursController {
 	
 	@Autowired
-	private OfficeHoursService service;
+	private OfficeHoursService service;	
 
     @Autowired
     private CommonService commonService;
     
-    int employeeId = 7;
+    int employeeId = 1;
 
 	@GetMapping("list")
 	public String list() {
 		return "/member/office-hours/list";
 	}
 
+	
+//	@GetMapping("register")
+//	public String register(Model model) {
+//		
+//		Employee e = commonService.getEmployeeByEmployeeId(employeeId);
+//    	model.addAttribute("loginInfo", e);
+//    	
+//    	String companyName = commonService.getCompanyNameByCompanyId(e.getCompanyId());
+//    	model.addAttribute("companyName", companyName);
+//    	
+//    	//현재 날짜 
+//    	LocalDate today = LocalDate.now();
+//    	model.addAttribute("today", today);
+//		
+//    	Worktime recentWorktime = service.getRecentByEmployeeId(employeeId);
+//    	int status = service.getStatusByWorktime(recentWorktime);
+//    	
+//    	if (status != 0)
+//    		model.addAttribute("worktime", recentWorktime);
+////    	if (status == 3)
+////    		return "redirect:/member/office-hours/exception-req";
+//		
+//		model.addAttribute("status", status);
+//    	
+//		return "/member/office-hours/register";
+//	}
 	
 	@GetMapping("register")
 	public String register(Model model) {
@@ -59,7 +85,7 @@ public class OfficeHoursController {
 		
 		model.addAttribute("status", status);
     	
-		return "/member/office-hours/register";
+		return "/member/office-hours/register2";
 	}
 	
 	@PostMapping("register")

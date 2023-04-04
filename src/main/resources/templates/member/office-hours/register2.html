@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleeaf/layout"
+	layout:decorate="member/inc/layout">
+<main layout:fragment="main">
+	<script src="/js/member/office-hours/register.js" defer="defer"></script>
+
+	<div class="wrap">
+
+		<div class="menu-b" :class="menuBOn ? '' :' d-none'" @click="menuBHandler" ></div>
+
+		<!-- profile-card  -->
+		<header class="profile-card">
+			<div class="profile-card-top">
+				<div class="profile-card-img">
+					<img th:src="@{${loginInfo.image}}" src="../../img/profile.png" alt="프로필이미지" />
+				</div>
+				<span th:text=${loginInfo.name}>임한응</span> 님, 안녕하세요.
+			</div>
+
+			<div class="profile-card-bottom">
+				<div class="profile-card-dept">
+					<span th:text=${companyName}>뉴렉처 인재개발원</span>
+				</div>
+				<div class="profile-card-team">
+					<span th:text="${loginInfo.department} + 팀">버스 1팀</span>
+				</div>
+			</div>
+		</header>
+
+		<!-- date-bar -->
+		<section>
+			<h1 class="d-none"> commute-info</h1>
+
+			<div class="date-bar">
+				<div class="date-wrap">
+					<div class="calender-img">
+						<img src="../../img/calendar.png" alt="달력 이미지">
+					</div>
+					<div class="date">
+						<span>{{today}}</span>
+						<span style="color:white; font-size: 2px;">({{workStatus}})</span>
+					</div>
+				</div>
+
+				<div class="rest-edit">
+					<span>휴게편집</span>
+					<div @click="restToggleHandler" class="rest-toggle" :class="restToggleOn ? 'rest-toggle-on' : 'rest-toggle-off'"></div>
+					<!-- <div class="rest-toggle rest-toggle-on d-none"></div> -->
+
+				</div>
+			</div>
+
+
+
+			<!-- commute-info -->
+
+			<div class="commute-info">
+				<button class="" type="submit">
+					<span>출근</span>
+					<span>{{worktime.clockIn}}</span></button>
+				<button class="" type="submit">
+					<span>퇴근</span>
+					<span>{{worktime.clockOut}}</span></button>
+				<button class="rest" :class="restToggleOn ? '' : 'd-none' " @click="restEditerHandler" type="submit">
+					<span>휴게</span>
+					<span>{{worktime.breakTimeStart}} ~ {{worktime.breakTimeEnd}}</span>
+				</button>
+			</div>
+			<div>
+				<form action="register" method="post">
+					<div class="btn-wrap">
+						<button type="submit" class="btn-blue register-btn">출근</button>
+					</div>
+					<input type="hidden" name="status" :value="workStatus" />
+				</form>
+			</div>
+
+			<div class="exception-req">
+				<a href="exception-req">사전예외신청</a>
+			</div>
+		</section>
+
+
+		<!-- //휴게편집창 추가 -->
+		<form class="rest-editor-box" :class="{ 'teston' : restEditerOn }" action="reg-rest" method="post">
+			<hr>
+			<section class="rest-editor">
+				<h1> ☕️ 휴게</h1>
+				<hr>
+				<div class="rest-edit-box">
+
+					<div class="choose-date-btn">
+						<button type="button" class="date-btn " id="minus-s"></button>
+						<span class="choose-date" id="start-restTime"></span>
+						<input type="hidden" id="date-s-val" name="rest-start">
+						<button type="button" class="date-btn " id="plus-s"></button>
+					</div>
+
+					<div class="from-text-box">
+						<div class="from-text">
+							부터
+						</div>
+					</div>
+
+					<div class="choose-date-btn">
+						<button type="button" class="date-btn " id="minus-e"></button>
+						<span class="choose-date" id="end-restTime"></span>
+						<button type="button" class="date-btn " id="plus-e"></button>
+					</div>
+				</div>
+				<input type="hidden" name="status" />
+				<button type="submit" class="btn-blue rest-edit-submit">저장</button>
+			</section>
+		</form>
+		<!-- ↑↑↑↑휴게편집창 추가 ↑↑↑↑-->
+
+	</div>
+</main>
