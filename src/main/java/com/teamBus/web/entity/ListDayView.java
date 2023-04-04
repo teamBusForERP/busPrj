@@ -26,7 +26,7 @@ public class ListDayView {
 	private LocalTime breakTimeStart;
 	private LocalTime breakTimeEnd;
 	private LocalDateTime clockOut;
-	
+	private Integer exId;
 	private String workHours;
 	private String restHours;
 }

@@ -3,9 +3,9 @@ Vue
 
 		data() {
 			return {
-				
+//				id:1,
 				list: [
-					{ Id: "1", //임시
+					{ id: "1", //임시
 					companyId: "1",
 					name: "",
 					image: "",
@@ -42,13 +42,9 @@ Vue
 						if (this.page != 0) {
 							this.initDate = this.initDate.add(this.page, "d");
 						}
-						console.log(this.page);
-						console.log(this.page + 1);
+						
 						let dayOfWeek = this.getDayOfWeek(this.initDate.format("d"));
-						console.log(dayOfWeek);
 						this.showDate = this.initDate.format("YYYY.M.D") + dayOfWeek;
-
-						this.fromDate = this.initDate.format("YYYY-MM-DD");
 
 						this.getList();
 						//                        this.findByDateUnit(this.date);
@@ -103,22 +99,29 @@ Vue
 			},
 
 			async getList() {
-				let response = await fetch(`http://localhost:80/api/officehours/day?employeeId=${this.Id}&fromDate=${this.fromDate}`);
+				let response = await fetch(`http://localhost:80/api/officehours/day?employeeId=${this.id}&fromDate=${this.fromDate}`);
 				let list = await response.json();
+				
+				
+				//				this.list.push(list);
+//								this.list = list;
 				//				this.clockIn = list.clockIn;
 				//				this.clockOut= list.clockOut;
 				//				this.totalWorkTime = list.totalWorkTime;
 				//				this.totalRestTime = list.totalRestTime;
 				console.log(list);
+				console.log(this.list[0].name);
 
 			},
 			async getLists() {
 				let response = await fetch(`http://localhost:80/api/officehours/days?employeeId=${this.companyId}&fromDate=${this.fromDate}&toDate=${this.toDate}`);
 				let list = await response.json();
-				//				this.clockIn = list.clockIn;
-				//				this.clockOut= list.clockOut;
-				//				this.totalWorkTime = list.totalWorkTime;
-				//				this.totalRestTime = list.totalRestTime;
+				
+//								this.list = list;
+//								this.clockIn = list.clockIn;
+//								this.clockOut= list.clockOut;
+//								this.totalWorkTime = list.totalWorkTime;
+//								this.totalRestTime = list.totalRestTime;
 				console.log(list);
 
 			},
@@ -145,6 +148,7 @@ Vue
 
 		mounted() {
 			this.dateUnitHandler("day");
+			
 		}
 	})
 	.mount(".main-wrap");

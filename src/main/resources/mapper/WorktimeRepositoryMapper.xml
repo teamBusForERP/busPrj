@@ -29,6 +29,7 @@
 		<result property="clockOut" column="clock_out" />
 		<result property="workHours" column="workhours" />
 		<result property="restHours" column="resthours" />
+		<result property="exId" column="ex_id" />
 	</resultMap>
 
 	<resultMap id="listWmViewMap" type="listWmView">
@@ -158,6 +159,7 @@
 				id = #{id}
 			</otherwise>
 		</choose>
+		and date = #{fromDate}
 	</select>
 
 
