@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.teamBus.web.entity.AdminListDayView;
 import com.teamBus.web.entity.Employee;
+import com.teamBus.web.entity.ListDayView;
 import com.teamBus.web.entity.ListWmView;
 import com.teamBus.web.entity.Worktime;
 
@@ -28,5 +29,9 @@ public interface OfficeHoursService {
 //	admin/list service
 	List<Employee> getList();
     List<AdminListDayView> getDayList(Integer companyId, LocalDate date);
+    
+//	member/List service 추가
+    List<ListDayView> WorkTimeList(Integer id, Integer companyId, String fromDate);
+    List<ListWmView> WorkTimesList(Integer id, Integer companyId, String fromDate, String toDate);
 
 }

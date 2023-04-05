@@ -5,39 +5,62 @@
 <mapper namespace="com.teamBus.web.repository.WorktimeRepository">
 
 	<resultMap id="WorktimeResultMap" type="Worktime">
-		<result property="employeeId" column="employee_id" />
+		<result property="id" column="employee_id" />
 		<result property="clockIn" column="clock_in" />
 		<result property="breakTimeStart" column="break_time_start" />
 		<result property="breakTimeEnd" column="break_time_end" />
 		<result property="clockOut" column="clock_out" />
+		<result property="totalWorkTime" column="worktimes" />
+		<result property="totalRestTime" column="resthours" />
+
 	</resultMap>
-	
+
+	<resultMap id="listDayViewMap" type="listDayView">
+		<result property="id" column="id" />
+		<result property="companyId" column="company_id" />
+		<result property="name" column="name" />
+		<result property="image" column="image" />
+		<result property="department" column="department" />
+		<result property="position" column="position" />
+		<result property="date" column="date" />
+		<result property="clockIn" column="clock_in" />
+		<result property="breakTimeStart" column="break_time_start" />
+		<result property="breakTimeEnd" column="break_time_end" />
+		<result property="clockOut" column="clock_out" />
+		<result property="workHours" column="workhours" />
+		<result property="restHours" column="resthours" />
+		<result property="exId" column="ex_id" />
+	</resultMap>
+
 	<resultMap id="listWmViewMap" type="listWmView">
 		<result property="id" column="id" />
 		<result property="companyId" column="company_id" />
 		<result property="name" column="name" />
 		<result property="image" column="image" />
+		<result property="department" column="department" />
 		<result property="position" column="position" />
-		<result property="workHoursSum" column="workhours_sum" />
-		<result property="restHoursSum" column="resthours_sum" />
+		<result property="workHours" column="workhours_sum" />
+		<result property="restHours" column="resthours_sum" />
 	</resultMap>
-	
+
 	<select id="findAll" resultMap="WorktimeResultMap">
 		select *
 		from worktime
 	</select>
-	
+
 	<select id="findById" resultMap="WorktimeResultMap">
 		select *
 		from worktime
-		where id=#{id}
+		where
+		id=#{id}
 	</select>
-	
+
 	<insert id="insertNow" parameterType="Worktime">
-		insert worktime(employee_id) 
+		insert
+		worktime(employee_id)
 		values (#{employeeId})
 	</insert>
-	
+
 	<update id="update" parameterType="Worktime">
 		update worktime
 		<set>
@@ -49,63 +72,118 @@
 		</set>
 		where id = #{id}
 	</update>
-	
+
 	<delete id="delete">
-		delete 
+		delete
 		from worktime
 		where id=${id}
 	</delete>
-	
+
 	<select id="findTodayByEmployeeId" resultMap="WorktimeResultMap">
 		select *
-		from worktime
+		from
+		worktime
 		where employee_id = #{id}
 		and date = date(now())
 	</select>
-	
+
 
 	<insert id="addWorktime">
-		insert worktime(employee_id) 
+		insert worktime(employee_id)
 		values (#{employeeId})
 	</insert>
-	
-<!-- 	<update id="updateWorktime" parameterType="Worktime">
-		update worktime
-		<set>
-			<if test="date != null">date = #{date}</if>
-			<if test="clockIn != null">clock_in = #{clockIn}</if>
-			<if test="clockOut != null">clock_out = #{clockOut}</if>
-			<if test="breakTimeStart != null">break_time_start = #{breakTimeStart}</if>
-			<if test="breakTimeEnd != null">break_time_end = #{breakTimeEnd}</if>
-		</set>
-		where id = (select id from worktime
-					where employee_id = #{employeeId}
-					order by date desc
-					limit 1)
-	</update> -->
 
-	<select id="findRecentByEmployeeId" resultMap="WorktimeResultMap">
+	<!-- <update id="updateWorktime" parameterType="Worktime"> update worktime 
+		<set> <if test="date != null">date = #{date}</if> <if test="clockIn != null">clock_in 
+		= #{clockIn}</if> <if test="clockOut != null">clock_out = #{clockOut}</if> 
+		<if test="breakTimeStart != null">break_time_start = #{breakTimeStart}</if> 
+		<if test="breakTimeEnd != null">break_time_end = #{breakTimeEnd}</if> </set> 
+		where id = (select id from worktime where employee_id = #{employeeId} order 
+		by date desc limit 1) </update> -->
+
+	<select id="findRecentByEmployeeId"
+		resultMap="WorktimeResultMap">
 		select *
 		from worktime
 		where employee_id = #{employeeId}
-		order by date desc
+		order
+		by date desc
 		limit 1
 	</select>
 
 	<select id="findhoursByFilter" resultMap="listWmViewMap">
-			select 
-				id, company_id, name, image, department, position, 
-			    sec_to_time(sum(time_to_sec(workhours))) workhours_sum,
-			    sec_to_time(sum(time_to_sec(resthours))) resthours_sum 
-			from 
-				admin_list_wm_view
-	    	<where>
-	    		<if test="employeeId != null">and id = #{employeeId}</if>
-	    		<if test="fromDate != null">and DATE_FORMAT(date,'%Y-%m-%d') between #{fromDate} and #{toDate}</if>
-	   		</where>
-	    	group by 
-	    		id, company_id, name, image, department, position;
-		</select>
-	
+		select
+		id, company_id, name, image, department, position,
+		sec_to_time(sum(time_to_sec(workhours))) workhours_sum,
+		sec_to_time(sum(time_to_sec(resthours))) resthours_sum
+		from
+		admin_list_wm_view
+		<where>
+			<if test="employeeId != null">and id = #{employeeId}</if>
+			<if test="fromDate != null">and DATE_FORMAT(date,'%Y-%m-%d') between #{fromDate} and
+				#{toDate}
+			</if>
+		</where>
+		group by
+		id, company_id, name, image, department, position;
+	</select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- DayView -->
+	<select id="findFromDayView" resultMap="listDayViewMap">
+		select
+		*
+		from
+		admin_list_day_view
+		where
+		<choose>
+			<when test="companyId != null and companyId != ''">
+				company_id = #{companyId}
+			</when>
+			<otherwise>
+				id = #{id}
+			</otherwise>
+		</choose>
+		and date = #{fromDate}
+	</select>
+
+
+
+	<!-- WmView -->
+	<select id="findFromWmView" resultMap="listWmViewMap">
+		select
+		id, company_id, name, image, department, position,
+		sec_to_time(sum(time_to_sec(workhours))) workhours_sum,
+		sec_to_time(sum(time_to_sec(resthours))) resthours_sum
+		from
+		admin_list_wm_view
+		where
+		<choose>
+			<when test="companyId != null and companyId != ''">
+				company_id = #{companyId}
+			</when>
+			<otherwise>
+				id = #{id}
+			</otherwise>
+		</choose>
+		and date between #{fromDate} and #{toDate}
+		group by id
+	</select>
+
 
 </mapper>
