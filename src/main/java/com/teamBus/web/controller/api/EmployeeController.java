@@ -30,29 +30,5 @@ public class EmployeeController {
 			return service.getCompanyByCompanyId(e.getCompanyId());
 	}
 
-//	@PostMapping("register")
-//	public String postRegister(int status) {
-//		
-//    	System.out.println(status);
-//    	
-//    	service.regWorktimeByStatus(employeeId, status);
-//
-//    	return "redirect:/member/office-hours/register";
-//	}
-//	
-//	@PostMapping("reg-rest")
-//	public String postRest(
-//			int status,
-//			@RequestParam (name="rest-start", required = false) Date sDate,
-//			@RequestParam (name="rest-end", required = false) Date eDate) {
-//		
-//    	LocalTime restStart = LocalTime.ofInstant(sDate.toInstant(), ZoneId.systemDefault());
-//    	LocalTime restEnd = LocalTime.ofInstant(eDate.toInstant(), ZoneId.systemDefault());
-//    	
-//    	service.editResttime(employeeId, status, restStart, restEnd);
-//    	
-//    	return "redirect:/member/office-hours/register";
-//	}
-//	
-	
+
 }

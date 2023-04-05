@@ -39,81 +39,10 @@ public class OfficeHoursController {
 		return "/member/office-hours/list";
 	}
 
-	
-//	@GetMapping("register")
-//	public String register(Model model) {
-//		
-//		Employee e = employeeService.getById(employeeId);
-//    	model.addAttribute("loginInfo", e);
-//    	
-//    	String companyName = employeeService.getCompanyByCompanyId(e.getCompanyId()).getName();
-//    	model.addAttribute("companyName", companyName);
-//    	
-//    	//현재 날짜 
-//    	LocalDate today = LocalDate.now();
-//    	model.addAttribute("today", today);
-//		
-//    	Worktime recentWorktime = service.getRecentByEmployeeId(employeeId);
-//    	int status = service.getStatusByWorktime(recentWorktime);
-//    	
-//    	if (status != 0)
-//    		model.addAttribute("worktime", recentWorktime);
-////    	if (status == 3)
-////    		return "redirect:/member/office-hours/exception-req";
-//		
-//		model.addAttribute("status", status);
-//    	
-//		return "/member/office-hours/register";
-//	}
-	
 	@GetMapping("register")
-	public String register(Model model) {
-		
-		Employee e = employeeService.getById(employeeId);
-    	model.addAttribute("loginInfo", e);
-    	
-    	String companyName = employeeService.getCompanyByCompanyId(e.getCompanyId()).getName();
-    	model.addAttribute("companyName", companyName);
-    	
-    	//현재 날짜 
-    	LocalDate today = LocalDate.now();
-    	model.addAttribute("today", today);
-		
-    	Worktime recentWorktime = service.getRecentByEmployeeId(employeeId);
-    	int status = service.getStatusByWorktime(recentWorktime);
-    	
-    	if (status != 0)
-    		model.addAttribute("worktime", recentWorktime);
-//    	if (status == 3)
-//    		return "redirect:/member/office-hours/exception-req";
-		
-		model.addAttribute("status", status);
-    	
-		return "/member/office-hours/register2";
-	}
-	
-	@PostMapping("register")
-	public String postRegister(int status) {
-		
-    	System.out.println(status);
-    	
-    	service.regWorktimeByStatus(employeeId, status);
+	public String register() {
 
-    	return "redirect:/member/office-hours/register";
-	}
-	
-	@PostMapping("reg-rest")
-	public String postRest(
-			int status,
-			@RequestParam (name="rest-start", required = false) Date sDate,
-			@RequestParam (name="rest-end", required = false) Date eDate) {
-		
-    	LocalTime restStart = LocalTime.ofInstant(sDate.toInstant(), ZoneId.systemDefault());
-    	LocalTime restEnd = LocalTime.ofInstant(eDate.toInstant(), ZoneId.systemDefault());
-    	
-    	service.editResttime(employeeId, status, restStart, restEnd);
-    	
-    	return "redirect:/member/office-hours/register";
+		return "/member/office-hours/register2";
 	}
 	
 	@GetMapping("exception-req")

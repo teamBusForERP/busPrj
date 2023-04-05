@@ -141,7 +141,6 @@ public class OfficeHoursServiceImpl implements OfficeHoursService {
 		}
 		
 	}
-	
 
 	@Override
 	public List<Employee> getList() {
