@@ -5,24 +5,24 @@ Vue
 			return {
 				id: 1,//임시
 				list: "",
-//				list: [
-//					{
-//						id: 0, 
-//						companyId: 0,
-//						name: "",
-//						image: "",
-//						department: "",
-//						position: "",
-//						date: "",
-//						breakTimeStart: "",
-//						breakTimeEnd: "",
-//						workHours: "",
-//						restHours: "",
-//						clockIn: "",
-//						clockOut: "",
-//						ex_id:""
-//					}
-//				],
+				//				list: [
+				//					{
+				//						id: 0, 
+				//						companyId: 0,
+				//						name: "",
+				//						image: "",
+				//						department: "",
+				//						position: "",
+				//						date: "",
+				//						breakTimeStart: "",
+				//						breakTimeEnd: "",
+				//						workHours: "",
+				//						restHours: "",
+				//						clockIn: "",
+				//						clockOut: "",
+				//						ex_id:""
+				//					}
+				//				],
 
 				dateUnit: "",
 				showDate: "",
@@ -30,6 +30,11 @@ Vue
 				page: 0,
 				fromDate: "",
 				toDate: "",
+				workHours: "",
+				restHours: "",
+				clockIn: "",
+				clockOut: "",
+				progress: 0,
 			};
 		},
 
@@ -53,6 +58,7 @@ Vue
 						this.fromDate = this.initDate.format("YYYY-MM-DD");
 
 						this.getList();
+						
 						//                        this.findByDateUnit(this.date);
 
 						break;
@@ -105,31 +111,45 @@ Vue
 			},
 
 			async getList() {
-				let response = await fetch(`http://localhost:80/api/officehours/daylist?id=${this.id}&fromDate=${this.fromDate}`);
-				let list = await response.json();
-				this.list = list;
-				
-				console.log()
-				console.log("list= "+list[0].name);
+//				let response = await fetch(`http://localhost:80/api/officehours/daylist?id=${this.id}&fromDate=${this.fromDate}`);
+//				let list = await response.json();
 //				this.list = list;
-//				this.clockIn = list.clkIn;
-//				this.clockOut = list.cloOut;
-//				this.workhours = list.workhours;
-//				this.resthours = list.resthours;
-//				console.log(this.list);
-//				console.log(this.list.name);
+
+				let requestOptions = {
+					method: 'GET',
+					redirect: 'follow'
+				};
+
+				fetch(`http://localhost:80/api/officehours/daylist?id=${this.id}&fromDate=${this.fromDate}`, requestOptions)
+					.then(response => this.list = response.json())
+					.then(list => this.workHours = this.workHoursFormat(list))
+					.catch(error => this.workHours = "근무 내역이 없습니다.");
+
+
+				console.log(this.workHours);
+
+
 
 			},
 			async getLists() {
-				let response = await fetch(`http://localhost:80/api/officehours/wmlist?id=${this.id}&fromDate=${this.fromDate}&toDate=${this.toDate}`);
-				let list = await response.json();
-				this.list = list;
+//				let response = await fetch(`http://localhost:80/api/officehours/wmlist?id=${this.id}&fromDate=${this.fromDate}&toDate=${this.toDate}`);
+//				let list = await response.json();
+//				this.list = list;
+				let requestOptions = {
+					method: 'GET',
+					redirect: 'follow'
+				};
 
-				//								this.list = list;
-				//								this.clockIn = list.clockIn;
-				//								this.clockOut= list.clockOut;
-				//								this.totalWorkTime = list.totalWorkTime;
-				//								this.totalRestTime = list.totalRestTime;
+				fetch(`http://localhost:80/api/officehours/wmlist?id=${this.id}&fromDate=${this.fromDate}&toDate=${this.toDate}`, requestOptions)
+					.then(response => this.list = response.json())
+					.then(list => this.workHours = this.workHoursFormat(list))
+					.catch(error => this.workHours = "근무 내역이 없습니다.");
+
+
+				console.log(this.workHours);
+
+
+
 				console.log(list);
 
 			},
@@ -151,9 +171,61 @@ Vue
 					case '6':
 						return "(토)";
 				}
-			}
-		},
+			},
 
+			workHoursFormat(list) {
+
+				let str = list[0].workHours.split(":");
+				let workHours = "";
+
+				if (str[0] !== "00") {
+					if (str[0].indexOf("0") <= 0) {
+						workHours = str[0].replace("0", '') + "시간";
+					} else {
+						workHours = str[0] + "시간";
+					}
+				}
+
+				if (str[1] !== "00") {
+					if (str[1].indexOf("0") <= 0) {
+						workHours = workHours + " " + str[1].replace("0", '') + "분";
+					} else {
+						workHours = workHours + " " + str[1] + "분";
+					}
+				}
+
+				return workHours;
+			},
+			
+			workHoursProgress(list) {
+
+				let str = list[0].workHours.split(":");
+				let hourToSec = parseInt(str[0])*3600;
+				let minToSec = parseInt(str[1])*60;
+				let totalSec = hourToSec+minToSec;
+				let workHoursSec = 0;
+				let progress = 0;
+				switch (this.dateUnit) {
+					case 'day':
+							workHoursSec= 50400;
+						break;
+					case 'week':
+							workHoursSec= 0;
+						break;
+					case 'month':
+							workHoursSec= 0;
+						break;
+				}
+				progress = math.floor(((totalSec / workHoursSec) * 100));
+				
+				console.log(progress);
+				
+				return progress;
+			}
+
+		},
+		
+		
 		mounted() {
 			this.dateUnitHandler("day");
 
