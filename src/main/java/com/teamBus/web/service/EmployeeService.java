@@ -2,15 +2,19 @@ package com.teamBus.web.service;
 
 import org.springframework.stereotype.Service;
 
+import com.teamBus.web.entity.Company;
 import com.teamBus.web.entity.Employee;
 
 @Service
 public interface EmployeeService {
 
 //	List<Employee> getList();
-	
+
+
 	Employee getById(int employeeId);
-	
+
+	Company getCompanyByCompanyId(int companyId);
+
 	//로그인 서비스
 	String getLoginInfo(String email);
 	

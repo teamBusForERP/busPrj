@@ -10,9 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.teamBus.web.entity.AdminListDayView;
-import com.teamBus.web.entity.Company;
 import com.teamBus.web.entity.Employee;
-import com.teamBus.web.service.CommonService;
+import com.teamBus.web.service.EmployeeService;
 import com.teamBus.web.service.OfficeHoursService;
 
 @Controller("hrAdminOfficeHoursController")
@@ -23,7 +22,7 @@ public class OfficeHoursController {
     private OfficeHoursService service;
 
     @Autowired
-    private CommonService commonService;
+    private EmployeeService employeeService;
 
 //    public OfficeHoursController(OfficeHoursService service) {
 //        this.service = service;
@@ -33,14 +32,14 @@ public class OfficeHoursController {
     public String list(Model model) {
 
     	int employeeId = 1;
-    	Employee e = commonService.getEmployeeByEmployeeId(employeeId);
+    	Employee e = employeeService.getById(employeeId);
     	model.addAttribute("loginInfo", e);
-    	String companyName = commonService.getCompanyNameByCompanyId(e.getCompanyId());
+    	String companyName = employeeService.getCompanyByCompanyId(e.getCompanyId()).getName();
     	model.addAttribute("companyName", companyName);
     	
 //        List<Employee> list = service.getList();
 //        model.addAttribute("list",list);
-//        LoginInfo loginInfo = commonService.getLoginInfo(employeeId);
+//        LoginInfo loginInfo = employeeService.getLoginInfo(employeeId);
 //        model.addAttribute("loginInfo", loginInfo);
 
         List<AdminListDayView> dayList = service.getDayList(e.getCompanyId(), LocalDate.now());

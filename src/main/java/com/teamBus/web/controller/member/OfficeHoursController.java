@@ -16,7 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.teamBus.web.entity.Employee;
 import com.teamBus.web.entity.Worktime;
-import com.teamBus.web.service.CommonService;
+import com.teamBus.web.service.EmployeeService;
+import com.teamBus.web.service.ExtraMatterService;
 import com.teamBus.web.service.OfficeHoursService;
 
 @Controller("memberOfficeHoursController")
@@ -24,12 +25,15 @@ import com.teamBus.web.service.OfficeHoursService;
 public class OfficeHoursController {
 	
 	@Autowired
-	private OfficeHoursService service;
+	private OfficeHoursService service;	
 
     @Autowired
-    private CommonService commonService;
+    private EmployeeService employeeService;
+		
+		@Autowired
+    private ExtraMatterService extraMatterService;
     
-    int employeeId = 7;
+    int employeeId = 1;
 
 	@GetMapping("list")
 	public String list(
@@ -61,64 +65,19 @@ public class OfficeHoursController {
 		return "/member/office-hours/list";
 	}
 
-	
 	@GetMapping("register")
-	public String register(Model model) {
-		
-		Employee e = commonService.getEmployeeByEmployeeId(employeeId);
-    	model.addAttribute("loginInfo", e);
-    	
-    	String companyName = commonService.getCompanyNameByCompanyId(e.getCompanyId());
-    	model.addAttribute("companyName", companyName);
-    	
-    	//현재 날짜 
-    	LocalDate today = LocalDate.now();
-    	model.addAttribute("today", today);
-		
-    	Worktime recentWorktime = service.getRecentByEmployeeId(employeeId);
-    	int status = service.getStatusByWorktime(recentWorktime);
-    	
-    	if (status != 0)
-    		model.addAttribute("worktime", recentWorktime);
-//    	if (status == 3)
-//    		return "redirect:/member/office-hours/exception-req";
-		
-		model.addAttribute("status", status);
-    	
-		return "/member/office-hours/register";
-	}
-	
-	@PostMapping("register")
-	public String postRegister(int status) {
-		
-    	System.out.println(status);
-    	
-    	service.regWorktimeByStatus(employeeId, status);
+	public String register() {
 
-    	return "redirect:/member/office-hours/register";
-	}
-	
-	@PostMapping("reg-rest")
-	public String postRest(
-			int status,
-			@RequestParam (name="rest-start", required = false) Date sDate,
-			@RequestParam (name="rest-end", required = false) Date eDate) {
-		
-    	LocalTime restStart = LocalTime.ofInstant(sDate.toInstant(), ZoneId.systemDefault());
-    	LocalTime restEnd = LocalTime.ofInstant(eDate.toInstant(), ZoneId.systemDefault());
-    	
-    	service.editResttime(employeeId, status, restStart, restEnd);
-    	
-    	return "redirect:/member/office-hours/register";
+		return "/member/office-hours/register2";
 	}
 	
 	@GetMapping("exception-req")
 	public String exceptionReq(Model model) {
 		
-		Employee e = commonService.getEmployeeByEmployeeId(employeeId);
+		Employee e = employeeService.getById(employeeId);
     	model.addAttribute("loginInfo", e); 
     	
-    	String companyName = commonService.getCompanyNameByCompanyId(e.getCompanyId());
+    	String companyName = employeeService.getCompanyByCompanyId(e.getCompanyId()).getName();
     	model.addAttribute("companyName", companyName);
     	
     	//현재 날짜 
@@ -126,7 +85,7 @@ public class OfficeHoursController {
     	model.addAttribute("today", today);
 		
     	//시간에 따라 지각사유 or 사전예외신청 
-    	int MatterTypeStatus = commonService.getMatterTypeStatus();
+    	int MatterTypeStatus = extraMatterService.getMatterTypeStatus();
     	model.addAttribute("MatterTypeStatus", MatterTypeStatus);
     	
 		return "/member/office-hours/exception-req";
@@ -137,7 +96,7 @@ public class OfficeHoursController {
 			int matterType,
 			@RequestParam(name="exception-reason",required = false) String reason) {
 		
-		commonService.addExtraMatter(employeeId, matterType, reason);
+				extraMatterService.addExtraMatter(employeeId, matterType, reason);
 		
 			
 		return "redirect:register";
