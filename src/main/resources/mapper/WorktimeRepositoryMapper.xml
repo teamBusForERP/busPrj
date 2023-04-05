@@ -5,13 +5,11 @@
 <mapper namespace="com.teamBus.web.repository.WorktimeRepository">
 
 	<resultMap id="WorktimeResultMap" type="Worktime">
-		<result property="id" column="employee_id" />
+		<result property="employeeId" column="employee_id" />
 		<result property="clockIn" column="clock_in" />
 		<result property="breakTimeStart" column="break_time_start" />
 		<result property="breakTimeEnd" column="break_time_end" />
 		<result property="clockOut" column="clock_out" />
-		<result property="totalWorkTime" column="worktimes" />
-		<result property="totalRestTime" column="resthours" />
 
 	</resultMap>
 
