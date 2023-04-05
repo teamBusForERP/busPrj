@@ -21,8 +21,8 @@ public class ListWmView {
 	private String department;
 	private String position;
 	
-	private String workHoursSum; //date 가 X
-	private String restHoursSum;
+	private String workHours; //date 가 X
+	private String restHours;
 	
 	
 }

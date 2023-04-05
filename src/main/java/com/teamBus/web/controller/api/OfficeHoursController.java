@@ -22,7 +22,7 @@ public class OfficeHoursController {
 	@Autowired	
 	private OfficeHoursService service;
 	
-	@GetMapping("day")
+	@GetMapping("daylist")
 	public List<ListDayView> dayList(
 			@RequestParam(name="id", required = false)Integer id,
 			@RequestParam(name="companyId", required = false)Integer companyId,
@@ -34,7 +34,7 @@ public class OfficeHoursController {
 		return list;
 	}
 	
-	@GetMapping("days")
+	@GetMapping("wmlist")
 	public List<ListWmView> wmList(
 			@RequestParam(name="id", required = false)Integer id,
 			@RequestParam(name="companyId", required = false)Integer companyId,

@@ -4,24 +4,25 @@ Vue
 		data() {
 			return {
 				id: 1,//임시
-				list: [
-					{
-						id: 0, 
-						companyId: 0,
-						name: "",
-						image: "",
-						department: "",
-						position: "",
-						date: "",
-						breakTimeStart: "",
-						breakTimeEnd: "",
-						workHours: "",
-						restHours: "",
-						clockIn: "",
-						clockOut: "",
-						ex_id:""
-					}
-				],
+				list: "",
+//				list: [
+//					{
+//						id: 0, 
+//						companyId: 0,
+//						name: "",
+//						image: "",
+//						department: "",
+//						position: "",
+//						date: "",
+//						breakTimeStart: "",
+//						breakTimeEnd: "",
+//						workHours: "",
+//						restHours: "",
+//						clockIn: "",
+//						clockOut: "",
+//						ex_id:""
+//					}
+//				],
 
 				dateUnit: "",
 				showDate: "",
@@ -104,11 +105,12 @@ Vue
 			},
 
 			async getList() {
-				let response = await fetch(`http://localhost:80/api/officehours/day?id=${this.id}&fromDate=${this.fromDate}`);
+				let response = await fetch(`http://localhost:80/api/officehours/daylist?id=${this.id}&fromDate=${this.fromDate}`);
 				let list = await response.json();
-
-
-				console.log("list= "+list);
+				this.list = list;
+				
+				console.log()
+				console.log("list= "+list[0].name);
 //				this.list = list;
 //				this.clockIn = list.clkIn;
 //				this.clockOut = list.cloOut;
@@ -119,8 +121,9 @@ Vue
 
 			},
 			async getLists() {
-				let response = await fetch(`http://localhost:80/api/officehours/days?id=${this.id}&fromDate=${this.fromDate}&toDate=${this.toDate}`);
+				let response = await fetch(`http://localhost:80/api/officehours/wmlist?id=${this.id}&fromDate=${this.fromDate}&toDate=${this.toDate}`);
 				let list = await response.json();
+				this.list = list;
 
 				//								this.list = list;
 				//								this.clockIn = list.clockIn;

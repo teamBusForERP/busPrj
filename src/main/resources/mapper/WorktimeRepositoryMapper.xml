@@ -39,8 +39,8 @@
 		<result property="image" column="image" />
 		<result property="department" column="department" />
 		<result property="position" column="position" />
-		<result property="workHoursSum" column="workhours_sum" />
-		<result property="restHoursSum" column="resthours_sum" />
+		<result property="workHours" column="workhours_sum" />
+		<result property="restHours" column="resthours_sum" />
 	</resultMap>
 
 	<select id="findAll" resultMap="WorktimeResultMap">
