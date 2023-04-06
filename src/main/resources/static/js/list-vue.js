@@ -121,7 +121,7 @@ Vue
 
 				fetch(`http://localhost:80/api/officehours/daylist?id=${this.id}&fromDate=${this.fromDate}`, requestOptions)
 					.then(response => this.list = response.json())
-					.then(list => this.workHours = this.progressTimeFormat(list))
+					.then(list => this.workHours = this.progressTimeFormat(list[0].workHours))
 					.catch(error => this.workHours = "근무 내역이 없습니다.");
 
 
@@ -143,7 +143,8 @@ Vue
 					.then(response => this.list = response.json())
 					.then(list => this.workHours = this.progressHoursFormat(list[0].workHours))
 					.catch(error => this.workHours = "근무 내역이 없습니다.");
-
+				
+//				this.progress = progressPercentage(list[0].workHours)
 
 				console.log(this.workHours);
 
