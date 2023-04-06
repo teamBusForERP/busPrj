@@ -115,10 +115,13 @@ Vue
 				let resultList = []
 				for (item of list) {
 					console.log(item);
-					item.workHours = parseInt(item.workHours.substr(0, 2))
-						+ '시간 ' + parseInt(item.workHours.substr(3, 5)) + '분';
-					item.restHours = parseInt(item.restHours.substr(0, 2))
-						+ '시간 ' + parseInt(item.restHours.substr(3, 5)) + '분';
+					let workHH = parseInt(item.workHours.substr(0, 2));
+					let workMM = parseInt(item.workHours.substr(3, 5));
+					// item.workHours = `${workHH}시간 ${workMM}분`
+					item.workHours = (workHH != 0)? `${workHH}시간 ${workMM}분` : `${workMM}분`
+					let restHH = parseInt(item.restHours.substr(0, 2));
+					let restMM = parseInt(item.restHours.substr(3, 5));
+					item.restHours = (restHH != 0)? `${restHH}시간 ${restMM}분` : `${restMM}분` 
 					if (dateUnit == 'day') {
 						item.clockIn = item.clockIn.split('T')[1].substr(0, 5);
 						item.clockOut = item.clockOut.split('T')[1].substr(0, 5);
