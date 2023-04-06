@@ -4,15 +4,12 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
 import com.teamBus.web.entity.AdminListDayView;
 import com.teamBus.web.entity.Employee;
 import com.teamBus.web.entity.ListDayView;
 import com.teamBus.web.entity.ListWmView;
 import com.teamBus.web.entity.Worktime;
 
-@Service
 public interface OfficeHoursService {
 	
 	// member/register 사용 메소드
@@ -24,7 +21,6 @@ public interface OfficeHoursService {
 
 	void addWorktime(int employeeId);
 	void regClockOut(int employeeId);
-	
 	
 //	admin/list service
 	List<Employee> getList();

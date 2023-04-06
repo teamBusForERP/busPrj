@@ -6,20 +6,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.teamBus.web.entity.Employee;
-import com.teamBus.web.service.EmployeeService;
+import com.teamBus.web.entity.Company;
+import com.teamBus.web.service.CompanyService;
 
 @RestController
-@RequestMapping("api/employee")
-public class EmployeeController {
+@RequestMapping("api/company")
+public class CompanyController {
 
 	@Autowired
-	EmployeeService service;
+	CompanyService service;
 	
 	@GetMapping
-	public Employee getEmployee(
-		@RequestParam(name = "id") int employeeId) {
-			return service.getById(employeeId);
+	public Company getCompany(
+		@RequestParam(name = "id") int companyId) {
+			return service.getById(companyId);
 	}
+
 
 }

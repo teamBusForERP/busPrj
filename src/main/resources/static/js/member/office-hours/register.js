@@ -19,18 +19,18 @@ Vue
 				breakTimeEndForm1: "",
 				breakTimeStartForm2: "",
 				breakTimeEndForm2: "",
-				
+
 				breakTimeStartObj: "",
 				breakTimeEndObj: "",
-				
+
 				breakTimeErrMsg: ""
 
 			};
 		},
 		methods: {
-			restSubmitBtnHandler(){
+			restSubmitBtnHandler() {
 
-				if (this.breakTimeEndObj.diff(this.breakTimeStartObj, "minute") < 0 ) // 휴게시작시간보다 휴게종료시간이 더 이른 경우
+				if (this.breakTimeEndObj.diff(this.breakTimeStartObj, "minute") < 0) // 휴게시작시간보다 휴게종료시간이 더 이른 경우
 				{
 					this.breakTimeErrMsg = "정확한 휴게시간을 입력하세요";
 					return;
@@ -40,7 +40,7 @@ Vue
 					method: 'PUT',
 					redirect: 'follow'
 				};
-				
+
 				fetch(`http://localhost/api/officehours/rest?
 				s=${this.workStatus}&
 				id=${this.employee.id}&
@@ -51,8 +51,7 @@ Vue
 						console.log(result)
 						this.menuBHandler();
 						this.reLoad();
-					}
-					)
+					})
 					.catch(error => console.log('error', error));
 
 			},
@@ -62,6 +61,7 @@ Vue
 					method: 'POST',
 					redirect: 'follow'
 				};
+
 
 				fetch(requestUrl, requestOptions)
 					.then(response => response.text())
@@ -76,11 +76,11 @@ Vue
 				// console.log(this.worktime.clockIn.split('T')[1].substr(0, 5));
 				// console.log(this.worktime.clockOut.split('T')[1].substr(0, 5));
 				this.clockInForm = this.worktime.clockIn.split('T')[1].substr(0, 5);
-				if(this.worktime.clockOut != null)
+				if (this.worktime.clockOut != null)
 					this.clockOutForm = this.worktime.clockOut.split('T')[1].substr(0, 5);
 				const breakTimeStartString = `${this.worktime.date} ${this.worktime.breakTimeStart}`;
 				const breakTimeEndString = `${this.worktime.date} ${this.worktime.breakTimeEnd}`;
-				
+
 				this.breakTimeStartObj = dayjs(Number(Date.parse(breakTimeStartString)));
 				this.breakTimeEndObj = dayjs(Number(Date.parse(breakTimeEndString)));
 
@@ -122,6 +122,14 @@ Vue
 			breakTimeEndDownHandler() {
 				this.breakTimeEndObj = this.breakTimeEndObj.subtract(10, 'minutes');
 				this.breakTimeEndForm2 = this.breakTimeEndObj.format('A hh:mm').replace('AM', '오전').replace('PM', '오후');
+			},
+			getCompanyName(employee) {
+				fetch(`http://localhost/api/company?id=${employee.companyId}`)
+					.then(response => response.json())
+					.then(result => {
+						this.companyName = result.name;
+					})
+					.catch(error => console.log('error', error));
 			},
 			setWorkStatus(recentWorktime) {
 				// 근무 상태 코드
@@ -180,7 +188,7 @@ Vue
 						} else {
 							this.worktime = JSON.parse(text);
 							this.setWorkStatus(this.worktime);
-							if(this.workStatus != 0) // 출근 등록 전 상태인 경우 렌더링을 위한 formatDate 생략
+							if (this.workStatus != 0) // 출근 등록 전 상태인 경우 렌더링을 위한 formatDate 생략
 								this.formatDate();
 						}
 					})
@@ -188,18 +196,11 @@ Vue
 
 
 				// Employee
-				fetch("http://localhost/api/employee?id=1")
+				fetch(`http://localhost/api/employee?id=${employeeId}`)
 					.then(response => response.json())
 					.then(result => {
 						this.employee = result
-					})
-					.catch(error => console.log('error', error));
-
-				//companyName
-				fetch("http://localhost/api/employee/company?eid=1")
-					.then(response => response.json())
-					.then(result => {
-						this.companyName = result.name;
+						this.getCompanyName(result);
 					})
 					.catch(error => console.log('error', error));
 			},
@@ -220,7 +221,7 @@ Vue
 						}
 					})
 					.catch(error => console.log('error', error));
-				}
+			}
 		},
 		mounted() {
 			let employeeId = 1;

@@ -7,7 +7,6 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.teamBus.web.entity.AdminListDayView;
 import com.teamBus.web.entity.Employee;
-import com.teamBus.web.entity.Worktime;
 
 @Mapper
 public interface EmployeeRepository {

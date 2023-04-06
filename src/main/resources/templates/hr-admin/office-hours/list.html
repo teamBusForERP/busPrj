@@ -4,15 +4,17 @@
 	layout:decorate="hr-admin/inc/layout">
 
 <main layout:fragment="main">
-	<!-- ------------------------------필터 바 -->
-	<div class="filter-bar">
-		<!-- ------------------------------날짜 선택 버튼 -->
-		<div class="choose-date-btn">
-			<button class="date-btn-minus" id="date-btn-minus"></button>
-			<span class="choose-date" id="showDate">일</span>
-			<button class="date-btn-plus" id="date-btn-plus"></button>
-		</div>
-		<!-- <div class="choose-date-btn d-none">
+	<script src="/js/hr-admin/office-hours/list.js" defer="defer"></script>
+	<div id="wrap">
+		<!-- ------------------------------필터 바 -->
+		<div class="filter-bar">
+			<!-- ------------------------------날짜 선택 버튼 -->
+			<div class="choose-date-btn">
+				<button class="date-btn-minus" id="date-btn-minus" @:click="datepagingHandler('minus')"></button>
+				<span class="choose-date" id="showDate">{{showDate}}</span>
+				<button class="date-btn-plus" id="date-btn-plus" @:click="datepagingHandler('plus')"></button>
+			</div>
+			<!-- <div class="choose-date-btn d-none">
 						<button class="date-btn-minus" id="date-btn-minus" ></button>
 						<span class="choose-date" id="showWeek">주</span>
 						<button class="date-btn-plus" id="date-btn-plus" ></button>
@@ -24,159 +26,121 @@
 						<button class="date-btn-plus" id="date-btn-plus" ></button>
 					</div> -->
 
-		<div class="head-btn">
-			<!-- ------------------------------ 기간 필터 -->
-			<div class="date-filter">
-				<div class="side-padding"></div>
-				<div id="filter-day" class="date-filter-button selected">일</div>
-				<div class="vertical-bar"></div>
-				<div id="filter-week" class="date-filter-button">주</div>
-				<div class="vertical-bar"></div>
-				<div id="filter-month" class="date-filter-button">월</div>
-				<div class="side-padding"></div>
+
+			<div class="head-btn">
+				<!-- ------------------------------ 기간 필터 -->
+				<div class="date-filter">
+					<div class="side-padding"></div>
+					<div id="filter-day" class="date-filter-button" :class="{'selected': dateUnit=='day'}"
+						@:click="dateUnitHandler('day')">일</div>
+					<div class="vertical-bar"></div>
+					<div id="filter-week" class="date-filter-button" :class="{'selected': dateUnit=='week'}"
+						@:click="dateUnitHandler('week')">주</div>
+					<div class="vertical-bar"></div>
+					<div id="filter-month" class="date-filter-button" :class="{'selected': dateUnit=='month'}"
+						@:click="dateUnitHandler('month')">월</div>
+					<div class="side-padding"></div>
+				</div>
+				<!-- ------------------------------ 버튼 -->
+				<button class="filter-btn">조회 대상</button>
+				<button class="filter-btn">근태 필터</button>
 			</div>
-			<!-- ------------------------------ 버튼 -->
-			<button class="filter-btn">조회 대상</button>
-			<button class="filter-btn">근태 필터</button>
+
+
 		</div>
 
-
-	</div>
-
-	<!-- 일 단위 column width : 
+		<!-- 일 단위 column width : 
 					| 이름   | 부서  | 근무시간 | 출근시간 | 퇴근시간 | 휴게시간 | 비고 |
 					| 150px | 120px | 550px  |  80px   |  80px  |  100px  | 60px | -->
-	<!-- <div th:each="list : ${list}">
-					<span th:text="${list.name}"></span>
-					
-				</div> -->
-	<div class="list-head">
-		<div class="head-name">이름</div>
-		<div class="head-dept">부서</div>
-		<div class="head-work-time">근무 시간</div>
-		<div class="head-start-time">출근 시간</div>
-		<div class="head-end-time">퇴근 시간</div>
-		<div class="head-rest-time">휴게 시간</div>
-		<div class="head-note">비고</div>
-	</div>
-
-	<div class="list-content" th:each="row : ${dayList}">
-		<div class="content-name">
-			<div class="profile-img">
-				<img th:src="@{${row.image}}" alt="profile">
-			</div>
-			<div class="profile-wrap">
-				<!-- 이름 5글자, 직책 6글자까지 정상적으로 출력 가능 -->
-				<p class="profile-name" th:text="${row.name}"></p>
-				<p class="profile-position" th:text="${row.position}"></p>
-			</div>
+		<div class="list-head" v-if="dateUnit === 'day'">
+			<div class="head-name">이름</div>
+			<div class="head-dept">부서</div>
+			<div class="head-work-time">근무 시간</div>
+			<div class="head-start-time">출근 시간</div>
+			<div class="head-end-time">퇴근 시간</div>
+			<div class="head-rest-time">휴게 시간</div>
+			<div class="head-note">비고</div>
 		</div>
-		<div class="content-dept" th:text="${row.department+'팀'}"></div>
-		<div class="content-work-time">
-			<div class="progress">
-				<div class="progress-bar"></div>
-				<div class="time-offset-items time-offset-day">
-					<div>0</div>
-					<div>8</div>
-					<div>12</div>
-					<div>14</div>
+
+		<div class="list-content" v-if="dateUnit === 'day'" v-for="item in list">
+			<div class="content-name">
+				<div class="profile-img">
+					<img :src="item.image" alt="profile">
+				</div>
+				<div class="profile-wrap">
+					<!-- 이름 5글자, 직책 6글자까지 정상적으로 출력 가능 -->
+					<p class="profile-name">{{item.name}}</p>
+					<p class="profile-position">{{item.position}}</p>
 				</div>
 			</div>
-			<div class="detail-time">
-				<span th:text="${#temporals.format(row.workhours, 'HH')}=='00'?${#temporals.format(row.workhours, 'mm'+'분')}:${#temporals.format(row.workhours,'H'+'시간'+'mm'+'분')}">3시간 40분</span> 
-				<span>/</span> 
-				<span>8시간</span>
-			</div>
-		</div>
-		<div class="content-start-time"
-			th:text="${#temporals.format(row.clockIn, 'HH:mm')}">09:10</div>
-		<div class="content-end-time"
-			th:text="${#temporals.format(row.clockOut, 'HH:mm')}">18:30</div>
-		<div class="content-rest-time" th:text="${#temporals.format(row.resthours, 'mm')}=='00'?${#temporals.format(row.resthours, 'H'+'시간')}:${#temporals.format(row.resthours,'H'+'시간'+'mm'+'분')}">1시간 00분</div>
-		<div class="content-note">
-			<button th:text="${row.exId}==null? '--':'보기'">--</button>
-		</div>
-	</div>
-
-
-	<!-- 주 -->
-	<br> <br> 주 <br>
-
-	<div class="list-head-wm">
-		<div class="head-name">이름</div>
-		<div class="head-dept">부서</div>
-		<div class="head-work-time-">근무 시간</div>
-		<div class="head-rest-time-">휴게 시간</div>
-	</div>
-
-	<div class="list-content-wm" th:each="list : ${list}">
-		<div class="content-name">
-			<div class="profile-img">
-				<img th:src="@{${list.image}}" alt="profile">
-			</div>
-			<div class="profile-wrap">
-				<!-- 이름 5글자, 직책 6글자까지 정상적으로 출력 가능 -->
-				<p class="profile-name" th:text="${list.name}"></p>
-				<p class="profile-position" th:text="${list.position}"></p>
-			</div>
-		</div>
-		<div class="content-dept" th:text="${list.department+'팀'}"></div>
-		<div class="content-work-time-wm">
-			<div class="progress">
-				<div class="progress-bar"></div>
-				<div class="time-offset-items time-offset-week">
-					<div>0</div>
-					<div>40</div>
-					<div>52</div>
-					<div>70</div>
+			<div class="content-dept">{{item.department}}</div>
+			<div class="content-work-time">
+				<div class="progress">
+					<div class="progress-bar"></div>
+					<div class="time-offset-items time-offset-day">
+						<div>0</div>
+						<div>8</div>
+						<div>12</div>
+						<div>14</div>
+					</div>
+				</div>
+				<div class="detail-time">
+					<span>{{item.workHours}}</span>
+					<span>/</span>
+					<span>8시간</span>
 				</div>
 			</div>
-			<div class="detail-time">
-				<span>50시간</span> <span>/</span> <span>70시간</span>
+			<div class="content-start-time">{{item.clockIn}}</div>
+			<div class="content-end-time">{{item.clockOut}}</div>
+			<div class="content-rest-time">
+				{{item.restHours}}</div>
+			<div class="content-note">
+				<button v-if="item.exId">비고</button>
 			</div>
 		</div>
-		<div class="content-rest-time-wm">1시간 00분</div>
-	</div>
 
-	<!-- 월 -->
-	<br> <br> 월 <br>
 
-	<div class="list-head-wm">
-		<div class="head-name">이름</div>
-		<div class="head-dept">부서</div>
-		<div class="head-work-time-">근무 시간</div>
-		<div class="head-rest-time-">휴게 시간</div>
-	</div>
+		<!-- 주 -->
 
-	<div class="list-content-wm" th:each="list : ${list}">
-		<div class="content-name">
-			<div class="profile-img">
-				<img th:src="@{${list.image}}" alt="profile">
-			</div>
-			<div class="profile-wrap">
-				<!-- 이름 5글자, 직책 6글자까지 정상적으로 출력 가능 -->
-				<p class="profile-name" th:text="${list.name}"></p>
-				<p class="profile-position" th:text="${list.position}"></p>
-			</div>
+		<div class="list-head-wm" v-if="dateUnit === 'week' || dateUnit === 'month'">
+			<div class="head-name">이름</div>
+			<div class="head-dept">부서</div>
+			<div class="head-work-time-">근무 시간</div>
+			<div class="head-rest-time-">휴게 시간</div>
 		</div>
-		<div class="content-dept" th:text="${list.department+'팀'}"></div>
-		<div class="content-work-time-wm">
-			<div class="progress">
-				<div class="progress-bar"></div>
-				<div class="time-offset-items time-offset-week">
-					<div>0</div>
-					<div></div>
-					<div></div>
-					<div>160</div>
+
+		<div class="list-content-wm" v-if="dateUnit === 'week' || dateUnit === 'month'"  v-for="item in list">
+			<div class="content-name">
+				<div class="profile-img">
+					<img :src="item.image" alt="profile">
+				</div>
+				<div class="profile-wrap">
+					<!-- 이름 5글자, 직책 6글자까지 정상적으로 출력 가능 -->
+					<p class="profile-name">{{item.name}}</p>
+					<p class="profile-position">{{item.position}}</p>
 				</div>
 			</div>
-			<div class="detail-time">
-				<span>160시간</span> <span>/</span> <span>160시간</span>
+			<div class="content-dept">{{item.department}}</div>
+			<div class="content-work-time-wm">
+				<div class="progress">
+					<div class="progress-bar"></div>
+					<div class="time-offset-items time-offset-week">
+						<div>0</div>
+						<div>40</div>
+						<div>52</div>
+						<div>70</div>
+					</div>
+				</div>
+				<div class="detail-time">
+					<span>{{item.workHours}}</span> <span>/</span> <span>70시간</span>
+				</div>
 			</div>
+			<div class="content-rest-time-wm">{{item.restHours}}</div>
 		</div>
-		<div class="content-rest-time-wm">1시간 00분</div>
-	</div>
 
+		<!-- 월 -->
+
+	</div>
 </main>
 
 

@@ -1,10 +1,6 @@
 package com.teamBus.web.controller.member;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.ZoneId;
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.teamBus.web.entity.Employee;
-import com.teamBus.web.entity.Worktime;
 import com.teamBus.web.service.EmployeeService;
 import com.teamBus.web.service.ExtraMatterService;
 import com.teamBus.web.service.OfficeHoursService;
@@ -44,7 +39,7 @@ public class OfficeHoursController {
 	@GetMapping("register")
 	public String register() {
 
-		return "/member/office-hours/register2";
+		return "/member/office-hours/register";
 	}
 	
 	@GetMapping("exception-req")

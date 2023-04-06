@@ -22,7 +22,7 @@ public class ExtraMatterServiceImpl implements ExtraMatterService {
 
 	@Override
 	public void addExtraMatter(int employeeId, int matterType, String reason) {
-		 extraMatterRepository.insertNow(employeeId,matterType,reason);
+		extraMatterRepository.insertNow(employeeId,matterType,reason);
 	}
 
 	@Override
