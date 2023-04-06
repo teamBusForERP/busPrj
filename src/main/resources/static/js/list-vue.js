@@ -121,9 +121,16 @@ Vue
 
 				fetch(`http://localhost:80/api/officehours/daylist?id=${this.id}&fromDate=${this.fromDate}`, requestOptions)
 					.then(response => this.list = response.json())
-					.then(list => this.workHours = this.progressTimeFormat(list[0].workHours))
-					.catch(error => this.workHours = "근무 내역이 없습니다.");
-
+					.then(list => 
+					{
+						this.workHours = this.progressHoursFormat(list[0].workHours);
+						this.restHours = this.progressHoursFormat(list[0].restHours);}
+						)
+					.catch(error => {
+						this.workHours = "근무 내역이 없습니다.";
+						this.restHours = "근무 내역이 없습니다.";
+						});
+				
 
 				console.log(this.workHours);
 
@@ -141,8 +148,15 @@ Vue
 
 				fetch(`http://localhost:80/api/officehours/wmlist?id=${this.id}&fromDate=${this.fromDate}&toDate=${this.toDate}`, requestOptions)
 					.then(response => this.list = response.json())
-					.then(list => this.workHours = this.progressHoursFormat(list[0].workHours))
-					.catch(error => this.workHours = "근무 내역이 없습니다.");
+					.then(list => {
+						this.workHours = this.progressHoursFormat(list[0].workHours);
+						this.restHours = this.progressHoursFormat(list[0].restHours);}
+						)
+					.catch(error => {
+						this.workHours = "근무 내역이 없습니다.";
+						this.restHours = "근무 내역이 없습니다.";
+						});
+						
 				
 //				this.progress = progressPercentage(list[0].workHours)
 
