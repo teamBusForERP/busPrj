@@ -1,0 +1,45 @@
+	.commute-info {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		height: 222px;
+		margin-top: 20px;
+	}
+
+	.commute-info button {
+		width: 322px;
+		height: 64px;
+		border-radius: 15px;
+		font-size: 1rem;
+		background-color: rgba(217, 217, 217, 0.24);
+		margin-top: 15px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0 26px;
+		box-sizing: border-box;
+	}
+
+	.commute-info button:first-child {
+		margin-top: 0;
+	}
+
+	.exception-req {
+		width: 86px;
+		margin: 0 auto;
+		font-size: 13px;
+		margin-top: 8px;
+		display: flex;
+		align-items: center;
+		white-space: nowrap;
+	}
+
+	.exception-req a {
+		padding-right: 3px;
+		box-sizing: border-box;
+	}
+
+	.exception-req::after {
+		content: '\f105';
+		font-family: "fontawesome";
+	}

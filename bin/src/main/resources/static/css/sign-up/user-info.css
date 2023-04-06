@@ -1,0 +1,82 @@
+
+/* 폼박스 관련 */
+
+.sign-up-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+    .form-box{
+        height: 502px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-top: 20px;
+
+    }
+
+        .form-box label {
+
+            font-size: 13px;
+            font-weight: 500;
+            margin-left: 13px;
+
+        }
+
+        .form-box input, .form-box button{
+            /* 가운데 정렬 */
+            margin: 8px auto 0; 
+            /* 위 8px, 좌우정렬, 아래 0  */
+
+            width: 335px;
+            height: 40px;
+            border-radius: 10px;
+            box-sizing: border-box;
+            
+            display: flex;
+            align-items: center;
+
+            border: thin;
+            border-style: solid;
+            border-color: #C6CDD6;
+        }
+        
+        .form-box input[placeholder]{
+            padding-left: 15px;
+            
+
+        }   
+
+
+            .form-box .phone-number-input{
+                width: 237px;
+            }
+
+            
+            .form-box .number-and-button{
+                display: flex;
+                margin-top: 0;
+            }
+
+            .form-box .certification-receive-btn{
+                margin-left: 0px;
+                display: block;
+
+                width: 88px;
+                height: 40px;
+                border-radius: 10px;
+                box-sizing: border-box;
+                background-color:  #F4F4F4;
+                color:#B4B6BA;
+                border: 1px solid #B4B6BA;
+                font-size: 11px;
+
+
+            }
+
+
+
+.btn-blue{
+    margin: 0 auto;
+    margin-top: 46px;
+}

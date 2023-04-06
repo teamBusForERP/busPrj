@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="../../css/reset.css">
+	<link rel="stylesheet" href="../../css/util.css">
+	<link rel="stylesheet" href="../../css/component/button.css">
+	<link rel="stylesheet" href="../../css/member/component/modal.css">
+
+</head>
+<body>
+    <div class="back"></div>
+	<div class="modal-wrap">
+		<header class="modal-head">
+			<div class="warning-icon"></div>
+			<h1 class="modal-title">퇴근시간 미등록</h1>
+		</header>
+		<section class="pop-up-sec">
+
+			<div class="modal-contents">
+				<div class="modal-message">
+					<span>3월 30일</span> <span>퇴근시간이 등록되지 않았습니다.</span><br>
+					<span>퇴근시간을 입력해주세요.</span>
+				</div>
+                
+				<div class="time-wrap">
+					
+					<div class="module-wrap">
+						<div id="am-pm-up-btn" class="up-button"></div>
+						<div id="am-pm-val" class="time-val">오후</div>
+						<div id="am-pm-down-btn" class="down-button"></div>
+					</div>
+                    
+					<div class="module-wrap">
+						<div id="hour-up-btn" class="up-button"></div>
+						<div id="hour-val" class="time-val">06</div>
+						<div id="hour-down-btn" class="down-button"></div>
+					</div>
+					
+					<div class="module-wrap">
+							<div id="minute-up-btn" class="up-button"></div>
+					    <div id="minute-val" class="time-val">00</div>
+					    <div id="minute-down-btn" class="down-button"></div>
+					</div>
+					
+					
+					
+				</div>
+			</div>
+
+            <!-- 버튼 -->
+            <form action="register" method="post">
+                <div class="btn-wrap">
+                    <button type="submit" class="btn-blue register-btn m-top-45">저장</button>
+                </div>
+                <input type="hidden" name="" th:value=""/>
+            </form>
+            
+		</section>
+    </div>
+</body>
+</html>

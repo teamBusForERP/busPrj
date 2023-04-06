@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>승인 대기</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/util.css">
+    <link rel="stylesheet" href="../css/component/button.css">
+    <link rel="stylesheet" href="../css/sign-up/waiting.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+</head>
+
+
+
+<body>
+    <div class="wrap">
+
+
+        <!-- <header> 승인 대기중 </header> -->
+        
+        <section class="section-wrap">
+            <h1 class="accept-waiting">승인 대기중</h1>
+                
+                <div class="loading"> 
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <p class="guide-message">관리자의 승인을 기다리고 있습니다<br>
+                    취소하려면 ‘취소'버튼을 눌러주세요
+                </p>
+
+            <div class="btn-wrap">
+                <button type="button" class="btn-blue" onClick="location.href='../member/office-hours/register'">시작하기</button>
+                <button type="button" class="btn-white" onClick="location.href='../sign-up/select'">취소</button>
+            </div>
+        </section>
+
+    </div>
+</body>
+</html>

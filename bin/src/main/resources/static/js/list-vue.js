@@ -58,6 +58,7 @@ Vue
 						this.fromDate = this.initDate.format("YYYY-MM-DD");
 
 						this.getList();
+						
 						//                        this.findByDateUnit(this.date);
 
 						break;
@@ -121,7 +122,7 @@ Vue
 
 				fetch(`http://localhost:80/api/officehours/daylist?id=${this.id}&fromDate=${this.fromDate}`, requestOptions)
 					.then(response => this.list = response.json())
-					.then(list => this.workHours = this.progressTimeFormat(list))
+					.then(list => this.workHours = this.workHoursFormat(list))
 					.catch(error => this.workHours = "근무 내역이 없습니다.");
 
 
@@ -141,7 +142,7 @@ Vue
 
 				fetch(`http://localhost:80/api/officehours/wmlist?id=${this.id}&fromDate=${this.fromDate}&toDate=${this.toDate}`, requestOptions)
 					.then(response => this.list = response.json())
-					.then(list => this.workHours = this.progressHoursFormat(list[0].workHours))
+					.then(list => this.workHours = this.workHoursFormat(list))
 					.catch(error => this.workHours = "근무 내역이 없습니다.");
 
 
@@ -149,7 +150,7 @@ Vue
 
 
 
-//				console.log(list);
+				console.log(list);
 
 			},
 
@@ -172,33 +173,33 @@ Vue
 				}
 			},
 
-			progressHoursFormat(hours) {
+			workHoursFormat(list) {
 
-				let str = hours.split(":");
-				let totalHours = "";
+				let str = list[0].workHours.split(":");
+				let workHours = "";
 
 				if (str[0] !== "00") {
 					if (str[0].indexOf("0") <= 0) {
-						totalHours = str[0].replace("0", '') + "시간";
+						workHours = str[0].replace("0", '') + "시간";
 					} else {
-						totalHours = str[0] + "시간";
+						workHours = str[0] + "시간";
 					}
 				}
 
 				if (str[1] !== "00") {
 					if (str[1].indexOf("0") <= 0) {
-						totalHours = totalHours + " " + str[1].replace("0", '') + "분";
+						workHours = workHours + " " + str[1].replace("0", '') + "분";
 					} else {
-						totalHours = totalHours + " " + str[1] + "분";
+						workHours = workHours + " " + str[1] + "분";
 					}
 				}
 
-				return totalHours;
+				return workHours;
 			},
 			
-			progressPercentage(hours) {
-				//list[0].workHours
-				let str = hours.split(":");
+			workHoursProgress(list) {
+
+				let str = list[0].workHours.split(":");
 				let hourToSec = parseInt(str[0])*3600;
 				let minToSec = parseInt(str[1])*60;
 				let totalSec = hourToSec+minToSec;

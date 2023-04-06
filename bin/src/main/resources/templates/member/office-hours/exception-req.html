@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleeaf/layout"
+	layout:decorate="member/inc/layout">
+
+<div class="wrap" layout:fragment="main">
+
+	<!-- profile-card  -->
+	<header class="profile-card">
+		<div class="profile-card-top">
+			<div class="profile-card-img">
+				<img th:src="@{${loginInfo.image}}" src="../../img/profile.png" alt="프로필이미지" />
+			</div>
+			<span th:text=${loginInfo.name}>임한응</span> 님, 안녕하세요.
+		</div>
+
+		<div class="profile-card-bottom">
+			<div class="profile-card-dept">
+				<span th:text=${companyName}>뉴렉처 인재개발원</span>
+			</div>
+			<div class="profile-card-team">
+				<span th:text="${loginInfo.department} + 팀">버스 1팀</span>
+			</div>
+		</div>
+	</header>
+
+	<!-- date-bar -->
+	<section>
+		<h1 class="d-none"> commute-info</h1>
+
+		<div class="date-bar">
+			<div class="date-wrap">
+				<div class="calender-img">
+					<img src="../../img/calendar.png" alt="달력 이미지">
+				</div>
+				<div class="date">
+					<span th:text="${#temporals.format(today, 'M'+'월'+' dd'+'일')}">2월 15일</span>
+				</div>
+			</div>
+		</div>
+		<!-- exception-req-box -->
+		<form action="exception-req" method="post">
+			<input type="hidden" th:value="${MatterTypeStatus}" name="matterType">
+			<div class="exception-req-box">
+				<label th:text="${MatterTypeStatus} == '1' ? '사전 예외 신청' : '지각 사유'" class="exception">사전 예외 신청</label>
+				<textarea th:if="${MatterTypeStatus} == '1'" name="exception-reason" placeholder="사전 예외 신청 메시지를 입력해주세요."></textarea>
+				<textarea th:if="${MatterTypeStatus} != '1'" name="exception-reason" placeholder="지각 사유를 입력해주세요."></textarea>
+			</div>
+
+			<div class="btn-wrap">
+				<button type="submit" class="btn-blue register-btn m-top-40">저장</button>
+			</div>
+		</form>
+	</section>
+</div>

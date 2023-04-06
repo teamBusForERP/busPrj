@@ -1,0 +1,29 @@
+
+
+
+.sign-up-header {
+	box-sizing: border-box;
+	margin: 0 20px;
+	display: flex;
+	height: 60px;
+	align-items: center;
+}
+
+.header-left {
+	cursor: pointer;
+	height : 14px;
+	width : 8.3px;
+	background-image: url("data:image/svg+xml,%3Csvg width='9' height='14' viewBox='0 0 9 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.49902 1.645L3.36942 7L8.49902 12.355L6.91982 14L0.199825 7L6.91982 -7.19052e-08L8.49902 1.645Z' fill='%23878686'/%3E%3C/svg%3E%0A");
+}
+
+.header-rignt {
+	height: 14px;
+	width: 8.3px;
+}
+
+.title {
+	font-size: 18px;
+	font-weight: 500;
+	text-align: center;
+	flex-grow: 1;
+}

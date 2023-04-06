@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleeaf/layout"
+	layout:decorate="member/inc/layout">
+	
+<div class="wrap" layout:fragment="main">
+
+<script src="/js/list-vue.js" defer="defer"></script>
+	<!-- filter -->
+	<div class="main-wrap">
+		<section class="mid-wrap">
+			<!-- 버튼 -->
+			<div class="date-filter">
+				<div class="side-padding"></div>
+				<div id="1" class="date-filter-button" :class="{'selected': dateUnit=='day'}" @:click="dateUnitHandler('day')">일</div>
+				<div class="vertical-bar"></div>
+				<div id="2" class="date-filter-button" :class="{'selected': dateUnit=='week'}" @:click="dateUnitHandler('week')">주</div>
+				<div class="vertical-bar"></div>
+				<div id="3" class="date-filter-button" :class="{'selected': dateUnit=='month'}" @:click="dateUnitHandler('month')">월</div>
+				<div class="side-padding"></div>
+			</div>
+			<!-- 버튼 -->
+
+			<div class="day-fillter">
+				<div class="day-btn-wrap">
+					<button class="back" @:click="datepagingHandler('minus')"> </button>
+					<button class="front" @:click="datepagingHandler('plus')"></button>
+				</div>
+				<span class="bold"> {{showDate}} </span>
+			</div>
+		</section>
+
+		<!-- time -->
+		<section class="bottom-wrap">
+			<div class="work-hour">
+				<div class="work-hour-text">
+					<div class="bold">근무</div>
+					<div class="border"></div>
+					<div 
+						class="time">{{workHours}}</div>
+				</div>
+
+				<!-- 프로그래스 바 -->
+				<div class="progress">
+					<div class="progress-bar">
+						<div class="bar-value"></div>
+					</div>
+					<div class="time-offset-items time-offset-day">
+						<div>0</div>
+						<div>8</div>
+						<div>12</div>
+						<div>14</div>
+					</div>
+				</div>
+				<!-- 프로그래스 바 -->
+
+			</div>
+
+			<div class="rest-hour">
+				<div class="rest-hour-text">
+					<div class="bold">휴게</div>
+					<div class="border"></div>
+					<div 
+						class="time">{{restHours}}</div>
+				</div>
+
+				<!-- 프로그래스 바 -->
+				<div class="progress">
+					<div class="progress-bar">
+						<div class="bar-value"></div>
+					</div>
+					<div class="time-offset-items time-offset-day">
+						<div>0</div>
+						<div>8</div>
+						<div>12</div>
+						<div>14</div>
+					</div>
+				</div>
+				<!-- 프로그래스 바 -->
+			</div>
+		</section>
+
+		<section class="daytime-work" :class="{'d-none': dateUnit !='day'}">
+			<div>출퇴근 시간</div>
+
+				<div class="go-leave">
+				<div class="go-work-time">
+					<span>출근</span>
+					<span>{{clockIn}}</span>
+				</div>
+
+				<div class="leave-work-time">
+					<span>퇴근</span>
+					<span>{{clockOut}}</span>
+				</div>
+			</div>
+		</section>
+	</div>
+</div>

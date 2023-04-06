@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleeaf/layout"
+	layout:decorate="member/inc/layout">
+
+<div class="wrap" layout:fragment="main">
+
+	<!-- profile-card  -->
+	<header class="profile-card">
+		<div class="profile-card-top">
+			<div class="profile-card-img">
+				<img src="../../img/profile.png" alt="프로필이미지" />
+			</div>
+			<span>임한응</span> 님, 안녕하세요.
+		</div>
+
+		<div class="profile-card-bottom">
+			<div class="profile-card-dept">
+				<span>뉴렉처 인재개발원</span>
+			</div>
+			<div class="profile-card-team">
+				<span>버스 1팀</span>
+			</div>
+		</div>
+	</header>
+
+	<!-- date-bar -->
+	<section>
+		<h1 class="d-none"> commute-info</h1>
+
+		<div class="date-bar">
+			<div class="date-wrap">
+				<div class="calender-img">
+					<img src="../../img/calendar.png" alt="달력 이미지">
+				</div>
+				<div class="date">
+					<span>2월 15일</span>
+				</div>
+			</div>
+		</div>
+
+		<!-- exception-req-box -->
+					<form action="" method="post">
+			<div class="exception-req-box">
+				<label class="late">지각 사유</label>
+				<textarea placeholder="지각 사유 메시지를 입력해주세요."></textarea>
+			</div>
+					
+			<div class="btn-wrap">
+				<button class="btn-blue register-btn m-top-40">저장</button>
+			</div>
+		
+		</form>
+
+	</section>
+</div>

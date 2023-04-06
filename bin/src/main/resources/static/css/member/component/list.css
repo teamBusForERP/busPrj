@@ -1,0 +1,132 @@
+.date-filter {
+	margin: 0 auto;
+	width: 319px;
+	height: 39px;
+}
+
+.date-filter .date-filter-button {
+	font-size : 17px;
+	font-weight: 500;
+}
+
+/* 프로그래스 */
+.progress {
+	margin: 20px auto 0 auto;
+	border: 1px #B9B7B7 solid;
+	width: 305px;
+	height: 16px;
+	border-radius: 2px;
+}
+.progress-bar {
+	height: 100%;
+}
+
+/* 프로그래스 */
+
+.header-title {
+	font-size: 18px;
+}
+
+.ham-wrap {
+	justify-content: center;
+}
+
+.main-wrap {
+	font-size: 17px;
+	font-weight: 400;
+	color: #333;
+}
+
+.mid-wrap {
+	margin-top: 34px;
+}
+
+.day-fillter {
+	text-align: center;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+.day-fillter .day-btn-wrap{
+	display: flex;
+    align-items: center;
+    position: absolute;
+    width: 213px;
+    justify-content: space-between;
+}
+.day-fillter .back {
+	cursor: pointer;
+	height : 16.5px;
+	width : 16.5px;
+	background: url(../../../img/back.svg) no-repeat;
+}
+
+.day-fillter .front {
+	cursor: pointer;
+	height : 16.5px;
+	width : 16.5px;
+	background: url(../../../img/front.svg) no-repeat;
+}
+.day-fillter .bold{
+	font-weight: 500;
+}
+.bottom-wrap {
+	margin-left: 0 auto;
+	font-size: 16px;
+}
+
+.work-hour {
+	margin-top: 50px;
+}
+
+.rest-hour {
+	margin-top: 59px;
+}
+
+.work-hour-text,
+.rest-hour-text {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-left: 30px;
+}
+
+.border {
+	align-self: center;
+	border-right: 1.5px solid black;
+	width: 0.1px;
+	height: 15px;
+	margin: 0 10px 0 10px;
+}
+
+.time {
+	color: #878686;
+	font-size: 15px;
+	font-weight: 400;
+}
+
+.daytime-work {
+
+	margin: 63px auto auto auto;
+	width: 300px;
+	font-size: 16px;
+}
+
+.go-work-time,
+.leave-work-time {
+
+	display: flex;
+	justify-content: space-between;
+}
+
+.go-work-time {
+	margin-top: 33px;
+}
+
+.leave-work-time {
+	margin-top: 36px;
+}

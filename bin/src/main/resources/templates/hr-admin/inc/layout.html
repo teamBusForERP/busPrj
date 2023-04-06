@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<link rel="stylesheet" href="../../css/reset.css">
+<link rel="stylesheet" href="../../css/util.css">
+<link
+	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet" href="../../css/component/date-filter.css">
+<link rel="stylesheet" href="../../css/component/progress-bar.css">
+<link rel="stylesheet"
+	href="../../css/hr-admin/component/filter-bar.css">
+<link rel="stylesheet" href="../../css/hr-admin/component/layout.css">
+<link rel="stylesheet"
+	href="../../css/hr-admin/component/choose-date-btn.css">
+<link rel="stylesheet"
+	href="../../css/hr-admin/component/pc-side-bar.css">
+<link rel="stylesheet" href="../../css/hr-admin/component/table.css">
+
+<script src="../../js/hr-admin.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.7/dayjs.min.js"></script>
+</head>
+
+<body>
+	<div class="page-wrap">
+		<!-- side -->
+		<div th:replace="~{hr-admin/inc/aside::.pc-side-bar}"></div>
+
+		<!-- main-content -->
+		<section class="main-content">
+			<!-- --------------------------------상단 header -->
+			<div th:replace="~{hr-admin/inc/header}"></div>
+			<!-- --------------------------------상단 header -->
+			<!-- --------------------------------main -->
+			<div layout:fragment="main"></div>
+			<!-- --------------------------------main -->
+		</section>
+	</div>
+</body>
+
+</html>

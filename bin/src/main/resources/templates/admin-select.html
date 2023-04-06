@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>계정 선택</title>
+
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/util.css">
+	<link rel="stylesheet" href="./css/component/button.css">
+	<link rel="stylesheet" href="./css/sign-up/sign-up-header.css">
+
+</head>
+
+<body>
+	<!-- admin-select - admin 권한이 없는 사용자는 접근할 수 없는 페이지-->
+	<div class="wrap">
+		<header class="sign-up-header">
+            <div class="header-left">
+                <a href="login"></a>
+            </div>
+            <h1 class="title">계정 선택</h1>
+            <div class="header-rignt"></div>
+        </header>
+
+		<div class="btn-wrap adminselc-btn-wrap">
+			<button class="btn-blue adminselc-btn-height" onClick="location.href='./hr-admin/office-hours/list'" type="submit">
+				관리자 페이지 로그인
+			</button>
+
+			<button class="btn-blue adminselc-btn-bottom adminselc-btn-height" onClick="location.href='./member/office-hours/register'" type="submit">
+				사용자 페이지 로그인
+			</button>
+		</div>
+		
+
+	</div>
+</body>
+
+</html>

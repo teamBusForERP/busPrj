@@ -1,0 +1,14 @@
+.wrap{
+	display: flex;
+	flex-direction: column;
+}
+
+.com-search-result{
+	width: 335px;
+	height: 370px;
+	margin: 0 auto;
+}
+
+.btn-blue{
+	margin-top: 20px;
+}

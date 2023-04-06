@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+	<link rel="stylesheet" href="../../css/reset.css">
+	<link rel="stylesheet" href="../../css/util.css">
+	<link rel="stylesheet" href="../../css/component/button.css">
+
+	<link rel="stylesheet" href="../../css/member/component/side-bar.css">
+	<link rel="stylesheet" href="../../css/member/component/profile-card.css">
+	<link rel="stylesheet" href="../../css/member/component/date-bar.css">
+	<link rel="stylesheet" href="../../css/member/component/exception-req.css">
+
+	<link rel="stylesheet" href="../../css/component/date-filter.css"/>
+	<link rel="stylesheet" href="../../css/component/progress-bar.css" />
+	<link rel="stylesheet" href="../../css/member/component/side-bar.css"/>
+	<link rel="stylesheet" href="../../css/member/component/list.css"/>
+
+	<link rel="stylesheet" href="../../css/member/component/commute-info.css">
+	<link rel="stylesheet" href="../../css/member/component/rest-editor-box.css">
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.7/dayjs.min.js" defer="defer"></script>
+
+	<!-- <script src="../../js/member.js"></script> -->
+	
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js" defer="defer"></script>
+
+</head>
+<body>
+
+	<div th:replace="~{member/inc/header}"></div>
+
+	<!-- <div class="menu-b d-none"></div> -->
+
+	<div th:replace="~{member/inc/aside}"></div>
+
+	<div layout:fragment="main"></div>
+
+</body>
+</html>
